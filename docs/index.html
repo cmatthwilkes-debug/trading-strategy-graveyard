@@ -1,8 +1,11 @@
 <!doctype html>
 <html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="19 pre-registered backtests. 16 kills. Tools that stop your backtest from lying to you.">
+<meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
@@ -11,12 +14,12 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <style>
   :root {
     --paper: #F6F7F3;
     --ink: #1A1E1B;
-    --graphite: #555C56;
+    --graphite: #50564F;
     --faint: #A9AEA8;
     --rule: #DADDD6;
     --kill: #B0372B;
@@ -29,23 +32,26 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #131614; --ink: #E4E6E1; --graphite: #A2A9A3; --faint: #6A716B;
+      --paper: #131614; --ink: #E4E6E1; --graphite: #A8AFA9; --faint: #6A716B;
       --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
       --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
     }
   }
   :root[data-theme="light"] {
-    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #555C56; --faint: #A9AEA8;
+    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #50564F; --faint: #A9AEA8;
     --rule: #DADDD6; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.07);
     --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.08); --card: #FFFFFF;
   }
   :root[data-theme="dark"] {
-    --paper: #131614; --ink: #E4E6E1; --graphite: #A2A9A3; --faint: #6A716B;
+    --paper: #131614; --ink: #E4E6E1; --graphite: #A8AFA9; --faint: #6A716B;
     --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
     --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
   }
 
   * { box-sizing: border-box; }
+  .nb { white-space: nowrap; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
     background: var(--paper);
     color: var(--ink);
@@ -56,13 +62,22 @@
   }
   ::selection { background: var(--kill-soft); color: var(--kill); }
 
-  .doc { max-width: 45rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
-  @media (min-width: 1100px) {
-    .doc { border-left: 1px solid var(--rule); padding-left: 2.6rem; padding-right: 0; }
-    .eyebrow { float: left; clear: left; width: 11rem; margin-left: -14rem; text-align: right; }
+  .doc { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  @media (min-width: 1140px) {
+    .doc { border-left: 1px solid var(--rule); padding-left: 2.8rem; padding-right: 0; }
+    /* Margin annotations: anchored inside their heading, projected into the margin,
+       so they always align with the heading's first line. */
+    .eyebrow {
+      position: absolute;
+      right: calc(100% + 3.2rem);
+      top: 0.45em;
+      width: 11rem;
+      margin: 0;
+      text-align: right;
+    }
   }
 
-  /* file header */
+  /* ---------- file header ---------- */
   .filehead {
     font-family: var(--mono);
     font-size: 0.7rem;
@@ -75,70 +90,50 @@
   }
   .filehead b { color: var(--ink); font-weight: 600; }
 
-  /* margin tabs: lowercase mono annotations, not tracked kickers */
+  /* margin tabs: lowercase mono annotations, the case-file exhibit taxonomy.
+     Each lives inside its heading (block on narrow screens, projected into the
+     left margin on wide ones). */
   .eyebrow {
+    display: block;
     font-family: var(--mono);
     font-size: 0.72rem;
     font-weight: 500;
+    font-style: normal;
     letter-spacing: 0.02em;
+    line-height: 1.6;
     color: var(--graphite);
-    margin: 3.6rem 0 0.7rem;
+    margin: 0 0 0.7rem;
   }
   .eyebrow b { color: var(--kill); font-weight: 600; }
+  h1, h2 { position: relative; }
+  .doc > h2 { margin-top: 3.7rem; }
+
   h1 {
-    font-size: clamp(2.1rem, 5.8vw, 3.1rem);
-    line-height: 1.08;
-    margin: 1.7rem 0 1.1rem;
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-size: clamp(2.15rem, 6vw, 3.35rem);
+    line-height: 1.06;
+    margin: 1.9rem 0 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.018em;
     text-wrap: balance;
   }
-  h1 em { font-style: italic; font-weight: 600; }
+  h1 em { font-style: italic; font-weight: 700; }
+  h1 .keep { white-space: nowrap; }
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.42rem;
     margin: 0 0 0.9rem;
     font-weight: 600;
     letter-spacing: -0.005em;
     text-wrap: balance;
   }
   p { margin: 0 0 1rem; text-wrap: pretty; }
-  .lede { font-size: 1.1rem; }
+  .lede { font-size: 1.11rem; }
   .muted { color: var(--graphite); }
   strong { font-weight: 600; }
   a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: text-decoration-color 120ms ease; }
   a:hover { text-decoration-color: var(--kill); }
   a:focus-visible, .btn:focus-visible { outline: 2px solid var(--kill); outline-offset: 3px; border-radius: 2px; }
 
-  /* the gate ledger */
-  .board {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-    margin: 2.2rem 0 0.6rem;
-  }
-  .cell { background: var(--card); padding: 1rem 1.1rem 0.9rem; }
-  .cell .n {
-    font-family: var(--mono);
-    font-size: 1.9rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    display: block;
-    line-height: 1.1;
-  }
-  .cell .lbl {
-    font-family: var(--mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--graphite);
-  }
-  .n.red { color: var(--kill); }
-  .n.green { color: var(--pass); }
-  .boardnote { font-family: var(--mono); font-size: 0.72rem; color: var(--graphite); margin-bottom: 0; }
-
-  /* verdict chips */
+  /* ---------- verdict chips ---------- */
   .chip {
     font-family: var(--mono);
     font-size: 0.66rem;
@@ -150,8 +145,148 @@
   }
   .chip.fail { color: var(--kill); background: var(--kill-soft); border: 1px solid var(--kill); }
   .chip.pass { color: var(--pass); background: var(--pass-soft); border: 1px solid var(--pass); }
+  .chip.hero-stamp { display: inline-block; transform: rotate(-2deg); font-size: 0.8rem; vertical-align: 0.45em; margin-left: 0.4rem; }
 
-  /* tables */
+  /* ---------- the gate ledger strip ---------- */
+  .ledger { margin: 2.4rem 0 0.5rem; }
+  .ledger-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .slot { flex: 1 1 0; min-width: 0; text-align: center; }
+  .slot .box {
+    border: 1px solid var(--rule);
+    background: var(--card);
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(0.7rem, 2.2vw, 1.05rem);
+    line-height: 1;
+    user-select: none;
+  }
+  .slot.fail .box { color: var(--kill); background: var(--kill-soft); border-color: color-mix(in srgb, var(--kill) 35%, var(--rule)); }
+  .slot.pass .box { color: var(--paper); background: var(--pass); border-color: var(--pass); }
+  .slot.bench .box { color: var(--pass); background: var(--pass-soft); border-color: var(--pass); }
+  .slot.split .box {
+    color: var(--ink);
+    background: linear-gradient(135deg, var(--kill-soft) 50%, var(--pass-soft) 50%);
+    border-color: var(--graphite);
+  }
+  .slot .idx {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.56rem;
+    min-height: 1em;
+    color: var(--faint);
+    margin-top: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+  .ledger-notes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.4rem;
+    margin-top: 0.55rem;
+  }
+  .ledger-notes .note {
+    font-family: var(--mono);
+    font-size: 0.62rem;
+    line-height: 1.45;
+    color: var(--graphite);
+    text-align: center;
+    flex: 0 0 calc((100% - 4px * 18) / 19 * 4 + 4px * 3);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.35rem;
+  }
+  .ledger-notes .note b { color: var(--ink); font-weight: 600; display: block; }
+  .ledger-tally {
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    color: var(--graphite);
+    margin: 1.1rem 0 0;
+    line-height: 1.9;
+  }
+  .ledger-tally b { font-weight: 700; color: var(--ink); }
+  .ledger-tally .k { color: var(--kill); }
+  .ledger-tally .g { color: var(--pass); }
+  .boardnote { font-family: var(--mono); font-size: 0.72rem; color: var(--graphite); margin: 0.4rem 0 0; }
+
+  @media (max-width: 560px) {
+    .ledger-row { flex-wrap: wrap; gap: 4px; }
+    .slot { flex: 0 0 calc((100% - 4px * 9) / 10); }
+    .ledger-notes { display: block; }
+    .ledger-notes .note { display: inline-block; margin-right: 1rem; text-align: left; border-top: none; padding-top: 0; }
+    .ledger-notes .note b { display: inline; }
+    .ledger-notes .note b::after { content: " — "; color: var(--faint); }
+  }
+
+  /* ---------- the distance chart ---------- */
+  .chart {
+    border: 1px solid var(--rule);
+    background: var(--card);
+    padding: 1.5rem 1.4rem 1.1rem;
+    margin: 1.6rem 0 0.5rem;
+  }
+  .chart-title { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; color: var(--ink); margin: 0 0 0.2rem; }
+  .chart-sub { font-family: var(--mono); font-size: 0.66rem; color: var(--graphite); margin: 0 0 1.3rem; }
+  .crow { display: grid; grid-template-columns: 11.5rem 1fr; align-items: center; gap: 0.9rem; padding: 0.34rem 0; }
+  .crow .clabel { font-family: var(--mono); font-size: 0.68rem; line-height: 1.4; color: var(--graphite); text-align: right; }
+  .crow .clabel b { color: var(--ink); font-weight: 600; display: block; }
+  .track { position: relative; height: 22px; }
+  /* continuous vertical reference lines drawn per-track so they stack into full-height rules */
+  .track::before, .track::after {
+    content: "";
+    position: absolute; top: 0; bottom: 0; width: 1px;
+  }
+  .track::before { left: 42.9%; background: var(--rule); }              /* PF 1.00 breakeven */
+  .track::after { left: 85.7%; background: var(--kill); opacity: 0.85; } /* PF 1.30 gate */
+  .dot {
+    position: absolute; top: 50%;
+    width: 11px; height: 11px;
+    margin: -5.5px 0 0 -5.5px;
+    border-radius: 50%;
+    background: var(--kill);
+    box-shadow: 0 0 0 2px var(--card);
+  }
+  .dot.hollow { background: var(--card); border: 2px solid var(--kill); width: 10px; height: 10px; margin: -5px 0 0 -5px; }
+  .dval {
+    position: absolute; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono); font-size: 0.62rem; font-weight: 600;
+    color: var(--graphite);
+    white-space: nowrap;
+    margin-left: 9px;
+    background: var(--card);
+    padding: 0 3px;
+  }
+  .dval.flip { margin-left: 0; margin-right: 9px; transform: translate(-100%, -50%); }
+  .decay {
+    position: absolute; top: 50%; height: 2px; margin-top: -1px;
+    background: repeating-linear-gradient(90deg, var(--kill) 0 3px, transparent 3px 6px);
+    opacity: 0.7;
+  }
+  .caxis { display: grid; grid-template-columns: 11.5rem 1fr; gap: 0.9rem; margin-top: 0.5rem; }
+  .caxis .scale { position: relative; height: 2.4rem; font-family: var(--mono); font-size: 0.62rem; color: var(--graphite); }
+  .caxis .tick { position: absolute; top: 0.25rem; transform: translateX(-50%); text-align: center; line-height: 1.5; }
+  .caxis .tick small { display: block; font-size: 0.56rem; color: var(--faint); }
+  .caxis .tick.gate { color: var(--kill); font-weight: 700; }
+  .caxis .tick.gate small { color: var(--kill); font-weight: 400; }
+  .chart-note { font-family: var(--mono); font-size: 0.66rem; color: var(--graphite); border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: 0.8rem; line-height: 1.7; }
+
+  @media (max-width: 620px) {
+    .crow { grid-template-columns: 1fr; gap: 0.15rem; padding: 0.55rem 0; }
+    .crow .clabel { text-align: left; }
+    .crow .clabel b { display: inline; }
+    .crow .clabel b::after { content: " · "; color: var(--faint); }
+    .caxis { grid-template-columns: 1fr; }
+    .chart { padding: 1.2rem 1rem 0.9rem; }
+    .xs-hide { display: none; }
+  }
+
+  /* ---------- tables ---------- */
   .tablewrap { overflow-x: auto; border: 1px solid var(--rule); margin: 1.4rem 0 0.5rem; }
   table {
     border-collapse: collapse;
@@ -183,9 +318,48 @@
   tr:has(.chip.pass):hover td { background: var(--pass-soft); }
   .tablenote { font-family: var(--mono); font-size: 0.72rem; color: var(--graphite); }
 
-  /* tiers */
+  /* ---------- the three artifacts ---------- */
+  .artifacts { margin: 1.7rem 0 0.4rem; border-top: 1px solid var(--rule); }
+  .artifact {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.4rem;
+    padding: 1.5rem 0 1.4rem;
+    border-bottom: 1px solid var(--rule);
+  }
+  .artifact .figure {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    line-height: 1.05;
+    color: var(--kill);
+    letter-spacing: -0.01em;
+  }
+  .artifact .figure small {
+    display: block;
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--graphite);
+    margin-top: 0.45rem;
+  }
+  .artifact .body p { margin: 0 0 0.5rem; font-size: 0.97rem; }
+  .artifact .body p:last-child { margin: 0; }
+  .artifact .rule-line {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--pass);
+    font-weight: 600;
+  }
+  .artifact .rule-line::before { content: "→ "; color: var(--faint); }
+  @media (max-width: 620px) {
+    .artifact { grid-template-columns: 1fr; gap: 0.6rem; }
+    .artifact .figure small { display: inline; margin-left: 0.5rem; }
+  }
+
+  /* ---------- tiers ---------- */
   .tiers { display: grid; gap: 1.1rem; margin: 1.7rem 0 0.4rem; }
-  @media (min-width: 720px) { .tiers { grid-template-columns: 1fr 1fr 1fr; } }
+  @media (min-width: 720px) { .tiers { grid-template-columns: 1fr 1fr 1fr; align-items: stretch; } }
   .tier {
     background: var(--card);
     border: 1px solid var(--rule);
@@ -193,12 +367,16 @@
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    transition: border-color 140ms ease;
+    position: relative;
+    transition: border-color 140ms ease, transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
   }
   .tier:hover { border-color: var(--graphite); }
-  .tier.headline { border-color: var(--ink); }
+  @media (prefers-reduced-motion: no-preference) {
+    .tier:hover { transform: translateY(-2px); }
+  }
+  .tier.headline { border-color: var(--ink); box-shadow: 4px 4px 0 0 var(--rule); }
   .tier .tname { font-family: var(--mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--graphite); }
-  .tier .price { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .tier .price { font-family: var(--mono); font-size: 1.85rem; font-weight: 700; line-height: 1.1; }
   .tier .price small { font-size: 0.7rem; font-weight: 400; color: var(--graphite); letter-spacing: 0.04em; }
   .tier ul { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; }
   .tier li { padding: 0.36rem 0 0.36rem 1.1rem; position: relative; border-bottom: 1px dotted var(--rule); }
@@ -212,6 +390,19 @@
     color: var(--graphite);
     border-top: 1px solid var(--rule);
     padding-top: 0.85rem;
+  }
+  .stamp-notyet {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--kill);
+    border: 1.5px solid var(--kill);
+    border-radius: 2px;
+    padding: 0.2rem 0.55rem;
+    transform: rotate(-2.5deg);
+    background: var(--kill-soft);
   }
   .btn {
     display: inline-block;
@@ -229,7 +420,7 @@
   .btn.primary { background: var(--ink); color: var(--paper); }
   .btn.primary:hover { background: var(--kill); border-color: var(--kill); }
 
-  /* not shipped */
+  /* ---------- not shipped ---------- */
   .notship {
     border: 1px solid var(--kill);
     background: var(--kill-soft);
@@ -240,14 +431,14 @@
   .notship ul { margin: 0; padding-left: 1.1rem; font-size: 0.94rem; }
   .notship li { margin-bottom: 0.45rem; }
 
-  .rulebreak { border: none; border-top: 1px solid var(--rule); margin: 3.2rem 0 0; }
+  .rulebreak { border: none; border-top: 1px solid var(--rule); margin: 3.4rem 0 0; }
 
-  /* pull quote: hanging quote mark, no side stripe */
+  /* pull quote: hanging quote mark */
   blockquote {
-    margin: 2.2rem 0;
+    margin: 2.6rem 0;
     padding: 0 0 0 2.7rem;
     position: relative;
-    font-size: 1.28rem;
+    font-size: 1.32rem;
     font-style: italic;
     font-weight: 500;
     line-height: 1.5;
@@ -278,15 +469,28 @@
     line-height: 1.75;
   }
 
+  /* ---------- motion ---------- */
   @media (prefers-reduced-motion: no-preference) {
-    .chip.fail.hero-stamp { animation: stamp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
+    .filehead { animation: settle 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    h1, .lede { animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .lede { animation-delay: 0.08s; }
+    .chip.fail.hero-stamp { animation: stamp 0.32s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both; }
+    .slot .box { animation: stampin 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: calc(0.65s + var(--i) * 38ms); }
+    .ledger-notes, .ledger-tally, .boardnote { animation: settle 0.5s ease 1.5s both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes settle { from { opacity: 0; } to { opacity: 1; } }
     @keyframes stamp {
       from { transform: scale(1.9) rotate(-5deg); opacity: 0; }
       to { transform: scale(1) rotate(-2deg); opacity: 1; }
     }
+    @keyframes stampin {
+      from { transform: scale(1.45); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
   }
-  .chip.hero-stamp { display: inline-block; transform: rotate(-2deg); font-size: 0.8rem; vertical-align: 0.45em; margin-left: 0.4rem; }
 </style>
+</head>
+<body>
 
 <div class="doc">
 
@@ -296,9 +500,7 @@
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <p class="eyebrow"><b>case file</b> · origin</p>
-
-  <h1>Backtesting tools with a <em>body count</em>.<span class="chip fail hero-stamp">×16 FAILED</span></h1>
+  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×16 FAILED</span></span></h1>
 
   <p class="lede">I ran 19 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
@@ -311,19 +513,99 @@
   <strong>It stops your backtest from lying to you about making money</strong>, which,
   if you trade, is the same thing wearing work clothes.</p>
 
-  <div class="board">
-    <div class="cell"><span class="n">19</span><span class="lbl">gates run</span></div>
-    <div class="cell"><span class="n red">16</span><span class="lbl">strategies killed</span></div>
-    <div class="cell"><span class="n green">2</span><span class="lbl">certified</span></div>
-    <div class="cell"><span class="n">$0</span><span class="lbl">lost live</span></div>
+  <div class="ledger">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 19 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision.">
+      <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
+      <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:3">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:4">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:5">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:6">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:7">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:8">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:9">×</span><span class="idx">10</span></div>
+      <div class="slot fail"><span class="box" style="--i:10">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:11">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:12">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:13">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:14">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:15">×</span><span class="idx">16</span></div>
+      <div class="slot pass"><span class="box" style="--i:16">✓</span><span class="idx">17</span></div>
+      <div class="slot bench"><span class="box" style="--i:17">✓</span><span class="idx">18</span></div>
+      <div class="slot split"><span class="box" style="--i:18">◐</span><span class="idx">19</span></div>
+    </div>
+    <div class="ledger-notes" aria-hidden="true">
+      <span class="note"><b>gates 17–19</b><span class="nb">first pass</span> · <span class="nb">benched pass</span> · <span class="nb">split decision</span></span>
+    </div>
+    <p class="ledger-tally"><b>19</b> gates run · <b class="k">16</b> straight kills ·
+    <b class="g">1</b> pass · <b class="g">2</b> certified, then benched by their own
+    pre-registered tiebreaker · <b>$0</b> lost live</p>
+    <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
   </div>
-  <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
 
-  <p class="eyebrow"><b>exhibit a</b> · the kills</p>
-  <h2>The kill table (excerpt)</h2>
+  <h2><span class="eyebrow"><b>exhibit a</b> · the kills</span>Every family, measured against the gate it pre-registered.</h2>
   <p class="muted">Each of these looked plausible. Several looked <em>great</em>, right
   up until honest fills, split-adjusted data, and a de-survivorship universe were
-  applied. Full table and writeups are free in the repo.</p>
+  applied. The picture first, then the ledger; full writeups are free in the repo.</p>
+
+  <div class="chart">
+    <p class="chart-title">DISTANCE FROM THE GATE — best honest profit factor per family</p>
+    <p class="chart-sub">fast-strategy gate, pre-registered: PF ≥ 1.30 at the stated cost · every dot is a documented result</p>
+
+    <div class="cplot" role="img" aria-label="Dot plot: best honest profit factor per strategy family versus the pre-registered gate of 1.30. All eight families plotted fall below the gate; most fall at or below breakeven at 1.00. The catalyst-gap family shows its primary result of 1.23 decaying to 0.93 on the untouched holdout sample. Exact values are in the table below.">
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Mean reversion (RSI-2)</b>@ 0.25%/side</span>
+      <span class="track"><span class="dot" style="left:10%"></span><span class="dval" style="left:10%">0.77</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>ORB long+short</b>"Sharpe 2.4" paper · <span class="nb">@ 0.10%/side</span></span>
+      <span class="track"><span class="dot" style="left:21.4%"></span><span class="dval" style="left:21.4%">0.85</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>190-name mover universe</b>@ zero cost</span>
+      <span class="track"><span class="dot" style="left:30%"></span><span class="dval" style="left:30%">0.91</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Momentum scalp</b>@ zero cost, best window</span>
+      <span class="track"><span class="dot" style="left:38.6%"></span><span class="dval" style="left:38.6%">0.97</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Penny stocks</b>@ a fantasy 0.1% cost</span>
+      <span class="track"><span class="dot" style="left:42.9%"></span><span class="dval" style="left:42.9%">1.00</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Trend (Donchian, broad)</b>@ 0.25%/side</span>
+      <span class="track"><span class="dot" style="left:50%"></span><span class="dval" style="left:50%">1.05</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Earnings drift (real 8-Ks)</b>@ 0.25%/side</span>
+      <span class="track"><span class="dot" style="left:58.6%"></span><span class="dval" style="left:58.6%">1.11</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Catalyst gaps</b>primary → untouched holdout</span>
+      <span class="track">
+        <span class="decay" style="left:32.9%; width:42.8%"></span>
+        <span class="dot hollow" style="left:75.7%"></span><span class="dval flip" style="left:74%">1.23<span class="xs-hide"> primary</span></span>
+        <span class="dot" style="left:32.9%"></span><span class="dval" style="left:32.9%">0.93<span class="xs-hide"> holdout</span></span>
+      </span>
+    </div>
+
+    <div class="caxis" aria-hidden="true">
+      <span></span>
+      <span class="scale">
+        <span class="tick" style="left:0%">0.70</span>
+        <span class="tick" style="left:42.9%">1.00<small>breakeven</small></span>
+        <span class="tick gate" style="left:85.7%">1.30<small>the gate</small></span>
+      </span>
+    </div>
+    </div>
+
+    <p class="chart-note">Not one family reached the line. The catalyst pair is the
+    expensive lesson: a passing primary sample (hollow dot) collapsing to negative
+    expectancy on the holdout it never touched. Exact figures, verdicts, and causes of
+    death: table below.</p>
+  </div>
 
   <div class="tablewrap">
     <table>
@@ -344,8 +626,45 @@
   <blockquote>A backtest is a witness with every incentive to lie to you.
   Interrogate it like one.</blockquote>
 
-  <p class="eyebrow"><b>exhibit b</b> · the receipts</p>
-  <h2>Don't take the table's word for it.</h2>
+  <h2><span class="eyebrow"><b>exhibit b</b> · the artifacts</span>Three ways a backtest lies, from this file.</h2>
+  <p class="muted">These aren't hypotheticals. Each one is an artifact my own pipeline
+  produced, believed for a while, and then caught. Each one became a rule in the free
+  checklist.</p>
+
+  <div class="artifacts">
+    <div class="artifact">
+      <span class="figure">+4,890%<small>one fabricated "winner"</small></span>
+      <div class="body">
+        <p><strong>The split artifact.</strong> Raw price bars plus a 1:25 reverse split
+        inside the hold window turned a $0.17 stock into the trade of the decade. It
+        never happened. A strategy "passed validation" for six days on trades like this
+        before the split-adjusted rerun killed it.</p>
+        <p class="rule-line">rule: split-adjusted bars only, no exceptions</p>
+      </div>
+    </div>
+    <div class="artifact">
+      <span class="figure">−15%<small>where a −5% "stop" really fills</small></span>
+      <div class="body">
+        <p><strong>The fantasy fill.</strong> A backtest that fills your stop at the stop
+        price is fiction: names that gap through a −5% stop routinely close down 10 to 15%.
+        Half my "edges" were fill fantasies that evaporated under a checked-at-close,
+        filled-at-close model.</p>
+        <p class="rule-line">rule: model the fill you actually get, not the one you want</p>
+      </div>
+    </div>
+    <div class="artifact">
+      <span class="figure">PF 3.96<small>printed twice, both fake</small></span>
+      <div class="body">
+        <p><strong>The false-positive machine.</strong> A slot-capped portfolio simulation
+        printed profit factor 3.96 by accidentally cherry-picking under 10% of its own
+        trades. It did this twice, on two unrelated strategies, before the pattern was
+        caught and banned from the pipeline.</p>
+        <p class="rule-line">rule: slot-capped stats are a false-positive generator</p>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="eyebrow"><b>exhibit c</b> · the receipts</span>Don't take this page's word for it.</h2>
   <p class="muted">Every verdict above traces to a gate file written before its test ran.
   The receipts, directly:</p>
   <div class="tablewrap">
@@ -357,8 +676,7 @@
     </table>
   </div>
 
-  <p class="eyebrow">the instrument</p>
-  <h2>Three tiers. One is free forever.</h2>
+  <h2><span class="eyebrow">the instrument</span>Three tiers. One is free forever.</h2>
 
   <div class="tiers">
     <div class="tier">
@@ -384,7 +702,7 @@
         <li>SEC EDGAR earnings fetcher, funding-rate carry simulator</li>
         <li>3 runnable case studies with real output</li>
       </ul>
-      <span class="status">NOT FOR SALE YET · see below</span>
+      <span class="status"><span class="stamp-notyet">NOT FOR SALE YET</span> &nbsp;<span class="nb">see below</span></span>
     </div>
 
     <div class="tier">
@@ -399,12 +717,11 @@
         <li>In-play relative-volume screener, with its own falsification attached</li>
         <li>Decision-shadow-logger: measure a filter before you trust it</li>
       </ul>
-      <span class="status">NOT FOR SALE YET · see below</span>
+      <span class="status"><span class="stamp-notyet">NOT FOR SALE YET</span> &nbsp;<span class="nb">see below</span></span>
     </div>
   </div>
 
-  <p class="eyebrow">the protocol</p>
-  <h2>This launch is gated like everything else.</h2>
+  <h2><span class="eyebrow">the protocol</span>This launch is gated like everything else.</h2>
   <p>I pre-registered the launch the way I pre-register backtests: the paid tiers ship
   only if enough people demonstrably want them. There's no fake scarcity here and no
   countdown timer; the incentive runs the other way. The kit is currently working
@@ -428,8 +745,7 @@
 
   <hr class="rulebreak" />
 
-  <p class="eyebrow">the vote</p>
-  <h2>Would you use it? Say so below.</h2>
+  <h2><span class="eyebrow">the vote</span>Would you use it? Say so below.</h2>
   <p class="muted">Comments here are powered by GitHub: each one is filed as an issue
   on the graveyard repo, which means <strong>posting a comment literally advances the
   demand gate</strong>. Say what you'd use, what's missing, or why the whole thing is
@@ -454,8 +770,7 @@
 
   <hr class="rulebreak" />
 
-  <p class="eyebrow">provenance</p>
-  <h2>Who's selling this?</h2>
+  <h2><span class="eyebrow">provenance</span>Who's selling this?</h2>
   <p>One retail trader who spent months building a bot, watched honest testing kill
   every strategy it ran, and kept the machine that did the killing. The graveyard
   writeups converted the skeptics first, including the ones who showed up to argue.
@@ -473,4 +788,5 @@
 
 </div>
 
+</body>
 </html>
