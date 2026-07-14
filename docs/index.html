@@ -4,44 +4,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="19 pre-registered backtests. 16 kills. Tools that stop your backtest from lying to you.">
 <title>The Falsification Kit — tools that kill bad backtests</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
+<meta property="og:title" content="The Falsification Kit">
+<meta property="og:description" content="19 pre-registered backtests. 16 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:url" content="https://strategygraveyard.com">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
 <style>
   :root {
-    --paper: #F7F8F6;
-    --ink: #1B1E1C;
-    --graphite: #5A605B;
-    --faint: #A8ADA8;
-    --rule: #D9DDD8;
+    --paper: #F6F7F3;
+    --ink: #1A1E1B;
+    --graphite: #5A615B;
+    --faint: #A9AEA8;
+    --rule: #DADDD6;
     --kill: #B0372B;
-    --kill-soft: rgba(176, 55, 43, 0.08);
+    --kill-soft: rgba(176, 55, 43, 0.07);
     --pass: #2E6B44;
-    --pass-soft: rgba(46, 107, 68, 0.09);
+    --pass-soft: rgba(46, 107, 68, 0.08);
     --card: #FFFFFF;
-    --mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
-    --serif: Georgia, "Times New Roman", serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    --serif: "Spectral", Georgia, "Times New Roman", serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #141715;
-      --ink: #E3E6E2;
-      --graphite: #9BA29C;
-      --faint: #6A716B;
-      --rule: #2C302D;
-      --kill: #D95E4F;
-      --kill-soft: rgba(217, 94, 79, 0.12);
-      --pass: #5CA97A;
-      --pass-soft: rgba(92, 169, 122, 0.12);
-      --card: #1B1F1C;
+      --paper: #131614; --ink: #E4E6E1; --graphite: #9AA19B; --faint: #6A716B;
+      --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
+      --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
     }
   }
   :root[data-theme="light"] {
-    --paper: #F7F8F6; --ink: #1B1E1C; --graphite: #5A605B; --faint: #A8ADA8;
-    --rule: #D9DDD8; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.08);
-    --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.09); --card: #FFFFFF;
+    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #5A615B; --faint: #A9AEA8;
+    --rule: #DADDD6; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.07);
+    --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.08); --card: #FFFFFF;
   }
   :root[data-theme="dark"] {
-    --paper: #141715; --ink: #E3E6E2; --graphite: #9BA29C; --faint: #6A716B;
-    --rule: #2C302D; --kill: #D95E4F; --kill-soft: rgba(217,94,79,0.12);
-    --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1B1F1C;
+    --paper: #131614; --ink: #E4E6E1; --graphite: #9AA19B; --faint: #6A716B;
+    --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
+    --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
   }
 
   * { box-sizing: border-box; }
@@ -49,52 +50,61 @@
     background: var(--paper);
     color: var(--ink);
     font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.65;
+    font-size: 17.5px;
+    line-height: 1.68;
     margin: 0;
   }
-  .doc { max-width: 46rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  ::selection { background: var(--kill-soft); color: var(--kill); }
+
+  .doc { max-width: 45rem; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  @media (min-width: 1100px) {
+    .doc { border-left: 1px solid var(--rule); padding-left: 2.6rem; padding-right: 0; }
+    .eyebrow { float: left; clear: left; width: 11rem; margin-left: -14rem; text-align: right; }
+  }
 
   /* file header */
   .filehead {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--graphite);
     border-bottom: 1px solid var(--rule);
-    padding: 1rem 0 0.8rem;
+    padding: 1.1rem 0 0.85rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 1.6rem;
+    gap: 0.4rem 1.8rem;
   }
   .filehead b { color: var(--ink); font-weight: 600; }
 
   .eyebrow {
     font-family: var(--mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--graphite);
-    margin: 3.2rem 0 0.6rem;
+    color: var(--kill);
+    margin: 3.6rem 0 0.7rem;
   }
   h1 {
-    font-size: clamp(1.9rem, 5.4vw, 2.7rem);
-    line-height: 1.12;
-    margin: 1.6rem 0 1rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.1rem, 5.8vw, 3.1rem);
+    line-height: 1.08;
+    margin: 1.7rem 0 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     text-wrap: balance;
   }
-  h1 .stamp-fail { color: var(--kill); }
+  h1 em { font-style: italic; font-weight: 600; }
   h2 {
-    font-size: 1.28rem;
+    font-size: 1.4rem;
     margin: 0 0 0.9rem;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: -0.005em;
     text-wrap: balance;
   }
   p { margin: 0 0 1rem; }
-  .lede { font-size: 1.06rem; color: var(--ink); }
+  .lede { font-size: 1.1rem; }
   .muted { color: var(--graphite); }
-  a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 3px; }
+  strong { font-weight: 600; }
+  a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 3px; transition: text-decoration-color 120ms ease; }
   a:hover { text-decoration-color: var(--kill); }
   a:focus-visible, .btn:focus-visible { outline: 2px solid var(--kill); outline-offset: 3px; border-radius: 2px; }
 
@@ -105,12 +115,12 @@
     gap: 1px;
     background: var(--rule);
     border: 1px solid var(--rule);
-    margin: 2rem 0 0.6rem;
+    margin: 2.2rem 0 0.6rem;
   }
-  .cell { background: var(--card); padding: 0.9rem 1rem 0.8rem; }
+  .cell { background: var(--card); padding: 1rem 1.1rem 0.9rem; }
   .cell .n {
     font-family: var(--mono);
-    font-size: 1.7rem;
+    font-size: 1.9rem;
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     display: block;
@@ -118,29 +128,29 @@
   }
   .cell .lbl {
     font-family: var(--mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--graphite);
   }
   .n.red { color: var(--kill); }
   .n.green { color: var(--pass); }
-  .boardnote { font-family: var(--mono); font-size: 0.72rem; color: var(--faint); margin-bottom: 0; }
+  .boardnote { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); margin-bottom: 0; }
 
   /* verdict chips */
   .chip {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.14rem 0.5rem;
+    letter-spacing: 0.09em;
+    padding: 0.15rem 0.5rem;
     border-radius: 2px;
     white-space: nowrap;
   }
   .chip.fail { color: var(--kill); background: var(--kill-soft); border: 1px solid var(--kill); }
   .chip.pass { color: var(--pass); background: var(--pass-soft); border: 1px solid var(--pass); }
 
-  /* kill table */
+  /* tables */
   .tablewrap { overflow-x: auto; border: 1px solid var(--rule); margin: 1.4rem 0 0.5rem; }
   table {
     border-collapse: collapse;
@@ -153,48 +163,54 @@
   th {
     text-align: left;
     font-weight: 600;
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--graphite);
-    padding: 0.6rem 0.9rem;
+    padding: 0.65rem 0.95rem;
     border-bottom: 1px solid var(--rule);
   }
   td {
-    padding: 0.55rem 0.9rem;
+    padding: 0.6rem 0.95rem;
     border-bottom: 1px solid var(--rule);
     vertical-align: top;
     font-variant-numeric: tabular-nums;
+    line-height: 1.55;
   }
   tr:last-child td { border-bottom: none; }
-  .tablenote { font-family: var(--mono); font-size: 0.72rem; color: var(--faint); }
+  tr:hover td { background: var(--kill-soft); }
+  tr:has(.chip.pass):hover td { background: var(--pass-soft); }
+  .tablenote { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); }
 
   /* tiers */
-  .tiers { display: grid; gap: 1.1rem; margin: 1.6rem 0 0.4rem; }
+  .tiers { display: grid; gap: 1.1rem; margin: 1.7rem 0 0.4rem; }
   @media (min-width: 720px) { .tiers { grid-template-columns: 1fr 1fr 1fr; } }
   .tier {
     background: var(--card);
     border: 1px solid var(--rule);
-    padding: 1.3rem 1.3rem 1.2rem;
+    padding: 1.35rem 1.3rem 1.25rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.8rem;
+    transition: border-color 140ms ease;
   }
+  .tier:hover { border-color: var(--graphite); }
   .tier.headline { border-color: var(--ink); }
-  .tier .tname { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--graphite); }
-  .tier .price { font-family: var(--mono); font-size: 1.55rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .tier .price small { font-size: 0.72rem; font-weight: 400; color: var(--graphite); letter-spacing: 0.04em; }
-  .tier ul { margin: 0; padding: 0; list-style: none; font-size: 0.88rem; }
-  .tier li { padding: 0.34rem 0 0.34rem 1.1rem; position: relative; border-bottom: 1px dotted var(--rule); }
+  .tier .tname { font-family: var(--mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--graphite); }
+  .tier .price { font-family: var(--mono); font-size: 1.6rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .tier .price small { font-size: 0.7rem; font-weight: 400; color: var(--graphite); letter-spacing: 0.04em; }
+  .tier ul { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; }
+  .tier li { padding: 0.36rem 0 0.36rem 1.1rem; position: relative; border-bottom: 1px dotted var(--rule); }
   .tier li:last-child { border-bottom: none; }
   .tier li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
   .tier .status {
     margin-top: auto;
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
     color: var(--graphite);
     border-top: 1px solid var(--rule);
-    padding-top: 0.8rem;
+    padding-top: 0.85rem;
   }
   .btn {
     display: inline-block;
@@ -204,8 +220,9 @@
     text-decoration: none;
     border: 1px solid var(--ink);
     color: var(--ink);
-    padding: 0.55rem 1rem;
+    padding: 0.6rem 1.05rem;
     margin-top: 0.35rem;
+    transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
   }
   .btn:hover { background: var(--ink); color: var(--paper); }
   .btn.primary { background: var(--ink); color: var(--paper); }
@@ -215,35 +232,37 @@
   .notship {
     border: 1px solid var(--kill);
     background: var(--kill-soft);
-    padding: 1.3rem 1.4rem 1.1rem;
-    margin: 1.4rem 0;
+    padding: 1.4rem 1.5rem 1.15rem;
+    margin: 1.5rem 0;
   }
-  .notship h2 { color: var(--kill); font-size: 1.05rem; }
-  .notship ul { margin: 0; padding-left: 1.1rem; font-size: 0.92rem; }
-  .notship li { margin-bottom: 0.4rem; }
+  .notship h2 { color: var(--kill); font-size: 1.1rem; }
+  .notship ul { margin: 0; padding-left: 1.1rem; font-size: 0.94rem; }
+  .notship li { margin-bottom: 0.45rem; }
 
-  .rulebreak { border: none; border-top: 1px solid var(--rule); margin: 3rem 0 0; }
+  .rulebreak { border: none; border-top: 1px solid var(--rule); margin: 3.2rem 0 0; }
+
+  blockquote {
+    margin: 2rem 0;
+    padding: 0.2rem 0 0.2rem 1.3rem;
+    border-left: 3px solid var(--kill);
+    font-size: 1.22rem;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--ink);
+  }
 
   .comments { border: 1px solid var(--rule); background: var(--card); padding: 1rem 1.2rem; margin: 1.4rem 0 0.4rem; }
   .comments .utterances { max-width: 100%; }
 
-  blockquote {
-    margin: 1.6rem 0;
-    padding: 0.2rem 0 0.2rem 1.2rem;
-    border-left: 3px solid var(--kill);
-    font-size: 1.12rem;
-    font-style: italic;
-    color: var(--ink);
-  }
-
   .foot {
     font-family: var(--mono);
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     color: var(--graphite);
     border-top: 1px solid var(--rule);
-    margin-top: 3.4rem;
+    margin-top: 3.6rem;
     padding-top: 1.2rem;
-    line-height: 1.7;
+    line-height: 1.75;
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -253,7 +272,7 @@
       to { transform: scale(1) rotate(-2deg); opacity: 1; }
     }
   }
-  .chip.hero-stamp { display: inline-block; transform: rotate(-2deg); font-size: 0.78rem; vertical-align: 0.35em; margin-left: 0.3rem; }
+  .chip.hero-stamp { display: inline-block; transform: rotate(-2deg); font-size: 0.8rem; vertical-align: 0.45em; margin-left: 0.4rem; }
 </style>
 
 <div class="doc">
@@ -264,9 +283,9 @@
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <p class="eyebrow">from the maker of the trading strategy graveyard</p>
+  <p class="eyebrow">file 00 — origin</p>
 
-  <h1>Backtesting tools with a body count.<span class="chip fail hero-stamp">×16 FAILED</span></h1>
+  <h1>Backtesting tools with a <em>body count</em>.<span class="chip fail hero-stamp">×16 FAILED</span></h1>
 
   <p class="lede">I ran 19 pre-registered backtests of retail trading strategies —
   criteria written down <em>before</em> each test, goalposts welded in place. Sixteen
@@ -286,7 +305,7 @@
   </div>
   <p class="boardnote">counted from the public gate files — every number on this page is in the repo</p>
 
-  <p class="eyebrow">exhibit a</p>
+  <p class="eyebrow">exhibit a — the kills</p>
   <h2>The kill table (excerpt)</h2>
   <p class="muted">Each of these looked plausible. Several looked <em>great</em> — right
   up until honest fills, split-adjusted data, and a de-survivorship universe were
@@ -306,12 +325,12 @@
       <tr><td>Same rule, sampled daily</td><td>7.31% — whipsaw ate it</td><td><span class="chip fail">FAIL</span></td></tr>
     </table>
   </div>
-  <p class="tablenote">PF = profit factor. The pattern: nearly every price signal is ~PF 1.05–1.10 gross, and retail friction eats it whole.</p>
+  <p class="tablenote">PF = profit factor. The pattern: nearly every price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole.</p>
 
   <blockquote>A backtest is a witness with every incentive to lie to you.
   Interrogate it like one.</blockquote>
 
-  <p class="eyebrow">open the evidence</p>
+  <p class="eyebrow">exhibit b — the receipts</p>
   <h2>Don't take the table's word for it.</h2>
   <p class="muted">Every verdict above traces to a gate file written before its test ran.
   The receipts, directly:</p>
@@ -324,7 +343,7 @@
     </table>
   </div>
 
-  <p class="eyebrow">the product</p>
+  <p class="eyebrow">the instrument</p>
   <h2>Three tiers. One is free forever.</h2>
 
   <div class="tiers">
@@ -370,7 +389,7 @@
     </div>
   </div>
 
-  <p class="eyebrow">why you can't buy it yet</p>
+  <p class="eyebrow">the protocol</p>
   <h2>This launch is gated like everything else.</h2>
   <p>I pre-registered the launch the way I pre-register backtests: the paid tiers ship
   only if enough people demonstrably want them. No fake scarcity, no countdown timer —
@@ -394,7 +413,7 @@
 
   <hr class="rulebreak" />
 
-  <p class="eyebrow">the vote, right here</p>
+  <p class="eyebrow">the vote</p>
   <h2>Would you use it? Say so below.</h2>
   <p class="muted">Comments here are powered by GitHub — each one is filed as an issue
   on the graveyard repo, which means <strong>posting a comment literally advances the
@@ -431,10 +450,10 @@
   the repo — arguing in public is the quality-assurance process.</p>
 
   <div class="foot">
-    <p>© 2026 · The Falsification Kit · Educational software and research writeups.
-    Not financial advice. No performance claims made or implied. Backtested results
-    are historical simulations and do not predict future returns. The kit tests
-    strategies; it does not provide, recommend, or execute them.</p>
+    <p>© 2026 · strategygraveyard.com · The Falsification Kit · Educational software
+    and research writeups. Not financial advice. No performance claims made or implied.
+    Backtested results are historical simulations and do not predict future returns.
+    The kit tests strategies; it does not provide, recommend, or execute them.</p>
   </div>
 
 </div>
