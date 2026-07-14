@@ -1,6 +1,7 @@
 # The Trading Strategy Graveyard
 
-**16 pre-registered backtests of retail trading strategies. Zero passed. This is the full
+**19 pre-registered backtests of retail trading strategies. 16 straight kills — then the
+machine finally said yes, twice, and STILL didn't hand over the money. This is the full
 record — every strategy, every number, every artifact that almost fooled me.**
 
 Two years of YouTube and fintwit will tell you momentum scalping works, gap trading works,
@@ -8,9 +9,13 @@ opening-range breakouts work, mean reversion works. I built a testing pipeline t
 which one I should automate, and committed to one rule that changed everything: **write the
 pass/fail criteria down BEFORE running the test, and never move the goalposts after.**
 
-16 pre-registered gates later, the answer is: none of them. Not one strategy family
+The first 16 pre-registered gates all failed. Not one fast-trading strategy family
 survived honest testing. I lost $0 learning this — every strategy died in the pipeline
-before touching money.
+before touching money. Then, in a 48-hour stretch, three more gates ran on the opposite
+corner of the map — slow, diversified, cross-asset — and the record got more interesting
+than a pure graveyard: one clean pass, one pass that got benched by its own pre-registered
+tiebreaker, and one gate where the machine caught ME making a wrong prediction in public.
+Those are written up below the kill table.
 
 ## The rules (each one added after a specific disaster)
 
@@ -56,11 +61,83 @@ before touching money.
 | News sentiment (LLM-scored, 19.5k full articles, point-in-time replay) | made every configuration worse | news arrives WITH or AFTER the move |
 | Opening-range breakout long+short on "stocks in play" (the published Sharpe-2.4 paper) | PF 0.82–0.85 @ 0.10%/side, all 3 pre-committed range variants | −0.009R per trade GROSS; the short arm loses everywhere |
 | Delta-neutral funding-rate carry (crypto perps) | real mechanism, no losing year in 6 — but 2026 nets ~0.4% on capital | institutionalized away: 2021 ~22% → 2026 ~1% gross |
+| Daily-sampled trend rule (200d SMA, same logic as the monthly rule that PASSED) | 7.31% CAGR vs the monthly version's 8.10%, worse drawdown | whipsaw: 8.8 signal flips/sleeve/yr vs 2.2 monthly — frequency is a cost, not a feature |
 
 The pattern across the whole table: **every price-derived signal converges to roughly
 PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction (0.10–0.25%
 per side) eats it whole, every time.** Buy-strength and buy-weakness. Long and short.
 Intraday and multi-day. Doesn't matter.
+
+## Update: the gates that passed (and what the machine did to them next)
+
+After the 16th kill I wrote down the honest scope of the finding: *directional fast
+trading on liquid US equities doesn't clear retail cost.* That sentence points somewhere
+specific — the opposite corner: slow decisions, months-long holds, across asset classes,
+where friction structurally can't reach. Three pre-registered gates later:
+
+### Gate 17 — Cross-asset ETF trend following: the first PASS ✅
+
+Faber's 10-month SMA rule, verbatim from literature that predates my sample by decades —
+zero tuned parameters, so there's nothing to overfit and no holdout needed. 13 ETFs across
+equities, bonds, gold, commodities, currencies, REITs. Long or cash, monthly.
+
+**CAGR 8.10%, Sharpe 0.90, max drawdown −4.5%, and 2022 — the year that killed everything
+else in this repo — finished at −1.1%** while SPY did −18% and 60/40 did −23%. The
+pre-registered fresh-eyes review the next morning found two modeling errors and BOTH
+corrections moved the result UP (I'd been crediting cash a flat 2% when 2022–23 T-bills
+paid 4–5%, and I'd double-charged turnover costs). A pass that gets stronger under attack
+is what a real result looks like.
+
+Stated plainly, because the rules require it: 9.5 years of data, no trendless decade in
+the sample (that's this family's known killer), T-bills beat it in 3 of those years, and
+the max-drawdown figure is month-end-only. It's a compounder for money that can sit
+through 20% drawdowns — not income, and no, it did not restart the day bot.
+
+Why this doesn't contradict the kill table: monthly turnover at ETF spreads costs ~7bp a
+YEAR. The wall that ate 16 strategies is a per-decision toll — this strategy makes 12
+decisions a year instead of 1,400.
+
+### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
+### BENCHED by its own tiebreaker ⚖️
+
+Cross-sectional relative momentum: rank the same 13 ETFs by 12-month return, hold the top
+4 if they beat T-bills, else cash. The primary gate passed — 10.99% CAGR, and in 2022 it
+rotated into commodities, oil, and the dollar and finished UP 3.1%. The rotation intuition
+is real.
+
+Then the pre-registered secondary criterion — written BEFORE the run: a 50/50 blend with
+the Gate-17 strategy must beat it on Sharpe AND max drawdown, or deployment doesn't change
+— failed on both counts (Sharpe 0.72 vs 0.90; maxDD −12.5% vs −4.5%). The eyeball pass
+found the whole CAGR edge lived in one year (ex-2025: 7.09% vs 6.88% — the silver/gold
+mania, +145%/+64%, real prints but one regime). And the top-3 variants' worst drawdown
+(−26%) was February–June 2026, i.e. the leadership reversal happening RIGHT NOW.
+
+**A strategy that passes its headline numbers and still doesn't get the money is not the
+system failing — it's the only moment the system actually matters.** Anyone can hold the
+line on a failing backtest. The tiebreaker you wrote down in advance is for the day the
+backtest flatters you.
+
+### Gate 19 — Daily vs monthly: the machine referees its operators 🔀
+
+I said daily sampling would lose to monthly (whipsaw multiplication). The counterargument
+in the room: daily catches rotations faster. Both predictions went into GATE.md before the
+run. Split decision:
+
+- **Daily trend: FAILED, as I predicted** (7.31% vs 8.10% — that's the new kill-table row).
+- **Daily rotation: PASSED, against my prediction** — 13.97% CAGR at next-close fills, and
+  it survived every check I threw at it expecting it to die: filling a day LATE improved
+  it (daily rankings buy spikes; the delay dodges the one-day snap-back), it holds at
+  triple the assumed costs, the edge over monthly survives with 2025 deleted entirely
+  (10.70% vs 6.71%), and it wins exactly where monthly rotation is weakest — reversal
+  years (2018: −4.3% vs −12.5%).
+
+Then the same frozen tiebreaker from Gate 18 benched it anyway: blend Sharpe 0.92 vs 0.96,
+maxDD −10.3% vs −4.5%. Close — and this is exactly the moment loosening the standard is
+most tempting and most fatal. The certified-but-benched strategy keeps its certification;
+the deployment decision keeps its integrity; and the repo gains its best exhibit: **a
+falsification machine that catches its operator's wrong predictions, not just his bad
+strategies.** (Also on its record: 21.8x annual turnover — every gain short-term for
+taxes — and its worst month in 9.5 years was LAST month.)
 
 ## The three lessons that cost the most
 
@@ -95,6 +172,9 @@ Right now this repo is the writeup. The pipeline behind it consists of:
 - a **SEC EDGAR 8-K fetcher** (free, survivorship-free earnings dates — the data vendors
   charge for)
 - a **funding-rate fetcher + carry simulator** (public endpoints, no keys)
+- the **ETF gate harness** from Gates 17–19 (monthly + daily engines, real FRED T-bill
+  cash path, turnover accounting, pre-registered GATE/VERDICT templates with the
+  blend-tiebreaker pattern)
 
 I'm gauging whether it's worth cleaning these up for release. If you'd use them, **star
 the repo or open an issue** saying what you'd want — that's the signal I'm watching.
