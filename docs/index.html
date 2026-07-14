@@ -16,7 +16,7 @@
   :root {
     --paper: #F6F7F3;
     --ink: #1A1E1B;
-    --graphite: #5A615B;
+    --graphite: #555C56;
     --faint: #A9AEA8;
     --rule: #DADDD6;
     --kill: #B0372B;
@@ -29,18 +29,18 @@
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper: #131614; --ink: #E4E6E1; --graphite: #9AA19B; --faint: #6A716B;
+      --paper: #131614; --ink: #E4E6E1; --graphite: #A2A9A3; --faint: #6A716B;
       --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
       --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
     }
   }
   :root[data-theme="light"] {
-    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #5A615B; --faint: #A9AEA8;
+    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #555C56; --faint: #A9AEA8;
     --rule: #DADDD6; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.07);
     --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.08); --card: #FFFFFF;
   }
   :root[data-theme="dark"] {
-    --paper: #131614; --ink: #E4E6E1; --graphite: #9AA19B; --faint: #6A716B;
+    --paper: #131614; --ink: #E4E6E1; --graphite: #A2A9A3; --faint: #6A716B;
     --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
     --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
   }
@@ -75,15 +75,16 @@
   }
   .filehead b { color: var(--ink); font-weight: 600; }
 
+  /* margin tabs: lowercase mono annotations, not tracked kickers */
   .eyebrow {
     font-family: var(--mono);
-    font-size: 0.68rem;
+    font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--kill);
+    letter-spacing: 0.02em;
+    color: var(--graphite);
     margin: 3.6rem 0 0.7rem;
   }
+  .eyebrow b { color: var(--kill); font-weight: 600; }
   h1 {
     font-size: clamp(2.1rem, 5.8vw, 3.1rem);
     line-height: 1.08;
@@ -100,7 +101,7 @@
     letter-spacing: -0.005em;
     text-wrap: balance;
   }
-  p { margin: 0 0 1rem; }
+  p { margin: 0 0 1rem; text-wrap: pretty; }
   .lede { font-size: 1.1rem; }
   .muted { color: var(--graphite); }
   strong { font-weight: 600; }
@@ -108,7 +109,7 @@
   a:hover { text-decoration-color: var(--kill); }
   a:focus-visible, .btn:focus-visible { outline: 2px solid var(--kill); outline-offset: 3px; border-radius: 2px; }
 
-  /* scoreboard */
+  /* the gate ledger */
   .board {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
@@ -135,7 +136,7 @@
   }
   .n.red { color: var(--kill); }
   .n.green { color: var(--pass); }
-  .boardnote { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); margin-bottom: 0; }
+  .boardnote { font-family: var(--mono); font-size: 0.72rem; color: var(--graphite); margin-bottom: 0; }
 
   /* verdict chips */
   .chip {
@@ -180,7 +181,7 @@
   tr:last-child td { border-bottom: none; }
   tr:hover td { background: var(--kill-soft); }
   tr:has(.chip.pass):hover td { background: var(--pass-soft); }
-  .tablenote { font-family: var(--mono); font-size: 0.7rem; color: var(--faint); }
+  .tablenote { font-family: var(--mono); font-size: 0.72rem; color: var(--graphite); }
 
   /* tiers */
   .tiers { display: grid; gap: 1.1rem; margin: 1.7rem 0 0.4rem; }
@@ -202,7 +203,7 @@
   .tier ul { margin: 0; padding: 0; list-style: none; font-size: 0.9rem; }
   .tier li { padding: 0.36rem 0 0.36rem 1.1rem; position: relative; border-bottom: 1px dotted var(--rule); }
   .tier li:last-child { border-bottom: none; }
-  .tier li::before { content: "—"; position: absolute; left: 0; color: var(--faint); }
+  .tier li::before { content: "·"; position: absolute; left: 0.2rem; color: var(--faint); font-weight: 700; }
   .tier .status {
     margin-top: auto;
     font-family: var(--mono);
@@ -241,15 +242,27 @@
 
   .rulebreak { border: none; border-top: 1px solid var(--rule); margin: 3.2rem 0 0; }
 
+  /* pull quote: hanging quote mark, no side stripe */
   blockquote {
-    margin: 2rem 0;
-    padding: 0.2rem 0 0.2rem 1.3rem;
-    border-left: 3px solid var(--kill);
-    font-size: 1.22rem;
+    margin: 2.2rem 0;
+    padding: 0 0 0 2.7rem;
+    position: relative;
+    font-size: 1.28rem;
     font-style: italic;
     font-weight: 500;
     line-height: 1.5;
     color: var(--ink);
+  }
+  blockquote::before {
+    content: "\201C";
+    position: absolute;
+    left: 0;
+    top: -0.55rem;
+    font-family: var(--serif);
+    font-style: normal;
+    font-size: 3.4rem;
+    line-height: 1;
+    color: var(--kill);
   }
 
   .comments { border: 1px solid var(--rule); background: var(--card); padding: 1rem 1.2rem; margin: 1.4rem 0 0.4rem; }
@@ -266,9 +279,9 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .chip.fail.hero-stamp { animation: stamp 0.35s cubic-bezier(0.2, 1.6, 0.4, 1) 0.25s both; }
+    .chip.fail.hero-stamp { animation: stamp 0.3s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both; }
     @keyframes stamp {
-      from { transform: scale(2.4) rotate(-6deg); opacity: 0; }
+      from { transform: scale(1.9) rotate(-5deg); opacity: 0; }
       to { transform: scale(1) rotate(-2deg); opacity: 1; }
     }
   }
@@ -279,22 +292,23 @@
 
   <div class="filehead">
     <span>doc: <b>FALSIFICATION_KIT.md</b></span>
-    <span>status: <b>pre-registered — demand gate open</b></span>
+    <span>status: <b>pre-registered · demand gate open</b></span>
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <p class="eyebrow">file 00 — origin</p>
+  <p class="eyebrow"><b>case file</b> · origin</p>
 
   <h1>Backtesting tools with a <em>body count</em>.<span class="chip fail hero-stamp">×16 FAILED</span></h1>
 
-  <p class="lede">I ran 19 pre-registered backtests of retail trading strategies —
-  criteria written down <em>before</em> each test, goalposts welded in place. Sixteen
-  died. Two passed and still didn't get my money, because a tiebreaker written in
-  advance said they hadn't earned it. Every strategy died in the pipeline before it
-  touched a live account: total tuition paid to the market, <strong>$0</strong>.</p>
+  <p class="lede">I ran 19 pre-registered backtests of retail trading strategies.
+  The pass/fail criteria were written down <em>before</em> each test, and the goalposts
+  stayed welded in place after. Sixteen died. Two passed and still didn't get my money,
+  because a tiebreaker written in advance said they hadn't earned it. Every strategy
+  died in the pipeline before it touched a live account: total tuition paid to the
+  market, <strong>$0</strong>.</p>
 
   <p class="lede">This kit is that pipeline. It will not make you money.
-  <strong>It stops your backtest from lying to you about making money</strong> — which,
+  <strong>It stops your backtest from lying to you about making money</strong>, which,
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="board">
@@ -303,26 +317,26 @@
     <div class="cell"><span class="n green">2</span><span class="lbl">certified</span></div>
     <div class="cell"><span class="n">$0</span><span class="lbl">lost live</span></div>
   </div>
-  <p class="boardnote">counted from the public gate files — every number on this page is in the repo</p>
+  <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
 
-  <p class="eyebrow">exhibit a — the kills</p>
+  <p class="eyebrow"><b>exhibit a</b> · the kills</p>
   <h2>The kill table (excerpt)</h2>
-  <p class="muted">Each of these looked plausible. Several looked <em>great</em> — right
+  <p class="muted">Each of these looked plausible. Several looked <em>great</em>, right
   up until honest fills, split-adjusted data, and a de-survivorship universe were
   applied. Full table and writeups are free in the repo.</p>
 
   <div class="tablewrap">
     <table>
       <tr><th>strategy family</th><th>best honest result</th><th>verdict</th></tr>
-      <tr><td>Momentum scalping (213-trade window)</td><td>49% win, ±1.18% — a fair coin</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Momentum scalping (213-trade window)</td><td>49% win, ±1.18%: a fair coin</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Opening-range breakout, long+short ("Sharpe 2.4" paper)</td><td>PF 0.82–0.85 @ 0.10%/side</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Catalyst gaps (≥5% + volume)</td><td>PF 1.23 primary, <strong>0.93 holdout</strong></td><td><span class="chip fail">FAIL</span></td></tr>
-      <tr><td>Earnings drift (real SEC 8-K dates)</td><td>PF 1.11 — worse than random gaps (1.29)</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Earnings drift (real SEC 8-K dates)</td><td>PF 1.11, worse than random gaps (1.29)</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Mean reversion (RSI-2)</td><td>PF 0.77 @ 0.25%/side</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>News sentiment (19.5k articles, LLM-scored)</td><td>made every config worse</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Crypto funding carry</td><td>real mechanism, ~0.4% net in 2026</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Cross-asset trend, monthly (Faber, zero tuned params)</td><td>8.1% CAGR, −1.1% in 2022</td><td><span class="chip pass">PASS</span></td></tr>
-      <tr><td>Same rule, sampled daily</td><td>7.31% — whipsaw ate it</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Same rule, sampled daily</td><td>7.31%; whipsaw ate it</td><td><span class="chip fail">FAIL</span></td></tr>
     </table>
   </div>
   <p class="tablenote">PF = profit factor. The pattern: nearly every price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole.</p>
@@ -330,7 +344,7 @@
   <blockquote>A backtest is a witness with every incentive to lie to you.
   Interrogate it like one.</blockquote>
 
-  <p class="eyebrow">exhibit b — the receipts</p>
+  <p class="eyebrow"><b>exhibit b</b> · the receipts</p>
   <h2>Don't take the table's word for it.</h2>
   <p class="muted">Every verdict above traces to a gate file written before its test ran.
   The receipts, directly:</p>
@@ -339,7 +353,7 @@
       <tr><th>artifact</th><th>what it is</th></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 19 gates, every number, the three expensive lessons</td></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#update-the-gates-that-passed-and-what-the-machine-did-to-them-next">Gates 17–19: the passes</a></td><td>the first PASS, the benched survivor, and the split decision that falsified my own prediction</td></tr>
-      <tr><td>The artifact-hunting checklist</td><td>the free tier — every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
+      <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>
   </div>
 
@@ -351,11 +365,11 @@
       <span class="tname">The Checklist</span>
       <span class="price">$0 <small>in the repo now</small></span>
       <ul>
-        <li>The artifact-hunting checklist — every rule priced by the disaster that created it</li>
+        <li>The artifact-hunting checklist: every rule priced by the disaster that created it</li>
         <li>All 19 gate writeups, full numbers</li>
-        <li>Works for manual backtesters too — no code required</li>
+        <li>Works for manual backtesters too, no code required</li>
       </ul>
-      <span class="status">LIVE — free forever</span>
+      <span class="status">LIVE · free forever</span>
       <a class="btn primary" href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">Read the graveyard →</a>
     </div>
 
@@ -363,14 +377,14 @@
       <span class="tname">The Gauntlet</span>
       <span class="price">$54 <small>at launch</small></span>
       <ul>
-        <li>Honest-fill simulator — gap-through stops, cost ladders, close-fill discipline</li>
+        <li>Honest-fill simulator: gap-through stops, cost ladders, close-fill discipline</li>
         <li>Pre-registered gate templates (the goalpost welder)</li>
         <li>De-survivorship universe builder + split-adjusted bar cache</li>
-        <li>The ETF gate harness — the code behind the only two passes</li>
+        <li>The ETF gate harness: the code behind the only two passes</li>
         <li>SEC EDGAR earnings fetcher, funding-rate carry simulator</li>
         <li>3 runnable case studies with real output</li>
       </ul>
-      <span class="status">NOT FOR SALE YET — see below</span>
+      <span class="status">NOT FOR SALE YET · see below</span>
     </div>
 
     <div class="tier">
@@ -378,36 +392,37 @@
       <span class="price">$139 <small>at launch</small></span>
       <ul>
         <li>Everything in The Gauntlet</li>
-        <li>"10 ways your backtest is lying to you" — with the fix code</li>
+        <li>"10 ways your backtest is lying to you" with the fix code</li>
         <li>Live slippage instrumentation (signal price vs. real fill)</li>
-        <li>Simulator smoke-test suite — test your tester first</li>
+        <li>Simulator smoke-test suite: test your tester first</li>
         <li>Risk-control armor modules + the data proving they're load-bearing</li>
-        <li>In-play relative-volume screener — with its own falsification attached</li>
+        <li>In-play relative-volume screener, with its own falsification attached</li>
         <li>Decision-shadow-logger: measure a filter before you trust it</li>
       </ul>
-      <span class="status">NOT FOR SALE YET — see below</span>
+      <span class="status">NOT FOR SALE YET · see below</span>
     </div>
   </div>
 
   <p class="eyebrow">the protocol</p>
   <h2>This launch is gated like everything else.</h2>
   <p>I pre-registered the launch the way I pre-register backtests: the paid tiers ship
-  only if enough people demonstrably want them. No fake scarcity, no countdown timer —
-  the opposite. The kit is currently working scripts on my machine; packaging them
-  properly takes two honest weekends, and I'll spend those weekends only on real demand.</p>
+  only if enough people demonstrably want them. There's no fake scarcity here and no
+  countdown timer; the incentive runs the other way. The kit is currently working
+  scripts on my machine, packaging them properly takes two honest weekends, and I'll
+  spend those weekends only on real demand.</p>
   <p><strong>The demand gate:</strong> if the tools would be useful to you,
   <a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">star the repo or open an issue</a>
-  saying what you'd use — or say so in the comments below, which files the issue for you.
+  saying what you'd use, or say so in the comments below (which files the issue for you).
   That's the vote. When it trips, the NOT FOR SALE stamps above become direct checkout
-  links, right here on this page — and the checklist tier stays free either way.</p>
+  links on this page, and the checklist tier stays free either way.</p>
 
   <div class="notship">
     <h2>What's deliberately NOT in the box</h2>
     <ul>
-      <li><strong>No trading bot.</strong> Nothing in the kit can be wired to a live account out of the box. It tests and measures. That's the whole covenant.</li>
-      <li><strong>No signals, no strategy picks, no "edge."</strong> The one strategy that passed my gates is decades-old public literature — it's disclosed free in the writeups, because charging for a free PDF is the vendor move this kit exists to embarrass.</li>
-      <li><strong>No LLM trading module.</strong> I tested news-sentiment trading three ways, including full-text LLM scoring of 19,500 articles. It failed every time. Selling it anyway would contradict the case study sitting next to it.</li>
-      <li><strong>No performance promises.</strong> Past testing rigor is not future profit. Nothing here is financial advice.</li>
+      <li><strong>No trading bot.</strong> Nothing in the kit can be wired to a live account out of the box; it tests and measures only.</li>
+      <li><strong>No signals or strategy picks.</strong> The one strategy that passed my gates is decades-old public literature, disclosed free in the writeups. Charging for a free PDF is the vendor move this kit exists to embarrass.</li>
+      <li><strong>No LLM trading module.</strong> I tested news-sentiment trading three ways, including full-text LLM scoring of 19,500 articles, and it failed every time. Selling it anyway would contradict the case study sitting next to it.</li>
+      <li><strong>No performance promises.</strong> Past testing rigor is not future profit, and nothing here is financial advice.</li>
     </ul>
   </div>
 
@@ -415,10 +430,10 @@
 
   <p class="eyebrow">the vote</p>
   <h2>Would you use it? Say so below.</h2>
-  <p class="muted">Comments here are powered by GitHub — each one is filed as an issue
+  <p class="muted">Comments here are powered by GitHub: each one is filed as an issue
   on the graveyard repo, which means <strong>posting a comment literally advances the
   demand gate</strong>. Say what you'd use, what's missing, or why the whole thing is
-  wrong; arguments count as interest.</p>
+  wrong. Arguments count as interest.</p>
 
   <div class="comments">
     <script src="https://utteranc.es/client.js"
@@ -443,11 +458,11 @@
   <h2>Who's selling this?</h2>
   <p>One retail trader who spent months building a bot, watched honest testing kill
   every strategy it ran, and kept the machine that did the killing. The graveyard
-  writeups converted the skeptics first — including the ones who showed up to argue.
+  writeups converted the skeptics first, including the ones who showed up to argue.
   The receipts are public, the code produced them, and when my own pre-registered
   prediction got falsified by my own gate last week, that went in the repo too.</p>
   <p class="muted">Questions, arguments, or a strategy you want dead? Open an issue on
-  the repo — arguing in public is the quality-assurance process.</p>
+  the repo. Arguing in public is the quality-assurance process.</p>
 
   <div class="foot">
     <p>© 2026 · strategygraveyard.com · The Falsification Kit · Educational software
