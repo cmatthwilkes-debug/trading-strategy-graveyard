@@ -1,8 +1,9 @@
 # The Trading Strategy Graveyard
 
-**19 pre-registered backtests of retail trading strategies. 16 straight kills — then the
-machine finally said yes, twice, and STILL didn't hand over the money. This is the full
-record — every strategy, every number, every artifact that almost fooled me.**
+**20 pre-registered backtests of retail trading strategies. 16 straight kills — then the
+machine finally said yes, twice, STILL didn't hand over the money, and then killed the
+last untested family on 33 years of the exchange's own data. This is the full record —
+every strategy, every number, every artifact that almost fooled me.**
 
 Two years of YouTube and fintwit will tell you momentum scalping works, gap trading works,
 opening-range breakouts work, mean reversion works. I built a testing pipeline to find out
@@ -15,7 +16,8 @@ before touching money. Then, in a 48-hour stretch, three more gates ran on the o
 corner of the map — slow, diversified, cross-asset — and the record got more interesting
 than a pure graveyard: one clean pass, one pass that got benched by its own pre-registered
 tiebreaker, and one gate where the machine caught ME making a wrong prediction in public.
-Those are written up below the kill table.
+Then Gate 20 took the one family nothing had tested — options premium selling — and
+closed it with CBOE's own 33-year benchmark indices. All written up below the kill table.
 
 ## The rules (each one added after a specific disaster)
 
@@ -41,8 +43,8 @@ Those are written up below the kill table.
 7. **Eyeball the top-10 winners raw.** If a metric improves monotonically as you extend a
    parameter (hold length, lookback), you have an artifact, not an edge.
 8. **Slot-capped portfolio stats are a false-positive generator.** A slot-capped variant
-   printed PF 3.96 by accidentally cherry-picking under 10% of trades. It did it twice, on
-   two unrelated strategies.
+   printed PF 3.96 by accidentally cherry-picking under 10% of trades — then printed
+   PF 6.31 doing the same thing on an unrelated strategy. Two miracles, same bug shape.
 
 ## The graveyard (best HONEST number per family, after the rules above)
 
@@ -62,6 +64,7 @@ Those are written up below the kill table.
 | Opening-range breakout long+short on "stocks in play" (the published Sharpe-2.4 paper) | PF 0.82–0.85 @ 0.10%/side, all 3 pre-committed range variants | −0.009R per trade GROSS; the short arm loses everywhere |
 | Delta-neutral funding-rate carry (crypto perps) | real mechanism, no losing year in 6 — but 2026 nets ~0.4% on capital | institutionalized away: 2021 ~22% → 2026 ~1% gross |
 | Daily-sampled trend rule (200d SMA, same logic as the monthly rule that PASSED) | 7.31% CAGR vs the monthly version's 8.10%, worse drawdown | whipsaw: 8.8 signal flips/sleeve/yr vs 2.2 monthly — frequency is a cost, not a feature |
+| Options premium selling (5 pro covered-call/put-write ETFs + CBOE's own BXM/PUT/BXMD/CLL indices) | every fund's Sharpe BELOW its own underlying; best index 9.92%/yr vs SPY 10.81% over 33 years | selling the upside costs more than the premium collects; short vol = short the gap |
 
 The pattern across the whole table: **every price-derived signal converges to roughly
 PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction (0.10–0.25%
@@ -139,6 +142,38 @@ falsification machine that catches its operator's wrong predictions, not just hi
 strategies.** (Also on its record: 21.8x annual turnover — every gain short-term for
 taxes — and its worst month in 9.5 years was LAST month.)
 
+### Gate 20 — Options premium selling: the last untested family ❌
+
+Covered calls, put-writes, "volatility income" — the one family none of the gates above
+had touched, and the internet's favorite answer to "how do I get paid while I wait." I
+tested it twice over, so no retail-implementation excuse survives:
+
+**Round 1 — five professional wrappers** (covered-call and put-write ETFs on QQQ, SPY,
+and vol futures: QYLD, XYLD, JEPI, PUTW, SVOL), total-return basis so distributions
+count. Pre-registered prediction: they'd fail the 2022-cushion test. Wrong — they all
+PASSED it (premium sellers genuinely soften grinding bears; JEPI −3.5% in 2022). What
+actually killed them, unanimously, was risk-adjusted return vs their own underlying:
+**every single fund had a worse Sharpe than the index it writes options on.** QQQ made
+21.6%/yr over QYLD's decade; QYLD kept 10.0% of that with 70% of the drawdown. And their
+worst months ARE the crash months (XYLD −16.3% in Mar-2020): the premium never covers
+the tail. One fund in the test (PUTW) appears to have quietly closed mid-sample — a
+survivorship lesson embedded inside the options test.
+
+**Round 2 — the mechanism itself,** on CBOE's own benchmark indices built from real
+traded SPX option prices back to 1990 (BXM, PUT, BXMD, CLL). This is where it got
+interesting: **pre-2012, every premium-selling index BEAT SPY risk-adjusted. Post-2012,
+every one lags it.** The volatility risk premium was real — the academic literature that
+made these strategies famous was written on the pre-2012 sample. Then systematic
+vol-selling funds and 0DTE flows industrialized it, and the edge migrated to whoever
+collects the flow. It's the same life-cycle the funding-carry gate documented in crypto
+(2021: ~22% → 2026: ~0.4%), playing out two decades slower. In the 2020 crash the
+indices fell HARDER than SPY (BXM −54.6% annualized vs −32.4%): short vol is short the
+gap. Insurance that pays out in drizzle and fails in the flood.
+
+Prediction audit, again: directionally right (family closed), wrong in the details (the
+failure mode I predicted wasn't the one that fired). Both audits are in the experiment
+folder — the machine referees its operator, not just the strategies.
+
 ## The three lessons that cost the most
 
 **1. The market's fill is not your backtest's fill.** Half my "edges" were fill
@@ -175,6 +210,8 @@ Right now this repo is the writeup. The pipeline behind it consists of:
 - the **ETF gate harness** from Gates 17–19 (monthly + daily engines, real FRED T-bill
   cash path, turnover accounting, pre-registered GATE/VERDICT templates with the
   blend-tiebreaker pattern)
+- the **Gate 20 options harness** (total-return wrapper testing with NAV-erosion
+  accounting, plus the CBOE benchmark-index fetcher for the 33-year mechanism test)
 
 I'm gauging whether it's worth cleaning these up for release. If you'd use them, **star
 the repo or open an issue** saying what you'd want — that's the signal I'm watching.
