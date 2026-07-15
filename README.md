@@ -1,6 +1,6 @@
 # The Trading Strategy Graveyard
 
-**24 pre-registered backtests of retail trading strategies. 20 kills — including the
+**24 pre-registered backtests of retail trading strategies. 21 kills — including the
 strongest raw edge ever measured here, which died of friction alone. Two passes that
 STILL didn't get the money. This is the full record — every strategy, every number,
 every artifact that almost fooled me.**
@@ -21,9 +21,9 @@ than a pure graveyard: one clean pass, one pass that got benched by its own pre-
 tiebreaker, and one gate where the machine caught ME making a wrong prediction in public.
 Then Gate 20 took options premium selling — the last mainstream family still untested —
 and closed it with CBOE's own 33-year benchmark indices. Then the hunt resumed: gates 21–24,
-three more kills so far (turn-of-month, factor ETFs, and pairs stat-arb — the last one
-carrying the best gross edge in this entire record), with the insider-cluster gate
-reporting next. All written up below the kill table.
+four more kills in a single day (turn-of-month, factor ETFs, pairs stat-arb carrying the
+best gross edge in this entire record, and insider clusters — the first kill where
+friction wasn't the murderer). All written up below the kill table.
 
 ## The rules (each one added after a specific disaster)
 
@@ -74,6 +74,7 @@ reporting next. All written up below the kill table.
 | Turn-of-month effect (T-4..T+3, the classic window) | Sharpe 0.44 vs SPY's 0.73; captured 42% of returns in 29% of days — barely above proportional | decayed to the noise floor post-publication; third documented edge-death life-cycle in this repo |
 | Factor ETFs (MTUM/VLUE/QUAL/USMV, static + 12-1 rotation) | EW Sharpe 0.87, rotation 0.84 vs SPY 0.90 | a decade of "smart beta" = SPY minus 0.8%/yr; the value regime finally arrived in 2026, after the test |
 | Equity pairs / stat-arb (GGR distance method, liquid names, long-short) | **gross PF 2.23 — the strongest raw edge in this entire record** → 1.06 at 0.10%/side/leg → 0.41 at 0.25% | market-neutral crosses the spread FOUR times per round trip on a 0.22%-per-trade move; the edge is real and you can't afford to harvest it |
+| Insider-cluster buying (2+ insiders, $200k+, SEC Form 4 structured data) | PF 1.17 @ 0.25%/side, 60d hold — and only 1.23 gross: the flattest cost decay in the record | the first kill where friction wasn't the murderer: real drift, too small for the bar, and 2022 PF 0.86 — insiders buy early, all the way down |
 
 The pattern across the whole table: **every DIRECTIONAL price-derived signal converges
 to roughly PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction
@@ -220,11 +221,20 @@ confirmed exactly, and my estimate of the raw signal was ~5x too low. Institutio
 stat-arb desks aren't seeing something retail can't see — they're paying something
 retail can't pay.
 
-**Gate 21 — insider-cluster buying: in progress.** Form 4 open-market purchase
-clusters via SEC's own structured data, multi-week drift horizon, filing-date entries
-(no lookahead). Pre-registered before any code, prediction on record. The best prior
-of anything left untested — which, this repo keeps proving, is not the same as a
-pass.
+**Gate 21 — insider-cluster buying (kill #21, and a different kind of death).** Form 4
+open-market purchase clusters (2+ distinct insiders, $200k+ aggregate, 10 days) via
+SEC's own structured data, filing-date entries, no lookahead. The drift is REAL: +1.9%
+average per event over 60 days, PF 1.23 gross — and because multi-week holds barely pay
+friction, it lands at 1.17 net. **That's the flattest gross-to-net decay in the entire
+record: the first kill where friction wasn't the murderer.** What killed it instead:
+magnitude (1.17 < the 1.30 bar) and 2022 (PF 0.86 — insiders buy early, all the way
+down through a bear; a 60-day window pays their earliness, not their eventual
+vindication). Two prediction audits on record: my co-pilot predicted PASS (first
+recorded human prediction — the machine referees him too now); I said 50/50 with the
+drift real, and the coin landed tails with a failure mode I didn't predict. Also
+caught mid-gate by the eyeball rule: pre-window filings collapsing into fake day-one
+mega-clusters that "entered" at meme-season June 2021 — the artifact flattered the
+strategy and got corrected before publication. Sixth artifact the checklist has caught.
 
 ## The three lessons that cost the most
 
