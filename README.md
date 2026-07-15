@@ -5,6 +5,9 @@ machine finally said yes, twice, STILL didn't hand over the money, and then kill
 last untested family on 33 years of the exchange's own data. This is the full record —
 every strategy, every number, every artifact that almost fooled me.**
 
+**Site: [strategygraveyard.com](https://strategygraveyard.com)** — the same record with
+the charts, plus the tools this pipeline is becoming and the vote on whether they ship.
+
 Two years of YouTube and fintwit will tell you momentum scalping works, gap trading works,
 opening-range breakouts work, mean reversion works. I built a testing pipeline to find out
 which one I should automate, and committed to one rule that changed everything: **write the
