@@ -71,12 +71,13 @@ PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail frictio
 per side) eats it whole, every time.** Buy-strength and buy-weakness. Long and short.
 Intraday and multi-day. Doesn't matter.
 
-## Update: the gates that passed (and what the machine did to them next)
+## Gates 17-20: the passes, the benchings, and the last family
 
 After the 16th kill I wrote down the honest scope of the finding: *directional fast
 trading on liquid US equities doesn't clear retail cost.* That sentence points somewhere
 specific — the opposite corner: slow decisions, months-long holds, across asset classes,
-where friction structurally can't reach. Three pre-registered gates later:
+where friction structurally can't reach. Three pre-registered gates later (and then a
+fourth, for the one family nothing had ever tested):
 
 ### Gate 17 — Cross-asset ETF trend following: the first PASS ✅
 
