@@ -1,9 +1,10 @@
 # The Trading Strategy Graveyard
 
-**24 pre-registered backtests of retail trading strategies. 21 kills — including the
-strongest raw edge ever measured here, which died of friction alone. Two passes that
-STILL didn't get the money. This is the full record — every strategy, every number,
-every artifact that almost fooled me.**
+**25 pre-registered backtests of retail trading strategies. 22 kills — including the
+strongest raw edge ever measured here, which died of friction alone, and the famous
+candlestick patterns, measured across 43,624 signals. Two passes that STILL didn't get
+the money. This is the full record — every strategy, every number, every artifact that
+almost fooled me.**
 
 **Site: [strategygraveyard.com](https://strategygraveyard.com)** — the same record with
 the charts, plus the tools this pipeline is becoming and the vote on whether they ship.
@@ -20,10 +21,11 @@ corner of the map — slow, diversified, cross-asset — and the record got more
 than a pure graveyard: one clean pass, one pass that got benched by its own pre-registered
 tiebreaker, and one gate where the machine caught ME making a wrong prediction in public.
 Then Gate 20 took options premium selling — the last mainstream family still untested —
-and closed it with CBOE's own 33-year benchmark indices. Then the hunt resumed: gates 21–24,
-four more kills in a single day (turn-of-month, factor ETFs, pairs stat-arb carrying the
-best gross edge in this entire record, and insider clusters — the first kill where
-friction wasn't the murderer). All written up below the kill table.
+and closed it with CBOE's own 33-year benchmark indices. Then the hunt resumed: gates 21–25,
+five more kills in a single day (turn-of-month, factor ETFs, pairs stat-arb carrying the
+best gross edge in this entire record, insider clusters — the first kill where friction
+wasn't the murderer — and the famous candlestick patterns, dead on 43,624 signals). All
+written up below the kill table.
 
 ## The rules (each one added after a specific disaster)
 
@@ -75,6 +77,7 @@ friction wasn't the murderer). All written up below the kill table.
 | Factor ETFs (MTUM/VLUE/QUAL/USMV, static + 12-1 rotation) | EW Sharpe 0.87, rotation 0.84 vs SPY 0.90 | a decade of "smart beta" = SPY minus 0.8%/yr; the value regime finally arrived in 2026, after the test |
 | Equity pairs / stat-arb (GGR distance method, liquid names, long-short) | **gross PF 2.23 — the strongest raw edge in this entire record** → 1.06 at 0.10%/side/leg → 0.41 at 0.25% | market-neutral crosses the spread FOUR times per round trip on a 0.22%-per-trade move; the edge is real and you can't afford to harvest it |
 | Insider-cluster buying (2+ insiders, $200k+, SEC Form 4 structured data) | PF 1.17 @ 0.25%/side, 60d hold — and only 1.23 gross: the flattest cost decay in the record | the first kill where friction wasn't the murderer: real drift, too small for the bar, and 2022 PF 0.86 — insiders buy early, all the way down |
+| Candlestick patterns (bullish engulfing, hammer, piercing line — 43,624 signals) | pooled PF 0.95 @ 0.25%/side; gross ceiling 1.10–1.12; the hammer alone is a literal coin flip (PF 1.00) | the engulfing (0.80) is the single worst construction in this record; "reversal" candles in 2022 = PF 0.75 |
 
 The pattern across the whole table: **every DIRECTIONAL price-derived signal converges
 to roughly PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction

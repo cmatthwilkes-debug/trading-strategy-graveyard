@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="24 pre-registered backtests. 21 kills. Tools that stop your backtest from lying to you.">
+<meta name="description" content="25 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
 <meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
-<meta property="og:description" content="24 pre-registered backtests. 21 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:description" content="25 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
 <meta property="og:url" content="https://strategygraveyard.com">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -198,7 +198,7 @@
     line-height: 1.45;
     color: var(--graphite);
     text-align: center;
-    flex: 0 0 calc((100% - 4px * 23) / 24 * 8 + 4px * 7);
+    flex: 0 0 calc((100% - 4px * 24) / 25 * 9 + 4px * 8);
     border-top: 1px solid var(--rule);
     padding-top: 0.35rem;
   }
@@ -501,11 +501,11 @@
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×21 FAILED</span></span></h1>
+  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×22 FAILED</span></span></h1>
 
-  <p class="lede">I have run 24 pre-registered backtests of retail trading strategies.
+  <p class="lede">I have run 25 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
-  stayed welded in place after. Twenty-one died, among them the strongest raw edge this
+  stayed welded in place after. Twenty-two died, among them the strongest raw edge this
   pipeline ever measured, killed by friction alone. Two passed and still didn't get my
   money, because a tiebreaker written in advance said they hadn't earned it. Every
   strategy died in the pipeline before it touched a live account: total tuition paid to
@@ -516,7 +516,7 @@
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="ledger">
-    <div class="ledger-row" role="img" aria-label="The gate ledger: 24 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 24 all failed.">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 25 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed.">
       <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
       <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
@@ -540,12 +540,13 @@
       <div class="slot fail"><span class="box" style="--i:20">×</span><span class="idx">21</span></div>
       <div class="slot fail"><span class="box" style="--i:21">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:22">×</span><span class="idx"></span></div>
-      <div class="slot fail"><span class="box" style="--i:23">×</span><span class="idx">24</span></div>
+      <div class="slot fail"><span class="box" style="--i:23">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:24">×</span><span class="idx">25</span></div>
     </div>
     <div class="ledger-notes" aria-hidden="true">
-      <span class="note"><b>gates 17–24</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">5 kills, one single day</span></span>
+      <span class="note"><b>gates 17–25</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">6 kills, 5 in one day</span></span>
     </div>
-    <p class="ledger-tally"><b>24</b> gates · <b class="k">21</b> kills ·
+    <p class="ledger-tally"><b>25</b> gates · <b class="k">22</b> kills ·
     <b class="g">1</b> pass · <b class="g">2</b> certified, then benched by their own
     pre-registered tiebreaker · <b>$0</b> lost live</p>
     <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
@@ -641,6 +642,7 @@
       <tr><td>Factor ETFs (MTUM/VLUE/QUAL/USMV, EW + 12-1 rotation)</td><td>Sharpe 0.87 / 0.84 vs SPY 0.90</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Pairs stat-arb (GGR distance, liquid, long-short)</td><td><strong>gross PF 2.23</strong> → 1.06 @ 0.10%/side/leg</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Insider-cluster buying (2+ insiders, $200k+, SEC Form 4)</td><td>PF 1.17 @ 0.25%/side — vs 1.23 gross: friction wasn't the murderer</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Candlestick patterns (engulfing / hammer / piercing, 43,624 signals)</td><td>pooled PF 0.95 @ 0.25%/side; the hammer is a literal coin flip (1.00)</td><td><span class="chip fail">FAIL</span></td></tr>
     </table>
   </div>
   <p class="tablenote">PF = profit factor. The pattern: nearly every DIRECTIONAL price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole. The market-neutral exception measured 2.23 gross and died anyway: hedged trades pay friction twice on a smaller move.</p>
@@ -716,7 +718,7 @@
   <div class="tablewrap">
     <table>
       <tr><th>artifact</th><th>what it is</th></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 24 gates, every number, the three expensive lessons</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 25 gates, every number, the three expensive lessons</td></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–24: passes, benchings, and the resumed hunt</a></td><td>the first PASS, the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
       <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>
