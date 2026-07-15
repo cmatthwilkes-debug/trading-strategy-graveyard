@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="20 pre-registered backtests. 17 kills. Tools that stop your backtest from lying to you.">
+<meta name="description" content="24 pre-registered backtests. 20 kills. Tools that stop your backtest from lying to you.">
 <meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
-<meta property="og:description" content="20 pre-registered backtests. 17 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:description" content="24 pre-registered backtests. 20 kills. Tools that stop your backtest from lying to you.">
 <meta property="og:url" content="https://strategygraveyard.com">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -176,6 +176,7 @@
     background: linear-gradient(135deg, var(--kill-soft) 50%, var(--pass-soft) 50%);
     border-color: var(--graphite);
   }
+  .slot.pend .box { color: var(--graphite); background: var(--card); border-style: dashed; }
   .slot .idx {
     display: block;
     font-family: var(--mono);
@@ -197,7 +198,7 @@
     line-height: 1.45;
     color: var(--graphite);
     text-align: center;
-    flex: 0 0 calc((100% - 4px * 19) / 20 * 4 + 4px * 3);
+    flex: 0 0 calc((100% - 4px * 23) / 24 * 8 + 4px * 7);
     border-top: 1px solid var(--rule);
     padding-top: 0.35rem;
   }
@@ -500,13 +501,13 @@
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×17 FAILED</span></span></h1>
+  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×20 FAILED</span></span></h1>
 
-  <p class="lede">I ran 20 pre-registered backtests of retail trading strategies.
+  <p class="lede">I have run 24 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
-  stayed welded in place after. Seventeen died, the last of them the one family nothing
-  had tested, killed on 33 years of the exchange's own data. Two passed and still didn't
-  get my money, because a tiebreaker written in advance said they hadn't earned it. Every
+  stayed welded in place after. Twenty died, among them the strongest raw edge this
+  pipeline ever measured, killed by friction alone. Two passed and still didn't get my
+  money, because a tiebreaker written in advance said they hadn't earned it. Every
   strategy died in the pipeline before it touched a live account: total tuition paid to
   the market, <strong>$0</strong>.</p>
 
@@ -515,7 +516,7 @@
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="ledger">
-    <div class="ledger-row" role="img" aria-label="The gate ledger: 20 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gate 20, the last untested family, failed.">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 24 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20, 22, 23, and 24 failed. Gate 21 is still running.">
       <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
       <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
@@ -536,14 +537,17 @@
       <div class="slot bench"><span class="box" style="--i:17">✓</span><span class="idx">18</span></div>
       <div class="slot split"><span class="box" style="--i:18">◐</span><span class="idx">19</span></div>
       <div class="slot fail"><span class="box" style="--i:19">×</span><span class="idx">20</span></div>
+      <div class="slot pend"><span class="box" style="--i:20" title="Gate 21: insider clusters — running">…</span><span class="idx">21</span></div>
+      <div class="slot fail"><span class="box" style="--i:21">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:22">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:23">×</span><span class="idx">24</span></div>
     </div>
     <div class="ledger-notes" aria-hidden="true">
-      <span class="note"><b>gates 17–20</b><span class="nb">first pass</span> · <span class="nb">benched pass</span> · <span class="nb">split decision</span> · <span class="nb">last family killed</span></span>
+      <span class="note"><b>gates 17–24</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">4 kills</span> · <span class="nb">1 running</span></span>
     </div>
-    <p class="ledger-tally"><b>20</b> gates run · <b class="k">17</b> kills
-    <span class="nb">(16 straight, then the last untested family)</span> ·
+    <p class="ledger-tally"><b>24</b> gates · <b class="k">20</b> kills ·
     <b class="g">1</b> pass · <b class="g">2</b> certified, then benched by their own
-    pre-registered tiebreaker · <b>$0</b> lost live</p>
+    pre-registered tiebreaker · <b>1</b> reporting soon · <b>$0</b> lost live</p>
     <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
   </div>
 
@@ -556,7 +560,7 @@
     <p class="chart-title">DISTANCE FROM THE GATE — best honest profit factor per family</p>
     <p class="chart-sub">fast-strategy gate, pre-registered: PF ≥ 1.30 at the stated cost · every dot is a documented result</p>
 
-    <div class="cplot" role="img" aria-label="Dot plot: best honest profit factor per strategy family versus the pre-registered gate of 1.30. All eight families plotted fall below the gate; most fall at or below breakeven at 1.00. The catalyst-gap family shows its primary result of 1.23 decaying to 0.93 on the untouched holdout sample. Exact values are in the table below.">
+    <div class="cplot" role="img" aria-label="Dot plot: best honest profit factor per strategy family versus the pre-registered gate of 1.30. All nine families plotted fall below the gate; most fall at or below breakeven at 1.00. The catalyst-gap family shows its primary result of 1.23 decaying to 0.93 on the untouched holdout sample. The pairs family sits at 1.06 after costs despite the strongest gross edge on record. Exact values are in the table below.">
     <div class="crow" aria-hidden="true">
       <span class="clabel"><b>Mean reversion (RSI-2)</b>@ 0.25%/side</span>
       <span class="track"><span class="dot" style="left:10%"></span><span class="dval" style="left:10%">0.77</span></span>
@@ -580,6 +584,10 @@
     <div class="crow" aria-hidden="true">
       <span class="clabel"><b>Trend (Donchian, broad)</b>@ 0.25%/side</span>
       <span class="track"><span class="dot" style="left:50%"></span><span class="dval" style="left:50%">1.05</span></span>
+    </div>
+    <div class="crow" aria-hidden="true">
+      <span class="clabel"><b>Pairs stat-arb (GGR)</b>gross 2.23! · <span class="nb">@ 0.10%/side/leg</span></span>
+      <span class="track"><span class="dot" style="left:51.4%"></span><span class="dval" style="left:51.4%">1.06</span></span>
     </div>
     <div class="crow" aria-hidden="true">
       <span class="clabel"><b>Earnings drift (real 8-Ks)</b>@ 0.25%/side</span>
@@ -606,8 +614,10 @@
 
     <p class="chart-note">Not one family reached the line. The catalyst pair is the
     expensive lesson: a passing primary sample (hollow dot) collapsing to negative
-    expectancy on the holdout it never touched. Exact figures, verdicts, and causes of
-    death: table below.</p>
+    expectancy on the holdout it never touched. The pairs dot is the newest and
+    sharpest: PF 2.23 at zero cost (the strongest gross edge in all 24 gates),
+    landing at 1.06 once each hedged round trip pays the spread four times. Exact
+    figures, verdicts, and causes of death: table below.</p>
   </div>
 
   <div class="tablewrap">
@@ -623,12 +633,16 @@
       <tr><td>Cross-asset trend, monthly (Faber, zero tuned params)</td><td>8.1% CAGR, −1.1% in 2022</td><td><span class="chip pass">PASS</span></td></tr>
       <tr><td>Same rule, sampled daily</td><td>7.31%; whipsaw ate it</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Options premium selling (5 pro income ETFs + CBOE's own indices)</td><td>every fund's Sharpe below its own underlying</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Turn-of-month window (T-4..T+3)</td><td>Sharpe 0.44 vs SPY 0.73; 42% of returns in 29% of days</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Factor ETFs (MTUM/VLUE/QUAL/USMV, EW + 12-1 rotation)</td><td>Sharpe 0.87 / 0.84 vs SPY 0.90</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Pairs stat-arb (GGR distance, liquid, long-short)</td><td><strong>gross PF 2.23</strong> → 1.06 @ 0.10%/side/leg</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Insider-cluster buying (SEC Form 4, multi-week drift)</td><td>pre-registered; data in, reporting next</td><td><span class="chip" style="color:var(--graphite);border:1px solid var(--graphite);background:var(--card)">RUNNING</span></td></tr>
     </table>
   </div>
-  <p class="tablenote">PF = profit factor. The pattern: nearly every price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole.</p>
+  <p class="tablenote">PF = profit factor. The pattern: nearly every DIRECTIONAL price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole. The market-neutral exception measured 2.23 gross and died anyway: hedged trades pay friction twice on a smaller move.</p>
 
   <div class="chart">
-    <p class="chart-title">GATE 20 · THE LAST UNTESTED FAMILY: OPTIONS PREMIUM SELLING</p>
+    <p class="chart-title">GATE 20 · OPTIONS PREMIUM SELLING: THE LAST MAINSTREAM FAMILY</p>
     <p class="chart-sub">tested twice over: 5 professional covered-call/put-write ETFs, then CBOE's own benchmark indices (real traded SPX option prices back to 1990)</p>
     <p style="font-size:0.97rem; margin-bottom:0.6rem;">Every income fund had a <strong>worse Sharpe than the index it writes
     options on</strong>. QQQ made 21.6%/yr over QYLD's decade; QYLD kept 10% of it with
@@ -698,8 +712,8 @@
   <div class="tablewrap">
     <table>
       <tr><th>artifact</th><th>what it is</th></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 20 gates, every number, the three expensive lessons</td></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–20: the passes and the last family</a></td><td>the first PASS, the benched survivors, the split decision that falsified my own prediction, and the 33-year mechanism autopsy</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 24 gates, every number, the three expensive lessons</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–24: passes, benchings, and the resumed hunt</a></td><td>the first PASS, the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
       <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>
   </div>
@@ -712,7 +726,7 @@
       <span class="price">$0 <small>in the repo now</small></span>
       <ul>
         <li>The artifact-hunting checklist: every rule priced by the disaster that created it</li>
-        <li>All 20 gate writeups, full numbers</li>
+        <li>Every gate writeup, full numbers</li>
         <li>Works for manual backtesters too, no code required</li>
       </ul>
       <span class="status">LIVE · free forever</span>

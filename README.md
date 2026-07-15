@@ -1,9 +1,9 @@
 # The Trading Strategy Graveyard
 
-**20 pre-registered backtests of retail trading strategies. 16 straight kills — then the
-machine finally said yes, twice, STILL didn't hand over the money, and then killed the
-last untested family on 33 years of the exchange's own data. This is the full record —
-every strategy, every number, every artifact that almost fooled me.**
+**24 pre-registered backtests of retail trading strategies. 20 kills — including the
+strongest raw edge ever measured here, which died of friction alone. Two passes that
+STILL didn't get the money. This is the full record — every strategy, every number,
+every artifact that almost fooled me.**
 
 **Site: [strategygraveyard.com](https://strategygraveyard.com)** — the same record with
 the charts, plus the tools this pipeline is becoming and the vote on whether they ship.
@@ -19,8 +19,11 @@ before touching money. Then, in a 48-hour stretch, three more gates ran on the o
 corner of the map — slow, diversified, cross-asset — and the record got more interesting
 than a pure graveyard: one clean pass, one pass that got benched by its own pre-registered
 tiebreaker, and one gate where the machine caught ME making a wrong prediction in public.
-Then Gate 20 took the one family nothing had tested — options premium selling — and
-closed it with CBOE's own 33-year benchmark indices. All written up below the kill table.
+Then Gate 20 took options premium selling — the last mainstream family still untested —
+and closed it with CBOE's own 33-year benchmark indices. Then the hunt resumed: gates 21–24,
+three more kills so far (turn-of-month, factor ETFs, and pairs stat-arb — the last one
+carrying the best gross edge in this entire record), with the insider-cluster gate
+reporting next. All written up below the kill table.
 
 ## The rules (each one added after a specific disaster)
 
@@ -68,11 +71,17 @@ closed it with CBOE's own 33-year benchmark indices. All written up below the ki
 | Delta-neutral funding-rate carry (crypto perps) | real mechanism, no losing year in 6 — but 2026 nets ~0.4% on capital | institutionalized away: 2021 ~22% → 2026 ~1% gross |
 | Daily-sampled trend rule (200d SMA, same logic as the monthly rule that PASSED) | 7.31% CAGR vs the monthly version's 8.10%, worse drawdown | whipsaw: 8.8 signal flips/sleeve/yr vs 2.2 monthly — frequency is a cost, not a feature |
 | Options premium selling (5 pro covered-call/put-write ETFs + CBOE's own BXM/PUT/BXMD/CLL indices) | every fund's Sharpe BELOW its own underlying; best index 9.92%/yr vs SPY 10.81% over 33 years | selling the upside costs more than the premium collects; short vol = short the gap |
+| Turn-of-month effect (T-4..T+3, the classic window) | Sharpe 0.44 vs SPY's 0.73; captured 42% of returns in 29% of days — barely above proportional | decayed to the noise floor post-publication; third documented edge-death life-cycle in this repo |
+| Factor ETFs (MTUM/VLUE/QUAL/USMV, static + 12-1 rotation) | EW Sharpe 0.87, rotation 0.84 vs SPY 0.90 | a decade of "smart beta" = SPY minus 0.8%/yr; the value regime finally arrived in 2026, after the test |
+| Equity pairs / stat-arb (GGR distance method, liquid names, long-short) | **gross PF 2.23 — the strongest raw edge in this entire record** → 1.06 at 0.10%/side/leg → 0.41 at 0.25% | market-neutral crosses the spread FOUR times per round trip on a 0.22%-per-trade move; the edge is real and you can't afford to harvest it |
 
-The pattern across the whole table: **every price-derived signal converges to roughly
-PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction (0.10–0.25%
-per side) eats it whole, every time.** Buy-strength and buy-weakness. Long and short.
-Intraday and multi-day. Doesn't matter.
+The pattern across the whole table: **every DIRECTIONAL price-derived signal converges
+to roughly PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction
+(0.10–0.25% per side) eats it whole, every time.** Buy-strength and buy-weakness. Long
+and short. Intraday and multi-day. Doesn't matter. The one exception proves the rule
+harder: the market-neutral pairs signal measured PF 2.23 gross — much more real than
+anything directional — and died anyway, because hedged trades pay friction TWICE on a
+smaller harvested move. The better the structure, the higher its toll.
 
 ## Gates 17-20: the passes, the benchings, and the last family
 
@@ -146,11 +155,12 @@ falsification machine that catches its operator's wrong predictions, not just hi
 strategies.** (Also on its record: 21.8x annual turnover — every gain short-term for
 taxes — and its worst month in 9.5 years was LAST month.)
 
-### Gate 20 — Options premium selling: the last untested family ❌
+### Gate 20 — Options premium selling: the last of the mainstream families ❌
 
-Covered calls, put-writes, "volatility income" — the one family none of the gates above
-had touched, and the internet's favorite answer to "how do I get paid while I wait." I
-tested it twice over, so no retail-implementation excuse survives:
+Covered calls, put-writes, "volatility income" — the last family from the standard
+retail playbook that none of the gates above had touched, and the internet's favorite
+answer to "how do I get paid while I wait." I tested it twice over, so no
+retail-implementation excuse survives:
 
 **Round 1 — five professional wrappers** (covered-call and put-write ETFs on QQQ, SPY,
 and vol futures: QYLD, XYLD, JEPI, PUTW, SVOL), total-return basis so distributions
@@ -177,6 +187,44 @@ gap. Insurance that pays out in drizzle and fails in the flood.
 Prediction audit, again: directionally right (family closed), wrong in the details (the
 failure mode I predicted wasn't the one that fired). Both audits are in the experiment
 folder — the machine referees its operator, not just the strategies.
+
+## Gates 21–24: the hunt resumes (2026-07-15, three kills and counting)
+
+The stand-down on edge-hunting ended deliberately: every kill is now also a public
+writeup, so the testing pays either way. Same rules — gate frozen before code,
+predictions on record, no salvage sweeps. Three gates reported the same day:
+
+**Gate 22 — turn-of-month (kill #18).** The classic T-4..T+3 window, one fixed
+literature definition. Sharpe 0.44 vs SPY's 0.73; it captured 42% of returns in 29% of
+days — barely above its proportional share, versus the ~100% concentration the
+1988–2005 literature documented. Third full edge-death life-cycle in this repo (after
+the vol premium and funding carry): real premium, published, arbitraged to the noise
+floor. One residual gleam, stated with its own warning label: 2022 came in at +12.7%
+while SPY did −18.2% — a single regime, exactly the kind of one-year edge the rotation
+gate already taught us not to buy.
+
+**Gate 23 — factor ETFs (kill #19).** MTUM/VLUE/QUAL/USMV, equal-weight and 12-1
+rotation, ten years. Equal-weight: Sharpe 0.87 vs SPY's 0.90 — "smart beta" priced out
+to SPY minus 0.8%/yr. Rotation: 0.84, better 2022, same verdict. The eyeball pass
+verified the sting in the tail: value finally woke up violently in 2026 (VLUE +48%
+YTD) — *after* a decade of drag that would have shaken out any live allocator. The
+premium shows up on its schedule, not yours.
+
+**Gate 24 — pairs / stat-arb (kill #20, and the headline).** GGR distance method,
+liquid names, long-short. **Gross PF 2.23 — the strongest raw edge in these 24
+gates.** Then the cost ladder: 1.52 at 0.05%/side/leg, 1.06 at 0.10%, 0.41 at 0.25%.
+A market-neutral round trip crosses the spread four times to harvest a +0.22%
+average move; the strategy's entire gross edge approximately equals its own friction
+bill. The pre-registered prediction got audited both ways: the cost model was
+confirmed exactly, and my estimate of the raw signal was ~5x too low. Institutional
+stat-arb desks aren't seeing something retail can't see — they're paying something
+retail can't pay.
+
+**Gate 21 — insider-cluster buying: in progress.** Form 4 open-market purchase
+clusters via SEC's own structured data, multi-week drift horizon, filing-date entries
+(no lookahead). Pre-registered before any code, prediction on record. The best prior
+of anything left untested — which, this repo keeps proving, is not the same as a
+pass.
 
 ## The three lessons that cost the most
 
