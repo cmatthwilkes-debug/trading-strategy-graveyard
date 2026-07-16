@@ -1,0 +1,48 @@
+name: Build request
+description: "Ask for something to be built: a public gate for your strategy idea, or a testing tool."
+title: "Build request: "
+labels: ["build-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Requests are public, and that's the point.** If your strategy idea gets gated,
+        the criteria are pre-registered before the run and the result — pass or kill —
+        goes in the graveyard with credit to you. The best result in this record (the
+        Gate 17 extension) exists because a reader demanded it. Ground rules are on
+        [strategygraveyard.com](https://strategygraveyard.com/#workshop): nothing that
+        trades a live account, no signals, no deadlines promised.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of request?
+      options:
+        - Gate my strategy idea (pre-registered public test)
+        - Build or extend a testing tool
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What should exist when this is done?
+      description: "One paragraph. For a strategy: the rule as you'd explain it to a friend. For a tool: what it measures or which backtest lie it catches."
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: Why would this work?
+      description: "For strategies: who is on the other side of the trade, and why are they paying you? 'It backtests well' is not a mechanism — ideas with a stated mechanism jump the queue. For tools: what disaster does it prevent?"
+    validations:
+      required: true
+  - type: input
+    id: data
+    attributes:
+      label: What data does it need?
+      description: "Public/free sources move fast. Paid data needs a budget conversation before anything runs."
+  - type: input
+    id: pay
+    attributes:
+      label: Would you pay for this, and roughly what?
+      description: "Optional and non-binding. It's a demand signal, not a quote — nothing is for sale until the demand gate trips."

@@ -9,6 +9,13 @@ almost fooled me.**
 **Site: [strategygraveyard.com](https://strategygraveyard.com)** — the same record with
 the charts, plus the tools this pipeline is becoming and the vote on whether they ship.
 
+**Want something built or killed?** The Gate 17 extension below exists because a reader
+demanded it. That's now a standing offer:
+[file a build request](https://github.com/cmatthwilkes-debug/trading-strategy-graveyard/issues/new?template=build-request.yml)
+— bring a strategy idea with a stated mechanism and it gets a pre-registered public
+gate (credit to you, pass or kill), or request a testing tool for the kit backlog.
+Nothing that trades a live account gets built, and requests are public by design.
+
 Two years of YouTube and fintwit will tell you momentum scalping works, gap trading works,
 opening-range breakouts work, mean reversion works. I built a testing pipeline to find out
 which one I should automate, and committed to one rule that changed everything: **write the
