@@ -635,7 +635,7 @@
       <tr><td>Mean reversion (RSI-2)</td><td>PF 0.77 @ 0.25%/side</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>News sentiment (19.5k articles, LLM-scored)</td><td>made every config worse</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Crypto funding carry</td><td>real mechanism, ~0.4% net in 2026</td><td><span class="chip fail">FAIL</span></td></tr>
-      <tr><td>Cross-asset trend, monthly (Faber, zero tuned params)</td><td>8.1% CAGR, −1.1% in 2022</td><td><span class="chip pass">PASS</span></td></tr>
+      <tr><td>Cross-asset trend, monthly (Faber, zero tuned params)</td><td>8.1% CAGR, −1.1% in 2022 · reader-forced 2008 extension: 5.9% over 18.4y, −1.5% in 2008 — pass holds, repriced</td><td><span class="chip pass">PASS</span></td></tr>
       <tr><td>Same rule, sampled daily</td><td>7.31%; whipsaw ate it</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Options premium selling (5 pro income ETFs + CBOE's own indices)</td><td>every fund's Sharpe below its own underlying</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Turn-of-month window (T-4..T+3)</td><td>Sharpe 0.44 vs SPY 0.73; 42% of returns in 29% of days</td><td><span class="chip fail">FAIL</span></td></tr>
@@ -669,6 +669,34 @@
     than SPY (BXM −54.6% annualized vs −32.4%). Short vol is short the gap: insurance
     that pays out in drizzle and fails in the flood. Full writeup and both prediction
     audits in the repo.</p>
+  </div>
+
+  <div class="chart">
+    <p class="chart-title">GATE 17 · A READER RAN AT THE ONLY PASS</p>
+    <p class="chart-sub">the challenge: "2022 is your easy case wearing a hard case's clothes — one inflation shock made trend rotate to cash exactly when cash started paying. Extend through 2008 or don't fund it."</p>
+    <p style="font-size:0.97rem; margin-bottom:0.6rem;">He was right about the gap, wrong about the mechanics (the
+    cash fix used the real monthly T-bill path, not a flat 4–5% — audited: it moved 2022
+    by +0.21pp, and legitimately). So the same frozen rules ran again, <strong>extended back to
+    January 2008</strong>, same day. Pre-2016 prices cross-checked against the original source
+    to 4.6bps.</p>
+    <div class="tablewrap" style="margin-top:0.9rem;">
+      <table style="min-width:26rem;">
+        <tr><th>regime</th><th>this strategy</th><th>SPY</th></tr>
+        <tr><td>2008 zero-rate bear</td><td><strong>−1.5%</strong> (bond sleeves carried it, not cash)</td><td>−36.8%</td></tr>
+        <tr><td>2011–2016 ZIRP grind</td><td><strong>5.1 yrs below T-bills</strong>, 4 yrs underwater — the real max drawdown lives here</td><td>compounding 13–32%/yr</td></tr>
+        <tr><td>2022 dual bear</td><td><strong>−1.1%</strong></td><td>−18.2%</td></tr>
+        <tr><td>full 18.4 years</td><td>5.85% CAGR · Sharpe 0.69 · maxDD −12.1%</td><td>11.29% · 0.63 · −46.3%</td></tr>
+      </table>
+    </div>
+    <p class="chart-note">The pass holds — every pre-registered readout on the extended
+    sample cleared — with one flag kept on the record: against the gate's literal
+    CAGR ≥ 6% bar, 5.85% is a thin fail (the bar's written rationale was T-bills + 3,
+    which it clears at 4.37%). The price changed: no year worse than −1.6%, but you can
+    sit five years underperforming T-bills, and the realistic failure mode is quitting
+    in year three of the grind, not a crash. Sizing now keys off these numbers, not the
+    friendly 2017–2026 ones. The one strategy that survived this pipeline got its
+    victory lap cancelled by a stranger with a calendar — and the record is better
+    for it.</p>
   </div>
 
   <blockquote>A backtest is a witness with every incentive to lie to you.
@@ -719,7 +747,7 @@
     <table>
       <tr><th>artifact</th><th>what it is</th></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 25 gates, every number, the three expensive lessons</td></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–24: passes, benchings, and the resumed hunt</a></td><td>the first PASS, the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–25: passes, benchings, and the resumed hunt</a></td><td>the first PASS (and its reader-forced 2008 extension), the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
       <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>
   </div>

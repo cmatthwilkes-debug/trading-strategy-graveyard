@@ -24,8 +24,9 @@ Then Gate 20 took options premium selling — the last mainstream family still u
 and closed it with CBOE's own 33-year benchmark indices. Then the hunt resumed: gates 21–25,
 five more kills in a single day (turn-of-month, factor ETFs, pairs stat-arb carrying the
 best gross edge in this entire record, insider clusters — the first kill where friction
-wasn't the murderer — and the famous candlestick patterns, dead on 43,624 signals). All
-written up below the kill table.
+wasn't the murderer — and the famous candlestick patterns, dead on 43,624 signals). And
+when a reader ran at the one clean pass, the pass got extended back through 2008 and
+repriced in public — that story is below the kill table too. All written up there.
 
 ## The rules (each one added after a specific disaster)
 
@@ -104,9 +105,10 @@ equities, bonds, gold, commodities, currencies, REITs. Long or cash, monthly.
 **CAGR 8.10%, Sharpe 0.90, max drawdown −4.5%, and 2022 — the year that killed everything
 else in this repo — finished at −1.1%** while SPY did −18% and 60/40 did −23%. The
 pre-registered fresh-eyes review the next morning found two modeling errors and BOTH
-corrections moved the result UP (I'd been crediting cash a flat 2% when 2022–23 T-bills
-paid 4–5%, and I'd double-charged turnover costs). A pass that gets stronger under attack
-is what a real result looks like.
+corrections moved the result UP (I'd been crediting cash a flat 2% instead of the real
+monthly T-bill path — bills reached 4%+ by late 2022 and averaged ~5% in 2023 — and I'd
+double-charged turnover costs). A pass that gets stronger under attack is what a real
+result looks like.
 
 Stated plainly, because the rules require it: 9.5 years of data, no trendless decade in
 the sample (that's this family's known killer), T-bills beat it in 3 of those years, and
@@ -116,6 +118,47 @@ through 20% drawdowns — not income, and no, it did not restart the day bot.
 Why this doesn't contradict the kill table: monthly turnover at ETF spreads costs ~7bp a
 YEAR. The wall that ate 16 strategies is a per-decision toll — this strategy makes 12
 decisions a year instead of 1,400.
+
+### Gate 17, extended — a reader ran at the pass, and the pass got repriced 📉✅
+
+A reader challenged the only clean pass in this record, on two fronts. First, that the
+cash-yield correction had over-credited 2022 (2022 bills *averaged* ~2% — the 4–5%
+prints came late in the year). Second, and sharper: **2022 is this strategy's easy case
+wearing a hard case's clothes.** One inflation shock makes trend rotate to cash exactly
+when cash starts paying. The untested regimes were the zero-rate deflationary bear and
+the trendless ZIRP decade — the ones where rotation parks you in cash earning nothing
+while the filter whipsaws. So I ran both checks the same day. Per-mechanism receipts:
+
+**The cash audit: no over-credit, but the covariance is real.** The fix used the actual
+FRED monthly path, not a flat 4–5% (2022: 0.15% in January to 4.25% in December, mean
+2.02% — the reader was right about the average). Real path vs flat-2% moved 2022 by
++0.21pp, and legitimately: the book was heaviest in cash in H2, exactly when rates were
+highest. The covariance the reader described exists — it's worth ~0.2 points, not the pass.
+
+**The extension: same frozen rules, pushed back to January 2008** (UUP is the youngest
+sleeve, live Feb 2007; pre-2016 prices cross-checked against the original source, worst
+mean monthly-return disagreement 4.6bps). Over 18.4 years: **CAGR 5.85%, Sharpe 0.69,
+max drawdown −12.1%** — vs SPY 11.29%/−46.3% and 60/40 8.39%/−26.2%.
+
+- **2008, the zero-rate bear: −1.5% vs SPY −36.8%.** Handled — but not by cash yield.
+  The bond sleeves stayed long and rallied. The mechanism has two legs: inflation bear,
+  cash pays; deflation bear, duration pays. 2022 is the only regime that breaks the bond
+  leg, which is why it killed everything else here.
+- **The reader's regime is where the real damage lives.** Max drawdown troughs in May
+  2012 — the middle of the ZIRP grind, not either bear — and doesn't recover until July
+  2016. Longest stretch below its own prior peak vs T-bills: **5.1 years** (2011–2016),
+  with the cash sleeves paying 1–3bps a year the whole way.
+- **Flagged, not hidden:** against the gate's literal CAGR ≥ 6% bar, 5.85% is a thin
+  fail. The bar's written rationale was T-bills + 3, which the extension clears
+  (extended-sample bills averaged 1.4%, making the bar 4.37%). Both readings stay on
+  the record.
+
+The pass holds. The price changed: ~6% through two full regimes, no year worse than
+−1.6%, but you can sit 4–5 years underperforming T-bills and 12% below peak. The
+realistic failure mode is behavioral — quitting in year three of the grind — not a
+crash. Sizing now keys off the extended numbers, not the friendly 2017–2026 ones. A
+pass that gets *repriced* under attack, in public, is the other thing a real result
+looks like.
 
 ### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
 ### BENCHED by its own tiebreaker ⚖️
