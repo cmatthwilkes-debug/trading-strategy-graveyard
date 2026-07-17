@@ -167,6 +167,23 @@ crash. Sizing now keys off the extended numbers, not the friendly 2017–2026 on
 pass that gets *repriced* under attack, in public, is the other thing a real result
 looks like.
 
+**Round two — the reader came back for the flag itself.** His charge: the bar was 6%,
+the extension printed 5.85%, and the rationale got recomputed until the strategy
+passed — goalpost-moving by the guy who runs a graveyard for it. The sequence receipts
+say otherwise: the T-bills+3 derivation sits in the original gate file in the same
+line as the number, written before the first run, and the extension's readout bar
+("CAGR ≥ mean(T-bills)+3pp on the extended sample") went into the script before that
+run executed. But his structural point lands anyway: a bare number with a
+parenthetical rationale is **two bars waiting to diverge**, and the file should never
+have allowed both readings. That's now a permanent rule in the gate templates — bars
+that derive from a rationale get written as the formula, with which form governs
+stated up front. And the stricter reading has teeth regardless: the same extension
+run demoted the pure strategy off its own efficient frontier. A 90/10 blend with SPY
+dominates it on every tracked metric — CAGR 6.47% vs 5.85%, Sharpe 0.75 vs 0.69,
+maxDD −11.6% vs −12.1%, years below T-bills 2.9 vs 5.1. The pure version of the only
+pass is, by its own extended record, not the thing to fund. $0 is on it under either
+reading.
+
 ### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
 ### BENCHED by its own tiebreaker ⚖️
 
