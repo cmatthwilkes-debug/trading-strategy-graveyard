@@ -177,12 +177,43 @@ run executed. But his structural point lands anyway: a bare number with a
 parenthetical rationale is **two bars waiting to diverge**, and the file should never
 have allowed both readings. That's now a permanent rule in the gate templates — bars
 that derive from a rationale get written as the formula, with which form governs
-stated up front. And the stricter reading has teeth regardless: the same extension
-run demoted the pure strategy off its own efficient frontier. A 90/10 blend with SPY
-dominates it on every tracked metric — CAGR 6.47% vs 5.85%, Sharpe 0.75 vs 0.69,
-maxDD −11.6% vs −12.1%, years below T-bills 2.9 vs 5.1. The pure version of the only
-pass is, by its own extended record, not the thing to fund. $0 is on it under either
-reading.
+stated up front. And the stricter reading still had teeth: the sizing basis moved to
+the extended numbers, and $0 is funded under either reading. An earlier version of
+this paragraph also claimed a 90/10 SPY blend "dominates on every tracked metric" —
+round three, below, killed that claim.
+
+**Round three — he broke the blend claim too.** He pointed at the 2008 column: pure
+finished −1.5% while SPY did −36.8%, so a 90/10 blend triples the loss in the exact
+year that proves the mechanism — and the results file had that column in it the whole
+time; the "dominates" sentence just didn't mention it. Then he asked what the frontier
+looks like either side of 90/10, so it got run finer, with a crash-flavored metric
+(worst rolling 12-month return) added alongside the grind-flavored month-end maxDD:
+
+| Faber/SPY | CAGR | Sharpe | maxDD | 2008 | worst 12m | yrs < T-bills |
+|---|---|---|---|---|---|---|
+| 100/0 | 5.85% | 0.69 | −12.1% | −1.5% | −9.0% | 5.1 |
+| 97.5/2.5 | 6.01% | 0.71 | −11.9% | −2.5% | −8.8% | 3.6 |
+| 95/5 | 6.16% | 0.72 | −11.6% | −3.5% | −8.5% | 3.5 |
+| 92.5/7.5 | 6.32% | 0.73 | −11.3% | −4.5% | −9.2% | 3.0 |
+| 90/10 | 6.47% | 0.75 | −11.6% | −5.5% | −10.3% | 2.9 |
+| 85/15 | 6.77% | 0.76 | −13.8% | −7.5% | −12.4% | 2.5 |
+| 80/20 | 7.07% | 0.77 | −16.1% | −9.4% | −14.5% | 2.4 |
+
+Verdict: "strictly dominates" is dead. 90/10 loses to pure on 2008 (−5.5% vs −1.5%)
+and on worst-12-months (−10.3% vs −9.0%), and on the finer grid it isn't even the
+drawdown minimum (92.5/7.5 is) — the signature of a parameter artifact, which is what
+he called it: blend weight is a parameter, the frontier is an in-sample scan, and
+rules 7 and 8 of this very page apply to their author. What survives, as description
+rather than recommendation: the Sharpe rise is a smooth broad hump (0.69 → 0.77, no
+knife-edge — ordinary diversification math), and a token 2.5% SPY sleeve cuts the
+years-below-T-bills from 5.1 to 3.6, which is his own diagnosis — "it's filling the
+exact hole you already told me about" — written as a number. The weight axis trades
+crash-year pain against grind-year pain; the frontier describes the dial and cannot
+pick the point. Also now on the record, from him: the regime where BOTH legs of the
+mechanism fail at once — walking into a bear from zero rates, cash paying nothing,
+duration with no room to rally — appears nowhere in this 18-year sample. 2020 was
+that state for five weeks and the monthly cadence slid through it; Japan sat in it
+for twenty years. The record cannot price that regime. Sizing humility has to.
 
 ### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
 ### BENCHED by its own tiebreaker ⚖️
