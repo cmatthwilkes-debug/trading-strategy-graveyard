@@ -1,10 +1,12 @@
 # The Trading Strategy Graveyard
 
-**25 pre-registered backtests of retail trading strategies. 22 kills — including the
+**26 pre-registered backtests of retail trading strategies. 22 kills — including the
 strongest raw edge ever measured here, which died of friction alone, and the famous
 candlestick patterns, measured across 43,624 signals. Two passes that STILL didn't get
-the money. This is the full record — every strategy, every number, every artifact that
-almost fooled me.**
+the money. And a 26th gate, proposed by a reader, that borrowed Japan's lost decades
+to price this record's one blind spot — and split the verdict by five basis points.
+This is the full record — every strategy, every number, every artifact that almost
+fooled me.**
 
 **Site: [strategygraveyard.com](https://strategygraveyard.com)** — the same record with
 the charts, plus the tools this pipeline is becoming and the vote on whether they ship.
@@ -214,6 +216,39 @@ mechanism fail at once — walking into a bear from zero rates, cash paying noth
 duration with no room to rally — appears nowhere in this 18-year sample. 2020 was
 that state for five weeks and the monthly cadence slid through it; Japan sat in it
 for twenty years. The record cannot price that regime. Sizing humility has to.
+
+**Round four — he proposed the test, so it became Gate 26: The Japan Test.** His
+design, ran verbatim: you can't manufacture the zero-rate-entry regime from US data,
+but you can borrow it — JGBs and the Nikkei through the 90s and 2000s are two decades
+of exactly that state. His pass/fail spine became the pre-registered gate: *does the
+mechanism survive when both legs are dead on entry, or does it just tread water for
+20 years?* Frozen before code, bars as formulas (his rule), domestic-only basket
+(Nikkei price index / synthetic 10y JGB total-return from monthly yields / gold in
+yen / call-rate cash), frozen Faber 10-month SMA, entry January 1990 — the month
+after the bubble top. Governing window: 1999–2012, call rate ≈ 0 the whole way,
+10-year JGB at 1.8% on entry. Both legs dead.
+
+**Result: survived — by 0.05 percentage points.** Strategy CAGR 3.17% vs a formula
+bar of cash + 3pp = 3.12%. A five-basis-point margin is inside data noise and gets
+called what it is: a coin landing on its edge (the known biases lean against the
+strategy — the Nikkei sleeve is price-only — so the letter of the bar stands). Full
+1990–2012 window: 1.76% vs cash 1.27% — **treads water**, exactly his phrase. And
+the eyeball pass found the real finding: equal-weight buy-and-hold of the same three
+sleeves beat the trend rule by 1.6pp/yr on the governing window. In a zero-rate
+world every whipsaw parks you in an asset that pays nothing — so the trend overlay
+SUBTRACTED return and what it bought instead was drawdown: −10.0% max versus the
+basket's −15.9% and the Nikkei's −62.8%. The surviving margin came almost entirely
+from the one sleeve whose engine doesn't run on interest rates: gold in yen went up
+4.9x across the governing window while duration earned its coupon and nothing more.
+Multi-asset breadth is what survives ZIRP; the trend rule just decides how much of
+it you keep. And the grind sentence is now measured: **15.8 years below cash** on
+the full window, with the 1990s — the decade cash still paid 3% — the strategy's
+worst stretch against it. His kicker, pre-registered in the gate and now on the
+record: in this regime the 20% sizing rule stops being humility and becomes the
+actual finding. Prediction audit: I predicted treads-water and was wrong by those
+same five basis points; his prediction slot stays open — either call was right.
+Full receipts: `japan_experiment/` GATE.md → results → VERDICT.md. Co-author
+credit: the reader (attribution name his to choose).
 
 ### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
 ### BENCHED by its own tiebreaker ⚖️

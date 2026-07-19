@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="25 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
+<meta name="description" content="26 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
 <meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
-<meta property="og:description" content="25 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:description" content="26 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
 <meta property="og:url" content="https://strategygraveyard.com">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -503,7 +503,7 @@
 
   <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×22 FAILED</span></span></h1>
 
-  <p class="lede">I have run 25 pre-registered backtests of retail trading strategies.
+  <p class="lede">I have run 26 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
   stayed welded in place after. Twenty-two died, among them the strongest raw edge this
   pipeline ever measured, killed by friction alone. Two passed and still didn't get my
@@ -516,7 +516,7 @@
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="ledger">
-    <div class="ledger-row" role="img" aria-label="The gate ledger: 25 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed.">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 26 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed. Gate 26, the reader-proposed Japan test, was a split verdict: survived its governing window by five basis points, trod water over the full 23 years.">
       <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
       <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
@@ -542,6 +542,7 @@
       <div class="slot fail"><span class="box" style="--i:22">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:23">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:24">×</span><span class="idx">25</span></div>
+      <div class="slot split"><span class="box" style="--i:25">◐</span><span class="idx">26</span></div>
     </div>
     <div class="ledger-notes" aria-hidden="true">
       <span class="note"><b>gates 17–25</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">6 kills, 5 in one day</span></span>
@@ -723,6 +724,24 @@
     regime where both legs fail at once — entering a bear from zero rates — appears
     nowhere in 18 years of sample. Japan sat in it for twenty. Sizing humility has
     to price what the record cannot.</p>
+    <p class="chart-note">Round four: he proposed the test himself, so it became
+    Gate 26 — The Japan Test, run to his design. Borrow the regime you can’t
+    manufacture: Nikkei, synthetic 10-year JGB total return, gold in yen, call-rate
+    cash, frozen Faber rules, entry January 1990 — the month after the bubble top.
+    Governing window 1999–2012: both legs dead on entry. Result: <em>survived by
+    0.05 percentage points</em> — CAGR 3.17% against a formula bar of cash+3pp =
+    3.12%, a margin inside data noise and called that on the record — and over the
+    full 23 years it did exactly what he said it would: trod water (1.76% vs cash
+    1.27%, 15.8 years below cash). The eyeball finding is the keeper: equal-weight
+    buy-and-hold of the same sleeves beat the trend rule by 1.6pp/yr in ZIRP — every
+    whipsaw parks in an asset paying nothing — so the overlay subtracted return and
+    bought drawdown instead (−10.0% max vs −15.9% basket, −62.8% Nikkei). The
+    margin that survived came from the one sleeve that doesn’t run on interest
+    rates: gold in yen, up 4.9x. His kicker is now the pre-registered meaning: in
+    this regime the 20% sizing rule stops being humility and becomes the actual
+    finding. Prediction audit: the house predicted treads-water and missed by the
+    same five basis points. Co-author credit: his, name pending. Full receipts in
+    the repo’s <code>japan_experiment/</code>.</p>
   </div>
 
   <blockquote>A backtest is a witness with every incentive to lie to you.
