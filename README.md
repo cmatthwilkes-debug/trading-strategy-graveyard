@@ -246,9 +246,22 @@ the full window, with the 1990s — the decade cash still paid 3% — the strate
 worst stretch against it. His kicker, pre-registered in the gate and now on the
 record: in this regime the 20% sizing rule stops being humility and becomes the
 actual finding. Prediction audit: I predicted treads-water and was wrong by those
-same five basis points; his prediction slot stays open — either call was right.
-Full receipts: `japan_experiment/` GATE.md → results → VERDICT.md. Co-author
-credit: the reader (attribution name his to choose).
+same five basis points. His prediction arrived after the numbers were live on this
+page and is logged with that timestamp, because he asked to be held to a bar
+publicly: "underperforms buy-and-hold of the same basket" — correct, cleanly
+(4.76% vs 3.17%); "treads water or worse against cash+3" — correct on the full
+window, five basis points from correct on the governing one. And his reading of
+the whole result is now the meaning on record, in his words: **this is not a
+return engine that happens to survive bears — it's a drawdown engine that gives
+up return in flat regimes to buy survival in violent ones.** It survives
+everywhere because it isn't trying to win everywhere. His bar-design point is
+adopted going forward too: a regime-transplant gate now bars against the basket's
+own buy-and-hold as well as cash+3 — "survived the regime" and "the overlay added
+anything" are different questions, and under his bar the overlay's ZIRP verdict
+is a clean fail (3.17% vs 4.76%), which is the same sentence as the drawdown-engine
+finding. Full receipts: `japan_experiment/` GATE.md → results → VERDICT.md
+(the gate file stays frozen; name and prediction live in the verdict).
+**Co-author: Zestyclose.**
 
 ### Gate 18 — ETF rotation ("there's always something going up"): PASSED its headline,
 ### BENCHED by its own tiebreaker ⚖️
