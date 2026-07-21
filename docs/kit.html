@@ -1,0 +1,346 @@
+<!doctype html>
+<!--
+  ============================================================================
+  AD LANDING PAGE  ·  strategygraveyard.com/kit.html
+  ============================================================================
+  BEFORE THIS GOES LIVE, SWAP TWO STRINGS (search for LS_LINK):
+     LS_LINK_GAUNTLET      -> Lemon Squeezy checkout URL for The Gauntlet ($54)
+     LS_LINK_FIELDMANUAL   -> Lemon Squeezy checkout URL for The Field Manual ($139)
+  If you forget, the buttons self-disable with a visible warning (see script at
+  the bottom) rather than shipping a dead link to paid traffic.
+
+  ALSO CONFIRM BEFORE LIVE: the footer states a 14-day no-questions refund. That is
+  a placeholder standard term — it MUST match the refund policy actually configured
+  in Lemon Squeezy, or change the footer to match. Do not run traffic against a
+  refund promise the store does not honour.
+
+  ATTRIBUTION (per AD_TEST_GATE.md): the ad-exclusive code GRAVEYARD10 is the
+  primary attribution mechanism. Create it in Lemon Squeezy as 10% off, valid on
+  BOTH products, no expiry. It must appear ONLY here and in the ad creative.
+
+  CREATIVE CONSTRAINTS THAT ALSO GOVERN THIS PAGE — do not "optimize" these away:
+     no income claims · no performance promises · no "learn to trade" framing
+     no urgency · no scarcity · no countdown timers
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="26 pre-registered backtests. 22 died. The tools that killed them.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
+<title>The Falsification Kit — tools that kill bad backtests</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
+<meta property="og:title" content="The Falsification Kit">
+<meta property="og:description" content="26 pre-registered backtests. 22 died. The tools that killed them.">
+<meta property="og:url" content="https://strategygraveyard.com/kit.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #50564F; --faint: #A9AEA8;
+    --rule: #DADDD6; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.07);
+    --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.08); --card: #FFFFFF;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+    --serif: "Spectral", Georgia, "Times New Roman", serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #131614; --ink: #E4E6E1; --graphite: #A8AFA9; --faint: #6A716B;
+      --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
+      --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #F6F7F3; --ink: #1A1E1B; --graphite: #50564F; --faint: #A9AEA8;
+    --rule: #DADDD6; --kill: #B0372B; --kill-soft: rgba(176,55,43,0.07);
+    --pass: #2E6B44; --pass-soft: rgba(46,107,68,0.08); --card: #FFFFFF;
+  }
+  :root[data-theme="dark"] {
+    --paper: #131614; --ink: #E4E6E1; --graphite: #A8AFA9; --faint: #6A716B;
+    --rule: #2B2F2C; --kill: #DA5C4C; --kill-soft: rgba(218,92,76,0.12);
+    --pass: #5CA97A; --pass-soft: rgba(92,169,122,0.12); --card: #1A1E1B;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 17.5px; line-height: 1.62; margin: 0;
+  }
+  ::selection { background: var(--kill-soft); color: var(--kill); }
+  .nb { white-space: nowrap; }
+  .doc { max-width: 40rem; margin: 0 auto; padding: 0 1.25rem 3.5rem; }
+
+  .filehead {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--graphite);
+    border-bottom: 1px solid var(--rule); padding: 1rem 0 0.8rem;
+    display: flex; flex-wrap: wrap; gap: 0.35rem 1.6rem;
+  }
+  .filehead b { color: var(--ink); font-weight: 600; }
+
+  h1 {
+    font-size: clamp(2.05rem, 6.4vw, 3.05rem); line-height: 1.05;
+    margin: 2rem 0 1.1rem; font-weight: 700; letter-spacing: -0.018em;
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; }
+  h2 {
+    font-size: 1.32rem; margin: 3rem 0 0.85rem; font-weight: 600;
+    letter-spacing: -0.005em; text-wrap: balance;
+  }
+  p { margin: 0 0 1rem; text-wrap: pretty; }
+  .lede { font-size: 1.1rem; }
+  .muted { color: var(--graphite); }
+  .eyebrow {
+    display: block; font-family: var(--mono); font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.02em; color: var(--graphite); margin: 0 0 0.65rem;
+  }
+  .eyebrow b { color: var(--kill); font-weight: 600; }
+  a { color: inherit; text-decoration-color: var(--faint); text-underline-offset: 3px; }
+  a:hover { text-decoration-color: var(--kill); }
+  a:focus-visible, .btn:focus-visible { outline: 2px solid var(--kill); outline-offset: 3px; }
+
+  /* ---------- proof strip ---------- */
+  .tally {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px;
+    margin: 1.9rem 0 0.6rem;
+  }
+  .tally .t {
+    border: 1px solid var(--rule); background: var(--card);
+    padding: 0.85rem 0.4rem 0.7rem; text-align: center;
+  }
+  .tally .n {
+    display: block; font-family: var(--mono); font-weight: 700;
+    font-size: clamp(1.35rem, 5.4vw, 1.85rem); line-height: 1;
+  }
+  .tally .l {
+    display: block; font-family: var(--mono); font-size: 0.6rem;
+    letter-spacing: 0.06em; color: var(--graphite); margin-top: 0.42rem;
+    text-transform: uppercase;
+  }
+  .tally .t.k { background: var(--kill-soft); border-color: color-mix(in srgb, var(--kill) 35%, var(--rule)); }
+  .tally .t.k .n { color: var(--kill); }
+  .boardnote {
+    font-family: var(--mono); font-size: 0.68rem; color: var(--graphite);
+    margin: 0.55rem 0 0;
+  }
+
+  /* ---------- the lies ---------- */
+  .lies { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+  .lies li {
+    border-top: 1px solid var(--rule); padding: 0.95rem 0 0.9rem;
+  }
+  .lies li:last-child { border-bottom: 1px solid var(--rule); }
+  .lies .h {
+    display: block; font-family: var(--mono); font-size: 0.73rem; font-weight: 600;
+    letter-spacing: 0.03em; color: var(--kill); margin-bottom: 0.3rem;
+  }
+  .lies p { margin: 0; font-size: 0.99rem; }
+
+  /* ---------- tiers ---------- */
+  .tiers { display: grid; gap: 1rem; margin: 1.6rem 0 0.5rem; }
+  @media (min-width: 700px) { .tiers { grid-template-columns: 1fr 1fr; align-items: stretch; } }
+  .tier {
+    border: 1px solid var(--rule); background: var(--card);
+    padding: 1.35rem 1.25rem 1.25rem; display: flex; flex-direction: column;
+    gap: 0.55rem; transition: border-color 140ms ease;
+  }
+  .tier:hover { border-color: var(--graphite); }
+  .tier.headline { border-color: var(--ink); box-shadow: 4px 4px 0 0 var(--rule); }
+  .tier .tname {
+    font-family: var(--mono); font-size: 0.66rem; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--graphite);
+  }
+  .tier .price { font-family: var(--mono); font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
+  .tier .price small { font-size: 0.66rem; font-weight: 400; color: var(--graphite); letter-spacing: 0.04em; }
+  .tier ul { margin: 0; padding: 0; list-style: none; font-size: 0.88rem; flex: 1 1 auto; }
+  .tier li { padding: 0.32rem 0 0.32rem 1rem; position: relative; border-bottom: 1px dotted var(--rule); }
+  .tier li:last-child { border-bottom: none; }
+  .tier li::before { content: "·"; position: absolute; left: 0.2rem; color: var(--faint); font-weight: 700; }
+
+  .btn {
+    display: block; text-align: center; font-family: var(--mono); font-size: 0.8rem;
+    font-weight: 600; letter-spacing: 0.03em; padding: 0.75rem 1rem;
+    border: 1px solid var(--ink); text-decoration: none; margin-top: 0.35rem;
+    transition: background 140ms ease, color 140ms ease;
+  }
+  .btn.primary { background: var(--ink); color: var(--paper); }
+  .btn.primary:hover { background: var(--kill); border-color: var(--kill); }
+  .btn.ghost:hover { background: var(--ink); color: var(--paper); }
+  .btn[aria-disabled="true"] {
+    background: var(--kill-soft); color: var(--kill); border-color: var(--kill);
+    border-style: dashed; cursor: not-allowed; pointer-events: none;
+  }
+
+  .code {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--graphite);
+    text-align: center; margin: 1rem 0 0;
+  }
+  .code b {
+    color: var(--ink); font-weight: 700; letter-spacing: 0.08em;
+    border-bottom: 1px dashed var(--faint);
+  }
+
+  /* ---------- not in the box ---------- */
+  .notship {
+    border: 1px solid var(--rule); border-left: 3px solid var(--kill);
+    background: var(--card); padding: 1.3rem 1.35rem 1.15rem; margin: 1.4rem 0 0;
+  }
+  .notship h2 { margin: 0 0 0.7rem; font-size: 1.1rem; }
+  .notship ul { margin: 0; padding-left: 1.1rem; font-size: 0.94rem; }
+  .notship li { margin-bottom: 0.5rem; }
+  .notship li:last-child { margin-bottom: 0; }
+
+  footer {
+    border-top: 1px solid var(--rule); margin-top: 3.2rem; padding-top: 1.2rem;
+    font-family: var(--mono); font-size: 0.7rem; color: var(--graphite); line-height: 1.75;
+  }
+  footer a { color: var(--ink); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .doc > * { animation: rise 0.45s cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <div class="filehead">
+    <span><b>THE FALSIFICATION KIT</b></span>
+    <span>26 gates run</span>
+    <span>22 kills</span>
+    <span>$0 lost live</span>
+  </div>
+
+  <h1>Your backtest is <em>lying</em> to you.</h1>
+
+  <p class="lede">I pre-registered 26 of mine so they couldn't. The pass/fail criteria
+  were written down <em>before</em> each test ran, and the goalposts stayed welded in
+  place afterward. Twenty-two strategies died — including the strongest raw edge the
+  pipeline ever measured, killed by trading friction alone.</p>
+
+  <p class="lede"><strong>This is the equipment that did the killing.</strong></p>
+
+  <div class="tally">
+    <div class="t"><span class="n">26</span><span class="l">gates</span></div>
+    <div class="t k"><span class="n">22</span><span class="l">kills</span></div>
+    <div class="t"><span class="n">1</span><span class="l">pass</span></div>
+    <div class="t"><span class="n">$0</span><span class="l">lost live</span></div>
+  </div>
+  <p class="boardnote">every number traces to a gate file written before its test ran —
+  all of it public, all of it free to read</p>
+
+  <h2><span class="eyebrow"><b>the problem</b> · three ways a good curve is fake</span>What kills a backtest quietly.</h2>
+
+  <ul class="lies">
+    <li>
+      <span class="h">FILLS YOU WILL NEVER GET</span>
+      <p>Your simulator fills at the signal price. The real market gaps straight
+      through your stop and hands you the next print. My best strategy measured a
+      2.23 profit factor at zero cost — and 1.06 once each hedged round trip paid
+      the spread four times.</p>
+    </li>
+    <li>
+      <span class="h">A UNIVERSE THAT ALREADY SURVIVED</span>
+      <p>Backtesting on the tickers that exist today quietly deletes every company
+      that went to zero. The dead ones were the whole risk.</p>
+    </li>
+    <li>
+      <span class="h">GOALPOSTS THAT MOVED</span>
+      <p>The parameters got chosen after you saw the result. Nothing in the equity
+      curve will ever tell you that happened — which is exactly why the criteria have
+      to be written down first.</p>
+    </li>
+  </ul>
+
+  <h2><span class="eyebrow">the instrument</span>What's in the box.</h2>
+
+  <div class="tiers">
+    <div class="tier headline">
+      <span class="tname">The Gauntlet</span>
+      <span class="price">$54</span>
+      <ul>
+        <li>Honest-fill simulator: gap-through stops, cost ladders, close-fill discipline</li>
+        <li>Pre-registered gate templates — the goalpost welder</li>
+        <li>De-survivorship universe builder + split-adjusted bar cache</li>
+        <li>The ETF gate harness: the code behind the strategies that survived</li>
+        <li>SEC EDGAR earnings fetcher, funding-rate carry simulator</li>
+        <li>3 runnable case studies with real output</li>
+      </ul>
+      <a class="btn primary" data-ls href="LS_LINK_GAUNTLET">Get The Gauntlet →</a>
+    </div>
+
+    <div class="tier">
+      <span class="tname">The Field Manual</span>
+      <span class="price">$139</span>
+      <ul>
+        <li>Everything in The Gauntlet</li>
+        <li>"10 ways your backtest is lying to you" — with the fix code</li>
+        <li>Live slippage instrumentation: signal price vs. real fill</li>
+        <li>Simulator smoke-test suite — test your tester first</li>
+        <li>Risk-control armor modules + the data proving they're load-bearing</li>
+        <li>Decision-shadow logger: measure a filter before you trust it</li>
+        <li>In-play relative-volume screener, with its own falsification attached</li>
+      </ul>
+      <a class="btn ghost" data-ls href="LS_LINK_FIELDMANUAL">Get The Field Manual →</a>
+    </div>
+  </div>
+
+  <p class="code">Came from the ad? Use code <b>GRAVEYARD10</b> for 10% off either tier.</p>
+
+  <div class="notship">
+    <h2>What's deliberately not in the box</h2>
+    <ul>
+      <li><strong>No trading bot.</strong> Nothing here can be wired to a live account.
+      It tests and measures only.</li>
+      <li><strong>No signals, no strategy picks.</strong> The one strategy that passed my
+      gates is decades-old public literature, and I disclose it free in the writeups.
+      Charging for a free PDF is the vendor move this kit exists to embarrass.</li>
+      <li><strong>No performance promises.</strong> Past testing rigor is not future
+      profit. Nothing here is financial advice, and I have no idea whether you will make
+      money — that is rather the point.</li>
+      <li><strong>Requires a computer.</strong> These are Python tools you run yourself,
+      not an app. Not usable on a phone or tablet.</li>
+    </ul>
+  </div>
+
+  <h2><span class="eyebrow">before you buy</span>Read the whole record first. It's free.</h2>
+  <p class="muted">All 26 gates, every number, every cause of death — including the
+  survivors that were certified and then benched by their own pre-registered
+  tiebreaker, and the readers who publicly broke my claims and got credited for it.
+  If the record doesn't convince you, the tools shouldn't either.</p>
+  <p><a href="https://strategygraveyard.com">Read the full graveyard →</a></p>
+
+  <footer>
+    <p>Instant download · 14-day refund, no questions asked — email and it's done.</p>
+    <p>Nothing on this page is financial advice or an offer of investment services.
+    These are software testing tools sold as-is. Past testing rigor does not predict
+    future trading results.</p>
+    <p><a href="https://strategygraveyard.com">strategygraveyard.com</a> ·
+    <a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">the repo</a></p>
+  </footer>
+
+</div>
+
+<script>
+  /* Fail loud, not silent: if the Lemon Squeezy links were never swapped in,
+     disable the buttons instead of sending paid traffic to a dead href. */
+  document.querySelectorAll('a[data-ls]').forEach(function (a) {
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('LS_LINK_') === 0) {
+      a.setAttribute('aria-disabled', 'true');
+      a.setAttribute('role', 'link');
+      a.removeAttribute('href');
+      a.textContent = '⚠ CHECKOUT LINK NOT WIRED';
+    }
+  });
+</script>
+</body>
+</html>
