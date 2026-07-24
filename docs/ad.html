@@ -1,0 +1,412 @@
+<!doctype html>
+<!--
+  ============================================================================
+  AD LANDING PAGE v2  ·  strategygraveyard.com/ad.html
+  ============================================================================
+  A bolder, conversion-focused variant of kit.html, aimed at algo traders +
+  coders (per tester feedback: target that audience, don't go universal).
+  Same honest brand: NO income claims, NO fake urgency/scarcity, NO countdowns.
+
+  BEFORE LIVE, WIRE TWO THINGS (search the markers):
+    LS_LINK      -> checkout links are already filled (Gauntlet / Field Manual).
+    FORM_ACTION  -> the email-capture form posts to FORM_ACTION_PLACEHOLDER.
+                    Wire it to a form/newsletter service (Buttondown, ConvertKit,
+                    Formspree, etc.). Until then the form self-disables with a note.
+  Attribution code GRAVEYARD10 (10% off, manual entry) appears only here + in the ad.
+  Refund line matches the honest "genuine-issue" policy — reconcile with Lemon Squeezy.
+  ============================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="26 pre-registered backtests of retail trading strategies. 22 died. The tools that killed them — for people who build strategies in code.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#131614">
+<title>Strategy Graveyard — the kit that kills bad backtests</title>
+<link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
+<meta property="og:title" content="Strategy Graveyard — 26 backtests, 22 kills">
+<meta property="og:description" content="The falsification kit that killed 22 of my own trading strategies. For people who build in code.">
+<meta property="og:url" content="https://strategygraveyard.com/ad.html">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap">
+<style>
+  :root {
+    --paper:#F6F7F3; --ink:#1A1E1B; --graphite:#50564F; --faint:#A9AEA8;
+    --rule:#DADDD6; --kill:#B0372B; --kill-soft:rgba(176,55,43,0.07);
+    --pass:#2E6B44; --pass-soft:rgba(46,107,68,0.08); --card:#FFFFFF;
+    /* dark hero surface (the autopsy table) */
+    --night:#121513; --night-2:#171B18; --night-ink:#E7E9E4; --night-mut:#9BA29B;
+    --night-rule:#2A2F2B; --kill-dk:#DA5C4C; --pass-dk:#5CA97A;
+    --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Consolas,monospace;
+    --serif:"Spectral",Georgia,"Times New Roman",serif;
+    --z-nav:100;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --paper:#131614; --ink:#E4E6E1; --graphite:#A8AFA9; --faint:#6A716B;
+      --rule:#2B2F2C; --kill:#DA5C4C; --kill-soft:rgba(218,92,76,0.12);
+      --pass:#5CA97A; --pass-soft:rgba(92,169,122,0.12); --card:#1A1E1B; }
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--serif);font-size:18px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--kill);color:#fff;}
+  .mono{font-family:var(--mono);}
+  .nb{white-space:nowrap;}
+  a{color:inherit;}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--kill);outline-offset:3px;border-radius:2px;}
+
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem;}
+  .narrow{max-width:42rem;}
+
+  /* ============== HERO — dark autopsy table ============== */
+  .hero{background:var(--night);color:var(--night-ink);
+    border-bottom:1px solid var(--night-rule);position:relative;overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 80% at 50% -10%, rgba(218,92,76,0.10), transparent 60%);}
+  .hero .wrap{position:relative;padding:clamp(2.2rem,5vw,4rem) 1.5rem clamp(2.6rem,5vw,3.4rem);}
+  .filebar{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.04em;
+    color:var(--night-mut);display:flex;flex-wrap:wrap;gap:0.4rem 1.6rem;
+    padding-bottom:1.4rem;border-bottom:1px solid var(--night-rule);}
+  .filebar b{color:var(--night-ink);font-weight:600;}
+  .hero h1{font-family:var(--serif);font-weight:700;
+    font-size:clamp(2.4rem,7vw,4.6rem);line-height:1.02;letter-spacing:-0.03em;
+    margin:1.8rem 0 0;text-wrap:balance;}
+  .hero h1 em{font-style:italic;color:var(--kill-dk);}
+  .hero .lede{font-size:clamp(1.05rem,2.2vw,1.24rem);color:var(--night-ink);
+    max-width:40rem;margin:1.3rem 0 0;line-height:1.55;opacity:0.92;}
+  .hero .lede b{font-weight:600;}
+  .hero .who{font-family:var(--mono);font-size:0.8rem;color:var(--night-mut);
+    margin:1.1rem 0 0;}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:0.8rem 1rem;align-items:center;margin:2rem 0 0;}
+  .btn{font-family:var(--mono);font-weight:600;font-size:0.86rem;letter-spacing:0.02em;
+    padding:0.85rem 1.35rem;border:1px solid;text-decoration:none;display:inline-flex;
+    align-items:center;gap:0.5rem;transition:transform .15s cubic-bezier(.16,1,.3,1),
+    background .15s ease,color .15s ease,box-shadow .15s ease;cursor:pointer;}
+  @media (prefers-reduced-motion:no-preference){.btn:hover{transform:translateY(-2px);}}
+  .btn-primary{background:var(--kill-dk);border-color:var(--kill-dk);color:#0e0f0d;
+    box-shadow:0 0 0 0 rgba(218,92,76,.5);}
+  .btn-primary:hover{box-shadow:0 8px 24px -6px rgba(218,92,76,.55);}
+  .btn-ghost{background:transparent;border-color:var(--night-rule);color:var(--night-ink);}
+  .btn-ghost:hover{border-color:var(--night-mut);}
+  .cta-note{font-family:var(--mono);font-size:0.72rem;color:var(--night-mut);}
+
+  /* ============== the ledger visual ============== */
+  .ledger{margin:2.4rem 0 0;}
+  .ledger-cap{font-family:var(--mono);font-size:0.72rem;color:var(--night-mut);
+    margin:0 0 0.7rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .ledger-cap b{color:var(--night-ink);}
+  .grid26{display:grid;grid-template-columns:repeat(26,1fr);gap:4px;}
+  @media (max-width:640px){.grid26{grid-template-columns:repeat(13,1fr);}}
+  .cell{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
+    font-family:var(--mono);font-weight:700;font-size:clamp(.6rem,1.6vw,.95rem);
+    border:1px solid var(--night-rule);color:var(--night-mut);user-select:none;
+    background:var(--night-2);border-radius:2px;}
+  .cell.fail{color:var(--kill-dk);background:rgba(218,92,76,.10);border-color:rgba(218,92,76,.34);}
+  .cell.pass{color:#0e0f0d;background:var(--pass-dk);border-color:var(--pass-dk);}
+  .cell.bench{color:var(--pass-dk);background:rgba(92,169,122,.14);border-color:rgba(92,169,122,.4);}
+  .cell.split{color:var(--night-ink);border-color:var(--night-mut);
+    background:linear-gradient(135deg,rgba(218,92,76,.14) 50%,rgba(92,169,122,.14) 50%);}
+  .tally{font-family:var(--mono);font-size:0.8rem;color:var(--night-mut);margin:1rem 0 0;line-height:1.9;}
+  .tally b{color:var(--night-ink);} .tally .k{color:var(--kill-dk);} .tally .g{color:var(--pass-dk);}
+
+  /* ============== body sections (paper) ============== */
+  section{padding:clamp(3rem,7vw,5rem) 0;}
+  .kicker{font-family:var(--mono);font-size:0.74rem;letter-spacing:0.04em;
+    color:var(--kill);margin:0 0 0.7rem;}
+  h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,3.6vw,2.5rem);
+    line-height:1.08;letter-spacing:-0.02em;margin:0 0 0.6rem;text-wrap:balance;}
+  h2 em{font-style:italic;}
+  .sub{color:var(--graphite);font-size:1.06rem;max-width:40rem;margin:0 0 2rem;text-wrap:pretty;}
+  p{margin:0 0 1rem;text-wrap:pretty;}
+
+  /* the three lies — numbered because it IS an enumerated set of failure modes */
+  .lies{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:1.4rem;}
+  .lie{display:grid;grid-template-columns:3.2rem 1fr;gap:1.2rem;align-items:start;
+    padding:1.5rem 0;border-bottom:1px solid var(--rule);}
+  .lie .n{font-family:var(--mono);font-weight:700;font-size:1.5rem;color:var(--kill);line-height:1;}
+  .lie h3{font-family:var(--mono);font-size:0.82rem;font-weight:600;letter-spacing:0.03em;
+    text-transform:uppercase;color:var(--ink);margin:0.1rem 0 0.5rem;}
+  .lie p{margin:0;font-size:1rem;color:var(--graphite);max-width:44rem;}
+  .lie p b{color:var(--ink);font-weight:600;}
+
+  /* offer */
+  .tiers{display:grid;gap:1.2rem;margin-top:1.6rem;}
+  @media (min-width:760px){.tiers{grid-template-columns:1fr 1fr;align-items:stretch;}}
+  .tier{background:var(--card);border:1px solid var(--rule);padding:1.6rem 1.5rem;
+    display:flex;flex-direction:column;gap:0.7rem;}
+  .tier.head{border-color:var(--ink);box-shadow:5px 5px 0 0 var(--rule);}
+  .tname{font-family:var(--mono);font-size:0.7rem;font-weight:600;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--graphite);}
+  .price{font-family:var(--mono);font-weight:700;font-size:2rem;line-height:1;}
+  .price small{font-size:0.66rem;font-weight:400;color:var(--graphite);letter-spacing:.04em;}
+  .tier ul{list-style:none;margin:0.3rem 0 0;padding:0;font-size:0.92rem;flex:1 1 auto;}
+  .tier li{padding:0.4rem 0 0.4rem 1.4rem;position:relative;border-bottom:1px dotted var(--rule);color:var(--graphite);}
+  .tier li:last-child{border-bottom:none;}
+  .tier li::before{content:"→";position:absolute;left:0;color:var(--kill);font-family:var(--mono);font-size:0.8rem;}
+  .tier li b{color:var(--ink);font-weight:600;}
+  .buy{margin-top:0.6rem;text-align:center;font-family:var(--mono);font-weight:600;
+    font-size:0.86rem;padding:0.8rem;text-decoration:none;border:1px solid var(--ink);
+    transition:background .15s ease,color .15s ease;}
+  .buy.solid{background:var(--ink);color:var(--paper);}
+  .buy.solid:hover{background:var(--kill);border-color:var(--kill);color:#fff;}
+  .buy.outline:hover{background:var(--ink);color:var(--paper);}
+  .buy[aria-disabled="true"]{background:var(--kill-soft);color:var(--kill);
+    border-style:dashed;pointer-events:none;}
+  .code{font-family:var(--mono);font-size:0.8rem;color:var(--graphite);text-align:center;margin-top:1.2rem;}
+  .code b{color:var(--ink);letter-spacing:0.08em;border-bottom:1px dashed var(--faint);}
+
+  /* email capture — a deliberate dark band in BOTH themes */
+  .capture{background:var(--night);color:var(--night-ink);}
+  .capture h2{color:var(--night-ink);}
+  .capture .sub{color:var(--night-mut);}
+  .capture-form{display:flex;flex-wrap:wrap;gap:0.7rem;max-width:34rem;margin-top:0.4rem;}
+  .capture-form input{flex:1 1 16rem;font-family:var(--mono);font-size:0.9rem;
+    padding:0.8rem 1rem;background:rgba(255,255,255,0.04);border:1px solid var(--night-rule);
+    color:var(--night-ink);border-radius:2px;}
+  .capture-form input::placeholder{color:var(--night-mut);}
+  .capture-form button{font-family:var(--mono);font-weight:600;font-size:0.86rem;
+    padding:0.8rem 1.3rem;background:var(--night-ink);color:var(--night);border:none;
+    cursor:pointer;border-radius:2px;transition:background .15s ease,color .15s ease;}
+  .capture-form button:hover{background:var(--kill-dk);color:#0e0f0d;}
+  .capture-note{font-family:var(--mono);font-size:0.72rem;color:var(--night-mut);margin-top:0.8rem;}
+
+  /* not in the box + trust */
+  .notbox{border:1px solid var(--rule);background:var(--card);padding:1.6rem 1.6rem 1.3rem;margin-top:1.4rem;}
+  .notbox h3{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin:0 0 0.8rem;}
+  .notbox ul{margin:0;padding-left:1.2rem;font-size:0.96rem;color:var(--graphite);}
+  .notbox li{margin-bottom:0.55rem;}
+  .notbox li:last-child{margin-bottom:0;}
+  .notbox b{color:var(--ink);font-weight:600;}
+
+  footer{border-top:1px solid var(--rule);padding:2rem 0 3rem;font-family:var(--mono);
+    font-size:0.72rem;color:var(--graphite);line-height:1.8;}
+  footer a{color:var(--ink);}
+
+  /* motion: ledger stamps in */
+  @media (prefers-reduced-motion:no-preference){
+    .hero h1,.hero .lede,.hero .who,.cta-row{opacity:0;transform:translateY(14px);
+      animation:rise .6s cubic-bezier(.16,1,.3,1) forwards;}
+    .hero .lede{animation-delay:.08s;} .hero .who{animation-delay:.14s;} .cta-row{animation-delay:.2s;}
+    .cell{opacity:0;transform:scale(1.3);animation:stamp .34s cubic-bezier(.16,1,.3,1) forwards;
+      animation-delay:calc(.5s + var(--i)*22ms);}
+    .tally{opacity:0;animation:rise .5s ease forwards;animation-delay:1.15s;}
+    @keyframes rise{to{opacity:1;transform:none;}}
+    @keyframes stamp{from{opacity:0;transform:scale(1.3);}to{opacity:1;transform:scale(1);}}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="wrap">
+      <div class="filebar">
+        <span><b>STRATEGY GRAVEYARD</b></span>
+        <span>case files 01–26</span>
+        <span>26 gates run</span>
+        <span>22 kills</span>
+        <span>$0 lost live</span>
+      </div>
+
+      <h1>26 strategies.<br>22 <em>autopsies</em>.<br>One honest pipeline.</h1>
+
+      <p class="lede">You write backtests in code. So did I — then I pre-registered the
+      pass/fail criteria <b>before</b> every run and refused to move the goalposts.
+      Twenty-two strategies died, the strongest raw edge I ever measured included,
+      killed by trading friction alone. <b>This kit is the equipment that killed them.</b></p>
+
+      <p class="who">For algorithmic traders, quants, and anyone who's ever trusted a good-looking equity curve.</p>
+
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#kit">Get the kit →</a>
+        <a class="btn btn-ghost" href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">Read all 26 free first</a>
+        <span class="cta-note">$54 · instant download · no bot, no signals</span>
+      </div>
+
+      <!-- the ledger: the whole thesis in one image -->
+      <div class="ledger" role="img" aria-label="Gate ledger: 26 pre-registered backtests in order. Gates 1–16 all failed. Gate 17 passed. Gate 18 was certified then benched. Gate 19 was a split decision. Gates 20–25 failed. Gate 26, the Japan test, was a split verdict. Total: 22 kills, 1 pass, 2 benched, 1 split, zero dollars lost live.">
+        <div class="ledger-cap">
+          <span>the ledger — <b>every family, measured against the gate it pre-registered</b></span>
+          <span class="nb">× fail · ✓ pass</span>
+        </div>
+        <div class="grid26" aria-hidden="true">
+          <!-- 1–16 fail -->
+          <div class="cell fail" style="--i:0">×</div><div class="cell fail" style="--i:1">×</div>
+          <div class="cell fail" style="--i:2">×</div><div class="cell fail" style="--i:3">×</div>
+          <div class="cell fail" style="--i:4">×</div><div class="cell fail" style="--i:5">×</div>
+          <div class="cell fail" style="--i:6">×</div><div class="cell fail" style="--i:7">×</div>
+          <div class="cell fail" style="--i:8">×</div><div class="cell fail" style="--i:9">×</div>
+          <div class="cell fail" style="--i:10">×</div><div class="cell fail" style="--i:11">×</div>
+          <div class="cell fail" style="--i:12">×</div><div class="cell fail" style="--i:13">×</div>
+          <div class="cell fail" style="--i:14">×</div><div class="cell fail" style="--i:15">×</div>
+          <!-- 17 pass, 18 bench, 19 split -->
+          <div class="cell pass" style="--i:16">✓</div>
+          <div class="cell bench" style="--i:17">✓</div>
+          <div class="cell split" style="--i:18">◐</div>
+          <!-- 20–25 fail -->
+          <div class="cell fail" style="--i:19">×</div><div class="cell fail" style="--i:20">×</div>
+          <div class="cell fail" style="--i:21">×</div><div class="cell fail" style="--i:22">×</div>
+          <div class="cell fail" style="--i:23">×</div><div class="cell fail" style="--i:24">×</div>
+          <!-- 26 split -->
+          <div class="cell split" style="--i:25">◐</div>
+        </div>
+        <p class="tally"><b>26</b> gates · <b class="k">22</b> kills · <b class="g">1</b> pass ·
+        <b class="g">2</b> certified, then benched by their own tiebreaker ·
+        <b>1</b> split verdict · <b>$0</b> lost live</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===================== THE PROBLEM ===================== -->
+  <section>
+    <div class="wrap">
+      <p class="kicker">why a good curve isn't an edge</p>
+      <h2>Three ways your backtest lies — <em>quietly</em>.</h2>
+      <p class="sub">None of them show up in the equity curve. That's the whole problem: the
+      curve looks the same whether the edge is real or an artifact. Each of these killed
+      strategies of mine that looked, right up until the test, like winners.</p>
+
+      <div class="lies">
+        <div class="lie">
+          <div class="n">01</div>
+          <div>
+            <h3>Fills you will never get</h3>
+            <p>Your simulator fills at the signal price. The real market gaps straight
+            through your stop and hands you the next print. My strongest strategy measured a
+            <b>2.23 profit factor at zero cost</b> — and 1.06 once each hedged round trip
+            paid the spread four times. Friction, not the idea, was the murderer.</p>
+          </div>
+        </div>
+        <div class="lie">
+          <div class="n">02</div>
+          <div>
+            <h3>A universe that already survived</h3>
+            <p>Backtesting on the tickers that exist today quietly deletes every company that
+            went to zero. <b>The dead names were the whole risk.</b> The same code scored 1.47
+            on a curated universe and 1.05 on a de-survivorship one — the difference was pure
+            selection bias.</p>
+          </div>
+        </div>
+        <div class="lie">
+          <div class="n">03</div>
+          <div>
+            <h3>Goalposts that moved</h3>
+            <p>The parameters got chosen after you saw the result. Nothing in the curve will
+            ever tell you that happened — which is exactly why every gate here was
+            <b>written down before the test ran</b>, and left untouched after. Pre-register,
+            or you're writing fiction.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE OFFER ===================== -->
+  <section id="kit">
+    <div class="wrap">
+      <p class="kicker">the instrument</p>
+      <h2>The kit that did the killing.</h2>
+      <p class="sub">Runnable Python. You point it at your own strategies and it does to them
+      what it did to mine. Not a bot, not signals — a rig for finding out whether the edge
+      is real before your money does.</p>
+
+      <div class="tiers">
+        <div class="tier head">
+          <span class="tname">The Gauntlet</span>
+          <span class="price">$54</span>
+          <ul>
+            <li><b>Honest-fill simulator</b> — gap-through stops, cost ladders, close-fill discipline</li>
+            <li><b>Pre-registered gate templates</b> — the goalpost welder</li>
+            <li>De-survivorship universe builder + split-adjusted bar cache</li>
+            <li>The ETF gate harness — the code behind the strategies that survived</li>
+            <li>SEC EDGAR earnings fetcher, funding-rate carry simulator</li>
+            <li>3 runnable case studies with real output</li>
+          </ul>
+          <a class="buy solid" data-ls href="https://strategygraveyard.lemonsqueezy.com/checkout/buy/07ff08ca-1e65-44e9-8182-619cb1ac91d6">Get The Gauntlet — $54 →</a>
+        </div>
+        <div class="tier">
+          <span class="tname">The Field Manual</span>
+          <span class="price">$139</span>
+          <ul>
+            <li><b>Everything in The Gauntlet</b>, plus:</li>
+            <li>"10 ways your backtest is lying to you" — with the fix code</li>
+            <li>Live slippage instrumentation: signal price vs. real fill</li>
+            <li>Simulator smoke-test suite — test your tester first</li>
+            <li>Risk-control armor modules + the data proving they're load-bearing</li>
+            <li>Decision-shadow logger + all 26 gate writeups, full numbers</li>
+          </ul>
+          <a class="buy outline" data-ls href="https://strategygraveyard.lemonsqueezy.com/checkout/buy/7172e61a-e04b-41ba-8b41-c371aa98495a">Get The Field Manual — $139 →</a>
+        </div>
+      </div>
+      <p class="code">From the ad? Use code <b>GRAVEYARD10</b> for 10% off either tier.</p>
+    </div>
+  </section>
+
+  <!-- ===================== EMAIL CAPTURE ===================== -->
+  <section class="capture">
+    <div class="wrap narrow">
+      <p class="kicker" style="color:var(--kill-dk)">not ready to buy?</p>
+      <h2>Take the free one first.</h2>
+      <p class="sub">The artifact-hunting checklist — every backtest lie priced by the disaster
+      that taught it — is free, forever. Drop your email and I'll send it, plus the writeup of
+      the single strongest edge I ever found and why it still died.</p>
+      <form class="capture-form" data-capture action="FORM_ACTION_PLACEHOLDER" method="post">
+        <input type="email" name="email" placeholder="you@wherever.com" required aria-label="Email address">
+        <button type="submit">Send the checklist</button>
+      </form>
+      <p class="capture-note">No spam, no course upsell drip. The checklist, the writeup, done.
+      Everything's also free on <a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard" style="color:var(--night-ink)">GitHub</a> if you'd rather skip the email.</p>
+    </div>
+  </section>
+
+  <!-- ===================== TRUST ===================== -->
+  <section style="padding-top:clamp(2rem,4vw,3rem)">
+    <div class="wrap">
+      <div class="notbox">
+        <h3>What's deliberately not in the box</h3>
+        <ul>
+          <li><b>No trading bot.</b> Nothing here can be wired to a live account. It tests and measures only.</li>
+          <li><b>No signals, no picks.</b> The one strategy that passed my gates is decades-old public literature, disclosed free in the writeups. Charging for a free PDF is the move this kit exists to embarrass.</li>
+          <li><b>No performance promises.</b> Past testing rigor is not future profit, and I have no idea whether you'll make money — that's rather the point of a graveyard.</li>
+          <li><b>Requires a computer.</b> These are Python tools you run yourself, not an app. Not usable on a phone or tablet.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <p>Instant download · 14-day refund if the tools don't run on a supported setup — email and it's sorted.</p>
+      <p>Nothing on this page is financial advice or an offer of investment services. These are
+      software testing tools sold as-is; past testing rigor does not predict future trading results.</p>
+      <p><a href="https://strategygraveyard.com">strategygraveyard.com</a> ·
+      <a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">the repo</a></p>
+    </div>
+  </footer>
+
+<script>
+  // Fail loud, not silent: disable any unwired CTA / form instead of shipping a dead action.
+  document.querySelectorAll('a[data-ls]').forEach(function(a){
+    if((a.getAttribute('href')||'').indexOf('LS_LINK')===0){
+      a.setAttribute('aria-disabled','true'); a.removeAttribute('href');
+      a.textContent='⚠ CHECKOUT LINK NOT WIRED';
+    }
+  });
+  document.querySelectorAll('form[data-capture]').forEach(function(f){
+    if((f.getAttribute('action')||'').indexOf('FORM_ACTION')===0){
+      var b=f.querySelector('button'), i=f.querySelector('input');
+      f.addEventListener('submit',function(e){e.preventDefault();});
+      if(b){b.textContent='⚠ form not wired'; b.style.background='var(--kill)'; b.style.color='#fff';}
+      if(i){i.disabled=true;}
+    }
+  });
+</script>
+</body>
+</html>
