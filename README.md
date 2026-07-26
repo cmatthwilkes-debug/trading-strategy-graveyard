@@ -1,10 +1,12 @@
 # The Trading Strategy Graveyard
 
-**26 pre-registered backtests of retail trading strategies. 22 kills — including the
+**31 pre-registered backtests of retail trading strategies. 27 kills — including the
 strongest raw edge ever measured here, which died of friction alone, and the famous
 candlestick patterns, measured across 43,624 signals. Two passes that STILL didn't get
-the money. And a 26th gate, proposed by a reader, that borrowed Japan's lost decades
-to price this record's one blind spot — and split the verdict by five basis points.
+the money. A reader-designed gate that borrowed Japan's lost decades and split the
+verdict by five basis points. And a closing 30-hour sweep through the collector's side
+of the market — merger arbitrage, prediction-market arbitrage, paid order flow, and two
+operator-proposed momentum designs — that ended the hunt with the whole map colored in.
 This is the full record — every strategy, every number, every artifact that almost
 fooled me.**
 
@@ -88,6 +90,11 @@ repriced in public — that story is below the kill table too. All written up th
 | Equity pairs / stat-arb (GGR distance method, liquid names, long-short) | **gross PF 2.23 — the strongest raw edge in this entire record** → 1.06 at 0.10%/side/leg → 0.41 at 0.25% | market-neutral crosses the spread FOUR times per round trip on a 0.22%-per-trade move; the edge is real and you can't afford to harvest it |
 | Insider-cluster buying (2+ insiders, $200k+, SEC Form 4 structured data) | PF 1.17 @ 0.25%/side, 60d hold — and only 1.23 gross: the flattest cost decay in the record | the first kill where friction wasn't the murderer: real drift, too small for the bar, and 2022 PF 0.86 — insiders buy early, all the way down |
 | Candlestick patterns (bullish engulfing, hammer, piercing line — 43,624 signals) | pooled PF 0.95 @ 0.25%/side; gross ceiling 1.10–1.12; the hammer alone is a literal coin flip (PF 1.00) | the engulfing (0.80) is the single worst construction in this record; "reversal" candles in 2022 = PF 0.75 |
+| Cash-merger arbitrage (789 deals hand-built from SEC EDGAR, announcement-first so the broken deals stay in, break gaps paid in full) | 4.03% CAGR vs a cash+3pp bar of 4.32% — Sharpe 0.95, book maxDD −5.5%, and the famous break tail turned out SURVIVABLE (10% broke, mean −2.9%) | priced to the bar: clears cash+3 only at exactly ZERO cost; 0.05%/side already sinks it. The 2019+ holdout was never opened — frozen protocol seals it on a primary fail |
+| Prediction-market cross-venue arb (17 identical-resolution Kalshi/Polymarket pairs, hourly) | raw readout "+29%/yr" — every fat entry a bookless listing-week print; mature-market number +2.2%/yr on deployed capital | the gap is real (>1¢ in 50–95% of hours) and smaller than the toll (2.5–4¢ round trip); pays less than T-bills. One venue added a 5% taker fee mid-study |
+| Paid order flow / maker rebates (receipts only — no simulated maker fills, queue position is unknowable offline) | net −0.17 to −0.23¢/share at the accessible tier, every venue receipted | the payment is real and starts at ~$10M/month of flow; below that the structure charges YOU to provide |
+| Unified everything-rotation (1,365 de-survivorship stocks + 13 cross-asset ETFs, ONE momentum pool — operator's design) | 7.14%/yr vs SPY's 11.53%, maxDD −41% vs −24.5% | the defensive valve never fired: ETFs entered the top-10 in 0 of 55 months — a thousand-stock pool always has ten hotter names than TLT/GLD |
+| Trend overlay on the S&P momentum index fund (Faber 10m, drawdown-engine framing pre-registered) | cut maxDD from −31% to −15% — the insurance WORKS | and costs 3.4pp/yr against a 2pp cap frozen in advance; six whipsaw re-entries, one at +17.4% above its exit. Sizing beats switching |
 
 The pattern across the whole table: **every DIRECTIONAL price-derived signal converges
 to roughly PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction
@@ -384,6 +391,81 @@ drift real, and the coin landed tails with a failure mode I didn't predict. Also
 caught mid-gate by the eyeball rule: pre-window filings collapsing into fake day-one
 mega-clusters that "entered" at meme-season June 2021 — the artifact flattered the
 strategy and got corrected before publication. Sixth artifact the checklist has caught.
+
+## Gates 27–31: the collector's side of the counter (the sweep that ended the hunt)
+
+Twenty-six gates in, the record had a standing thesis: **your slippage is somebody's
+revenue.** Every directional family died at the same friction floor, which means someone
+is collecting that floor — market makers collecting spread, venues collecting fees,
+institutions collecting structural premiums. So the last five gates stopped predicting
+price entirely and went at the collecting side directly: can a retail account stand on
+the other side of the counter? One 30-hour sweep, five frozen gates, five kills — and
+the same sentence measured five ways: **the payment is always real, and it is always
+priced to leave nothing above cash-compensation at retail scale.**
+
+**Gate 27 — cash-merger arbitrage (the operator-vs-machine gate).** The operator
+registered an unhedged PASS four days before the run; the machine put it at 65% fail.
+The deal database was built from SEC filings announcement-first — 4,963 filings parsed,
+789 validated cash deals 2016–2026 — so the broken deals stayed in the sample, and every
+break paid its gap in full (IRBT −76%, ROG −61% are in there). The result inverted both
+predictions' reasoning: the famous break tail was SURVIVABLE (10% of deals broke, mean
+−2.9%, book maxDD −5.5% across ~40 concurrent positions — diversification genuinely
+insures it), and the death was the quiet kind: net CAGR 4.03% against a cash+3pp bar of
+4.32%, clearing it only at exactly zero cost. A structural premium priced almost exactly
+at its own compensation floor. The 2019+ holdout stays sealed — the frozen protocol
+doesn't open it on a primary fail. And because the first three sims printed 7%, 27%, and
+17% before validity audits tore them down (fictional payouts from bond-delisting Form
+25s, acquirers mis-cast as targets, a rebalancing rule harvesting bid-ask bounce as
+alpha), the full five-round defect ledger ships in `merger_arb_experiment/DEVIATIONS.md`.
+A hostile reader should get the knife with the body.
+
+**Gate 28 — prediction-market cross-venue arbitrage.** Seventeen identical-resolution
+Kalshi/Polymarket pairs, 25,231 matched hourly rows. Measured raw, the arb "returns"
++29%/yr — and every fat entry sits inside a market's first 72 hours, where one venue's
+price is a bookless print that collapses 30 cents in five hours on no news. No
+historical order book exists to verify any of it was executable; a price without a book
+is not a quote, so that readout ships as an unverifiable upper bound. The mature-market
+number — the one you could actually have — is +2.2%/yr on deployed capital, below the
+T-bills the cash would otherwise sit in. The residual gap between venues is real,
+persistent, and precisely smaller than the round-trip toll: the visible crumb is what
+faster capital left behind. Two venue facts worth the price of the gate: Polymarket now
+charges a 5% taker fee on the exact market category measured (the toll booth raised its
+price mid-study), and Kalshi purges settled-market price history within weeks — the
+2024 election fat-gap regime is unmeasurable backward, forever. If that regime ever
+returns, only a live depth logger armed IN ADVANCE can price it.
+
+**Gate 29 — paid order flow / liquidity provision.** Pre-registered form: receipts
+only, no backtest — a maker strategy's queue position and adverse selection are
+unknowable offline, and simulating them is the same fantasy-fill class this repo exists
+to kill. The receipts: at the retail-accessible tier, "collecting the rebate" on US
+equities nets MINUS 0.17–0.23 cents per share (best route, published schedules); the
+buy-side crossover to positive sits near 3 million shares/month. In crypto, the first
+genuinely positive maker payment on any US-accessible venue is −0.02% — at $10M+/30-day
+volume. Zero-fee maker tiers now exist at zero volume, and zero is not a payment: at 0%
+fee the only revenue left is the spread, and the spread exists because resting orders
+lose to informed flow. Selling order flow outright requires broker-dealer registration.
+The toll booth has a minimum, and the minimum is roughly $10M a month.
+
+**Gates 30–31 — the momentum coda (the operator's designs, gated and priced).** Asked
+to beat the index, the operator proposed rotating everything in one pool — 1,365 stocks
+plus 13 cross-asset ETFs, one momentum rank, top 10 — so defensive ETFs would take over
+in bears. Pre-registered valve check: in 55 months, including all of 2022, not one ETF
+ever out-ranked the ten hottest stocks. The pool drowns the valve by arithmetic, and the
+book earned 7.14%/yr with a −41% drawdown against SPY's 11.53%. Meanwhile the boring
+S&P momentum index fund the exercise was trying to beat compounded 19.5%/yr for a
+decade, live — and the professionally-run CONCENTRATED academic momentum fund did 12.4%,
+worse than plain SPY. Every step toward "better" — more concentration, fresher signals,
+cleverer math — made it worse, monotonically. Gate 31 then priced the one honest
+improvement left, a trend overlay on that index fund, under a drawdown-engine framing
+frozen in advance: it cut the max drawdown from −31% to −15% (the insurance works) and
+paid 3.4pp/yr for it against a 2pp cap (the insurance is overpriced) — six whipsaw
+re-entries, one of them 17.4% above its own exit. Verdict on the record: **sizing beats
+switching.** The one keeper this entire record ever surfaced is a 13-basis-point index
+product you buy, size to your drawdown budget, and leave alone.
+
+Full gate files, frozen predictions, verdicts, and charts: `merger_arb_experiment/`,
+`predmarket_arb_experiment/`, `orderflow_experiment/`, `stock_rotation_experiment/`,
+`spmo_overlay_experiment/`.
 
 ## The three lessons that cost the most
 

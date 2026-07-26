@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="26 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
+<meta name="description" content="31 pre-registered backtests. 27 kills. Tools that stop your backtest from lying to you.">
 <meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
-<meta property="og:description" content="26 pre-registered backtests. 22 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:description" content="31 pre-registered backtests. 27 kills. Tools that stop your backtest from lying to you.">
 <meta property="og:url" content="https://strategygraveyard.com">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -501,11 +501,11 @@
     <span>performance promises: <b>0</b></span>
   </div>
 
-  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×22 FAILED</span></span></h1>
+  <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×27 FAILED</span></span></h1>
 
-  <p class="lede">I have run 26 pre-registered backtests of retail trading strategies.
+  <p class="lede">I have run 31 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
-  stayed welded in place after. Twenty-two died, among them the strongest raw edge this
+  stayed welded in place after. Twenty-seven died, among them the strongest raw edge this
   pipeline ever measured, killed by friction alone. Two passed and still didn't get my
   money, because a tiebreaker written in advance said they hadn't earned it. Every
   strategy died in the pipeline before it touched a live account: total tuition paid to
@@ -516,7 +516,7 @@
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="ledger">
-    <div class="ledger-row" role="img" aria-label="The gate ledger: 26 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed. Gate 26, the reader-proposed Japan test, was a split verdict: survived its governing window by five basis points, trod water over the full 23 years.">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 31 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed. Gate 26, the reader-proposed Japan test, was a split verdict: survived its governing window by five basis points, trod water over the full 23 years. Gates 27 through 31 all failed: the three structural-payment families — merger arbitrage, prediction-market arbitrage, paid order flow — and two operator-proposed momentum designs.">
       <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
       <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
@@ -543,11 +543,17 @@
       <div class="slot fail"><span class="box" style="--i:23">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:24">×</span><span class="idx">25</span></div>
       <div class="slot split"><span class="box" style="--i:25">◐</span><span class="idx">26</span></div>
+      <div class="slot fail"><span class="box" style="--i:26">×</span><span class="idx">27</span></div>
+      <div class="slot fail"><span class="box" style="--i:27">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:28">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:29">×</span><span class="idx"></span></div>
+      <div class="slot fail"><span class="box" style="--i:30">×</span><span class="idx">31</span></div>
     </div>
     <div class="ledger-notes" aria-hidden="true">
       <span class="note"><b>gates 17–25</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">6 kills, 5 in one day</span></span>
+      <span class="note"><b>gates 27–31</b><span class="nb">the collector's-side sweep</span> · <span class="nb">5 kills in 30 hours</span></span>
     </div>
-    <p class="ledger-tally"><b>26</b> gates · <b class="k">22</b> kills ·
+    <p class="ledger-tally"><b>31</b> gates · <b class="k">27</b> kills ·
     <b class="g">1</b> pass · <b class="g">2</b> certified, then benched by their own
     pre-registered tiebreaker · <b>1</b> split verdict (Japan) · <b>$0</b> lost live</p>
     <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
@@ -621,7 +627,7 @@
     <p class="chart-note">Not one family reached the line. The catalyst pair is the
     expensive lesson: a passing primary sample (hollow dot) collapsing to negative
     expectancy on the holdout it never touched. The pairs dot is the newest and
-    sharpest: PF 2.23 at zero cost (the strongest gross edge in all 24 gates),
+    sharpest: PF 2.23 at zero cost — still the strongest gross edge in all 31 gates —
     landing at 1.06 once each hedged round trip pays the spread four times. Exact
     figures, verdicts, and causes of death: table below.</p>
   </div>
@@ -644,6 +650,11 @@
       <tr><td>Pairs stat-arb (GGR distance, liquid, long-short)</td><td><strong>gross PF 2.23</strong> → 1.06 @ 0.10%/side/leg</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Insider-cluster buying (2+ insiders, $200k+, SEC Form 4)</td><td>PF 1.17 @ 0.25%/side — vs 1.23 gross: friction wasn't the murderer</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Candlestick patterns (engulfing / hammer / piercing, 43,624 signals)</td><td>pooled PF 0.95 @ 0.25%/side; the hammer is a literal coin flip (1.00)</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Cash-merger arbitrage (789 deals hand-built from SEC filings, breaks paid in full)</td><td>4.03% CAGR vs a cash+3 bar of 4.32%: clears it only at exactly zero cost</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Prediction-market cross-venue arb (17 identical-resolution Kalshi/Polymarket pairs)</td><td>+2.2%/yr on deployed capital, less than T-bills (3.62%)</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Paid order flow / maker rebates (receipts only, no simulated fills)</td><td>net −0.17 to −0.23¢/share at retail tier; first positive payment starts at $10M/month</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Unified everything-rotation (1,365 stocks + 13 ETFs, one momentum pool)</td><td>7.14% vs SPY's 11.53%; ETFs entered the top-10 in 0 of 55 months</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Trend overlay on a momentum index fund</td><td>halved the drawdown, cost 3.4pp/yr vs a 2pp cap</td><td><span class="chip fail">FAIL</span></td></tr>
     </table>
   </div>
   <p class="tablenote">PF = profit factor. The pattern: nearly every DIRECTIONAL price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole. The market-neutral exception measured 2.23 gross and died anyway: hedged trades pay friction twice on a smaller move.</p>
@@ -755,6 +766,62 @@
     the repo’s <code>japan_experiment/</code>. Co-author: <strong>Zestyclose</strong>.</p>
   </div>
 
+  <div class="chart">
+    <p class="chart-title">GATES 27–31 · THE COLLECTOR'S SIDE OF THE COUNTER</p>
+    <p class="chart-sub">the standing thesis after 26 gates: our slippage is somebody's revenue. the winners collect structural payments instead of predicting price, so the last five gates went at the collecting side directly, in one 30-hour sweep</p>
+    <p style="font-size:0.97rem; margin-bottom:0.6rem;">Every family measured the same
+    thing from a different angle: <strong>the payment is always real, and it is always
+    priced to leave nothing above cash-compensation at retail scale.</strong></p>
+    <div class="tablewrap" style="margin-top:0.9rem;">
+      <table style="min-width:26rem;">
+        <tr><th>the payment</th><th>measured</th><th>what's left at retail</th></tr>
+        <tr><td>Merger-arb spread (deal-break insurance)</td><td>4.03% CAGR, 789 deals</td><td>bar was 4.32%; clears it only at zero cost</td></tr>
+        <tr><td>Cross-venue prediction-market gap</td><td>gaps &gt;1¢ in 50–95% of hours</td><td>round trip costs 2.5–4¢; nets +2.2%/yr &lt; T-bills</td></tr>
+        <tr><td>Maker rebates / order flow</td><td>receipted fee schedules, every venue</td><td>−0.17¢/share; positive pay starts ~$10M/month</td></tr>
+      </table>
+    </div>
+    <p class="chart-note">The merger-arb gate is the operator-vs-machine story: the
+    operator registered an unhedged PASS four days before the run; the machine put it
+    at 65% fail. The deal set was built from SEC filings announcement-first so the
+    broken deals stayed in, and the famous tail turned out survivable (10% of deals
+    broke, mean −2.9%, book max drawdown −5.5%). What killed it was quieter: the
+    spread is priced almost exactly at cash+3 gross, and even 0.05%/side pushes it
+    under. The 2019+ holdout was never opened; the frozen protocol seals it on a
+    primary fail. Five validity rounds ran before any number was believed — the first
+    three sims printed 7%, 27%, and 17%, each destroyed by its own eyeball audit
+    (fictional payouts, acquirer tickers mis-cast as targets, a rebalancing rule
+    quietly harvesting bid-ask bounce as alpha). The full defect ledger ships in the
+    repo's <code>merger_arb_experiment/DEVIATIONS.md</code>, because a hostile reader
+    should get the knife with the body.</p>
+    <p class="chart-note">The prediction-market gate found a second body on the way
+    down: measured raw, the arb "returns" +29%/yr, and every fat entry sits in a
+    market's first 72 hours, where one venue's price is a bookless print that collapses
+    30 cents on no news. No historical order-book exists to prove any of it was ever
+    executable. Price without a book is not a quote; that readout ships as an
+    unverifiable upper bound, and the mature-market number, the one you could
+    actually have, pays less than the T-bills the capital would sit in. One venue
+    also now charges a 5% taker fee on the exact markets measured: the toll booth
+    raised its price mid-study.</p>
+    <p class="chart-note">The coda is the week's real lesson. The operator asked to
+    beat the index by chasing momentum, so momentum got the full treatment: a
+    hand-rolled top-10 rotation over 1,365 stocks and 13 cross-asset ETFs in one pool
+    (his design: the defensive ETFs were supposed to take over in bears; in 55
+    months, including all of 2022, not one ETF ever out-ranked the ten hottest
+    stocks), then a trend overlay on the index fund that already does momentum
+    properly. Hand-roll: 7.14%/yr with a −41% drawdown. Professionally-run
+    concentrated academic momentum: 12.4%, worse than the plain index. The boring
+    S&amp;P momentum index fund the whole exercise tried to beat: 19.5%/yr for a
+    decade, live. The overlay halved its drawdown and paid 3.4pp/yr for the
+    privilege against a 2pp cap written in advance. Every step toward "better" (more
+    concentration, faster signals, cleverer math) made it worse, monotonically.
+    The one keeper the hunt ever surfaced is a 13-basis-point product you buy and
+    leave alone, and the machine's final advice on it was about sizing, not signals.
+    All five gate files, predictions, and verdicts:
+    <code>merger_arb_experiment/</code> · <code>predmarket_arb_experiment/</code> ·
+    <code>orderflow_experiment/</code> · <code>stock_rotation_experiment/</code> ·
+    <code>spmo_overlay_experiment/</code>.</p>
+  </div>
+
   <blockquote>A backtest is a witness with every incentive to lie to you.
   Interrogate it like one.</blockquote>
 
@@ -802,7 +869,7 @@
   <div class="tablewrap">
     <table>
       <tr><th>artifact</th><th>what it is</th></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 25 gates, every number, the three expensive lessons</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 31 gates, every number, the three expensive lessons</td></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–25: passes, benchings, and the resumed hunt</a></td><td>the first PASS (and its reader-forced 2008 extension), the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
       <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>
