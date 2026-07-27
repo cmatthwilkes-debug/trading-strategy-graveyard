@@ -506,7 +506,15 @@ Right now this repo is the writeup. The pipeline behind it consists of:
 - the **Gate 20 options harness** (total-return wrapper testing with NAV-erosion
   accounting, plus the CBOE benchmark-index fetcher for the 33-year mechanism test)
 
-I'm gauging whether it's worth cleaning these up for release. If you'd use them, **star
-the repo or open an issue** saying what you'd want — that's the signal I'm watching.
+That gauge resolved: the pipeline is now packaged and cleaned up as the
+**Falsification Kit**, sold in two tiers at
+[strategygraveyard.com/kit.html](https://strategygraveyard.com/kit.html) — The Gauntlet
+($54, the runnable tools above) and The Field Manual ($139, plus slippage
+instrumentation, risk armor, a simulator smoke-test suite, the decision-shadow logger,
+and the full 31-gate written record). This repo — the writeup, the artifact-hunting
+checklist, the full kill tables — stays free, forever. Nothing in either tier can
+place a trade, and nothing in either tier promises performance; the tools test and
+measure only.
 
-Questions about the methodology are welcome; I'll answer anything in the issues.
+Stars and issues still steer what gets extracted or built next — that's the signal I
+watch. Questions about the methodology are welcome; I'll answer anything in the issues.
