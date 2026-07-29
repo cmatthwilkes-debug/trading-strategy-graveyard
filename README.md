@@ -1,6 +1,6 @@
 # The Trading Strategy Graveyard
 
-**31 pre-registered backtests of retail trading strategies. 27 kills — including the
+**35 pre-registered backtests of retail trading strategies. 29 kills — including the
 strongest raw edge ever measured here, which died of friction alone, and the famous
 candlestick patterns, measured across 43,624 signals. Two passes that STILL didn't get
 the money. A reader-designed gate that borrowed Japan's lost decades and split the
@@ -95,6 +95,10 @@ repriced in public — that story is below the kill table too. All written up th
 | Paid order flow / maker rebates (receipts only — no simulated maker fills, queue position is unknowable offline) | net −0.17 to −0.23¢/share at the accessible tier, every venue receipted | the payment is real and starts at ~$10M/month of flow; below that the structure charges YOU to provide |
 | Unified everything-rotation (1,365 de-survivorship stocks + 13 cross-asset ETFs, ONE momentum pool — operator's design) | 7.14%/yr vs SPY's 11.53%, maxDD −41% vs −24.5% | the defensive valve never fired: ETFs entered the top-10 in 0 of 55 months — a thousand-stock pool always has ten hotter names than TLT/GLD |
 | Trend overlay on the S&P momentum index fund (Faber 10m, drawdown-engine framing pre-registered) | cut maxDD from −31% to −15% — the insurance WORKS | and costs 3.4pp/yr against a 2pp cap frozen in advance; six whipsaw re-entries, one at +17.4% above its exit. Sizing beats switching |
+| "Smart money concepts" M15, mechanized with every rule frozen in writing (7,087 forex trades, 5 years) | PF 0.951 BEFORE costs, 0.670 after 1 pip/side | loses gross, and sits inside a 20-seed random-entry band at matched frequency/risk/exits — the zones are decoration |
+| Cross-asset trend inside a prop-firm eval (outside spec, co-credit Owen Mantz) | Sharpe 0.82 at honest costs; static-rules eval: 78% funded, EV +$19k/attempt — the record's second pass ◐ | trailing-drawdown + 40% consistency rulesets deny 27–42% of payout cycles: the firm's rule sheet, not the strategy, is the constraint |
+| Gate 33's spec on FTMO's actual terms (CFD basket, overnight financing) | basket translation ≈ free (Sharpe 0.82→0.78) | +6%/yr financing on held notional → Sharpe 0.11. The wrapper's own swap charge is the entire kill |
+| Gate 33's spec on a swap-free static-drawdown firm (FundedNext class) ◐ | without the consistency rule: 76% funded, EV +$22k | with the published 40% best-day rule: 66–69% of payout cycles denied — one ambiguous payout-policy sentence decides the corner |
 
 The pattern across the whole table: **every DIRECTIONAL price-derived signal converges
 to roughly PF 1.05–1.10 gross** — a real, detectable asymmetry — **and retail friction
@@ -467,6 +471,97 @@ Full gate files, frozen predictions, verdicts, and charts: `merger_arb_experimen
 `predmarket_arb_experiment/`, `orderflow_experiment/`, `stock_rotation_experiment/`,
 `spmo_overlay_experiment/`.
 
+## Gates 32–35 + the prop-firm study: the wrapper arc
+
+An outside collaborator — Owen Mantz, a prop-firm trader who found this repo —
+brought two strategies and one thesis: run a bot on a prop firm's capital
+through a challenge account. All of it went through the gate, and the arc is
+the record in miniature: the playbook died, the spec produced the record's
+second pass, and the wrapper turned out to be priced like everything else.
+
+**The rules study (unnumbered — it gates a wrapper, not a strategy).** A
+Monte Carlo of FTMO-class two-step challenge rules, every simplification
+trader-favorable on purpose. The published rule sheet is beatable: a
+ZERO-edge coin flip reaches funded 1-in-3 and is +EV per attempt, because
+100% of the value is the funded-stage payout option — 80% of the positive
+part of a random walk on the firm's capital, downside capped at the firm's
+line. What the sheet doesn't say: ~2.4 years of daily grinding for ~$3k/yr
+at the trader-favorable upper bound, median funded life 126 trading days,
+payout-denial discretion, automation clauses. This is why a challenge pass
+is not a receipt, and the standing bar for any prop-firm claim here is
+funded PAYOUT history over months. Addendum: our own retired day bot's real
+90-day trade streams through the same rules — EV −$600 at every leverage
+multiple at honest costs, hugely +EV at zero cost. The whole wall in one
+table: the signal is real; friction eats it; fantasy fills would have
+called it brilliant.
+
+**Gate 32 — his playbook.** "Smart money concepts" M15, mechanized with
+literature-default parameters and a binding-scope clause (the mechanization
+binds our parameterization, not his discretion; his threshold slot stays
+open). PF 0.951 before costs across 7,087 trades, all five years
+underwater, and inside the random band. **Gate 33 — his trend spec.** The
+surprise, and the reason outside specs are welcome: Faber-class cross-asset
+trend, vol-targeted, simulated through eval rulesets on the real 2008–2026
+path. Sharpe 0.82 at honest costs; against static-drawdown rules it reaches
+funded 78% of the time. Against trailing+consistency rules it fails every
+cell — trend profits are lumpy and consistency rules deny exactly that
+shape. His own spec predicted the constraint would be the firm choice; the
+verdict agreed with him verbatim.
+
+**Gates 34–35 — the transfer tests.** Gate 33's passing cell moved onto
+FTMO's actual platform: no bond instrument (−0.05 Sharpe), single-name oil
+(free), overnight financing on a months-holding CFD book (0.78 → 0.11 —
+the whole kill, the cleanest attribution table in the record). Swap-free
+static-drawdown EA-allowed firms exist and restore the passing regime on
+their published rules — unless one ambiguous consistency clause applies to
+standard payouts, in which case two-thirds of cycles get denied. The build
+waits on that sentence in writing. Files: `smc_experiment/`,
+`trendprop_experiment/`, `propfirm_experiment/`.
+
+## The kill-side audit: turning the gauntlet on our own tombstones
+
+2026-07-29. The operator asked the question this repo exists to invite:
+**"could the graveyard be artifacting kills?"** He was right to ask — the
+record's skepticism had only ever been spent against passes (merger arb got
+five validity rounds because its early readouts looked too GOOD; no result
+ever got extra scrutiny for looking too BAD), and nobody had ever audited a
+loser tail. Criteria were frozen before looking — what would count as an
+overturned kill — then the top-10 losers of three closed gates were
+verified against independent price data, and every failed gate's cost
+ladder was collated. Pre-committed: publish whichever way it lands.
+
+- **No kill overturned, none weakened past the frozen thresholds.** ORB:
+  0/10 loser flags. Mean reversion: 1/10. Trend-follow: 2/10. Corrections
+  move profit factors by less than 0.01 against bars of 1.30.
+- **Two fabricated losses found** — the loss-side twins of the fake-split
+  wins that started the honest-fill era. BHVN's "−91%": Pfizer acquired
+  Biohaven at $148.50 and the ticker passed, with no date gap, to a ~$9
+  spinco — the cache splices two companies, and the engine booked an
+  acquisition-at-a-premium as a wipeout. CCXI's "−80%": a bar-indexed hold
+  jumped a 1,209-day delisting gap onto a relisted successor entity.
+  Ticker splices fabricate losses exactly like they fabricate wins. New
+  standing rules: gap-scan and splice-screen every cached universe;
+  eyeball the top-10 LOSERS with the same ritual as the winners.
+- **The kills are less cost-fragile than their own auditor predicted** (the
+  auditor's frozen guess: 5–7 cost-conditional kills; actual: one). 10 of
+  18 failed gates fail even at ZERO cost. Exactly one kill is cleanly
+  cost-conditional — pairs, which passes both its frozen bars at
+  0.05%/side/leg. If your execution is materially better than retail
+  taker, that is the tombstone to re-run at your own numbers.
+- **The disclosure this record owed you:** the kills share infrastructure —
+  one cost model (calibrated from this pipeline's measured live slippage,
+  always taker execution), one fill simulator, largely one data stack.
+  Friction-killed verdicts weaken TOGETHER if the cost model is wrong for
+  your execution. They are correlated verdicts, not 29 independent
+  confirmations, and every results file publishes its full cost ladder so
+  the count you trust is the one you recompute at your own costs.
+- Near-miss symmetry, also owed: the record's nearest miss either
+  direction is a FAIL (the merger-arb ETF proxy, by 0.03pp), and near-miss
+  fails now carry the same "inside data noise" flag the Japan gate's
+  5-basis-point PASS always did. Audit notes are appended to the affected
+  verdict files; the full audit is in `kill_audit/`.
+
+
 ## The three lessons that cost the most
 
 **1. The market's fill is not your backtest's fill.** Half my "edges" were fill
@@ -511,7 +606,7 @@ That gauge resolved: the pipeline is now packaged and cleaned up as the
 [strategygraveyard.com/kit.html](https://strategygraveyard.com/kit.html) — The Gauntlet
 ($54, the runnable tools above) and The Field Manual ($139, plus slippage
 instrumentation, risk armor, a simulator smoke-test suite, the decision-shadow logger,
-and the full 31-gate written record). This repo — the writeup, the artifact-hunting
+and the full 35-gate written record). This repo — the writeup, the artifact-hunting
 checklist, the full kill tables — stays free, forever. Nothing in either tier can
 place a trade, and nothing in either tier promises performance; the tools test and
 measure only.

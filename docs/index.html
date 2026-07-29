@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="31 pre-registered backtests. 27 kills. Tools that stop your backtest from lying to you.">
+<meta name="description" content="35 pre-registered backtests. 29 kills. Tools that stop your backtest from lying to you.">
 <meta name="theme-color" content="#F6F7F3" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131614" media="(prefers-color-scheme: dark)">
 <title>The Falsification Kit — tools that kill bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
 <meta property="og:title" content="The Falsification Kit">
-<meta property="og:description" content="31 pre-registered backtests. 27 kills. Tools that stop your backtest from lying to you.">
+<meta property="og:description" content="35 pre-registered backtests. 29 kills. Tools that stop your backtest from lying to you.">
 <meta property="og:url" content="https://strategygraveyard.com">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -503,7 +503,7 @@
 
   <h1><span class="eyebrow"><b>case file</b> · origin</span>Backtesting tools with a <span class="keep"><em>body count</em>.<span class="chip fail hero-stamp">×27 FAILED</span></span></h1>
 
-  <p class="lede">I have run 31 pre-registered backtests of retail trading strategies.
+  <p class="lede">I have run 35 pre-registered backtests of retail trading strategies.
   The pass/fail criteria were written down <em>before</em> each test, and the goalposts
   stayed welded in place after. Twenty-seven died, among them the strongest raw edge this
   pipeline ever measured, killed by friction alone. Two passed and still didn't get my
@@ -516,7 +516,7 @@
   if you trade, is the same thing wearing work clothes.</p>
 
   <div class="ledger">
-    <div class="ledger-row" role="img" aria-label="The gate ledger: 31 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed. Gate 26, the reader-proposed Japan test, was a split verdict: survived its governing window by five basis points, trod water over the full 23 years. Gates 27 through 31 all failed: the three structural-payment families — merger arbitrage, prediction-market arbitrage, paid order flow — and two operator-proposed momentum designs.">
+    <div class="ledger-row" role="img" aria-label="The gate ledger: 31 pre-registered gates in chronological order. Gates 1 through 16 all failed. Gate 17 passed. Gate 18 passed but was benched by its pre-registered tiebreaker. Gate 19 was a split decision. Gates 20 through 25 all failed. Gate 26, the reader-proposed Japan test, was a split verdict: survived its governing window by five basis points, trod water over the full 23 years. Gates 27 through 31 all failed: the three structural-payment families — merger arbitrage, prediction-market arbitrage, paid order flow — and two operator-proposed momentum designs. Gate 32, an outside collaborator's trading playbook mechanized, failed — its zones were indistinguishable from random. Gate 33, the same collaborator's trend spec inside a prop-firm evaluation, was the record's second split pass. Gate 34, that spec on FTMO's real cost structure, failed on overnight financing alone. Gate 35, the swap-free firm variant, split on a single payout-policy clause.">
       <div class="slot fail"><span class="box" style="--i:0">×</span><span class="idx">01</span></div>
       <div class="slot fail"><span class="box" style="--i:1">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:2">×</span><span class="idx"></span></div>
@@ -548,14 +548,19 @@
       <div class="slot fail"><span class="box" style="--i:28">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:29">×</span><span class="idx"></span></div>
       <div class="slot fail"><span class="box" style="--i:30">×</span><span class="idx">31</span></div>
+      <div class="slot fail"><span class="box" style="--i:31">×</span><span class="idx">32</span></div>
+      <div class="slot split"><span class="box" style="--i:32">◐</span><span class="idx">33</span></div>
+      <div class="slot fail"><span class="box" style="--i:33">×</span><span class="idx"></span></div>
+      <div class="slot split"><span class="box" style="--i:34">◐</span><span class="idx">35</span></div>
     </div>
     <div class="ledger-notes" aria-hidden="true">
       <span class="note"><b>gates 17–25</b><span class="nb">pass</span> · <span class="nb">benched</span> · <span class="nb">split</span> · <span class="nb">6 kills, 5 in one day</span></span>
       <span class="note"><b>gates 27–31</b><span class="nb">the collector's-side sweep</span> · <span class="nb">5 kills in 30 hours</span></span>
+      <span class="note"><b>gates 32–35</b><span class="nb">the wrapper arc</span> · <span class="nb">2 kills · 2 splits</span></span>
     </div>
-    <p class="ledger-tally"><b>31</b> gates · <b class="k">27</b> kills ·
+    <p class="ledger-tally"><b>35</b> gates · <b class="k">29</b> kills ·
     <b class="g">1</b> pass · <b class="g">2</b> certified, then benched by their own
-    pre-registered tiebreaker · <b>1</b> split verdict (Japan) · <b>$0</b> lost live</p>
+    pre-registered tiebreaker · <b>3</b> split verdicts (Japan + the wrapper arc) · <b>$0</b> lost live</p>
     <p class="boardnote">counted from the public gate files; every number on this page is in the repo</p>
   </div>
 
@@ -627,7 +632,7 @@
     <p class="chart-note">Not one family reached the line. The catalyst pair is the
     expensive lesson: a passing primary sample (hollow dot) collapsing to negative
     expectancy on the holdout it never touched. The pairs dot is the newest and
-    sharpest: PF 2.23 at zero cost — still the strongest gross edge in all 31 gates —
+    sharpest: PF 2.23 at zero cost — still the strongest gross edge in all 35 gates —
     landing at 1.06 once each hedged round trip pays the spread four times. Exact
     figures, verdicts, and causes of death: table below.</p>
   </div>
@@ -655,6 +660,10 @@
       <tr><td>Paid order flow / maker rebates (receipts only, no simulated fills)</td><td>net −0.17 to −0.23¢/share at retail tier; first positive payment starts at $10M/month</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Unified everything-rotation (1,365 stocks + 13 ETFs, one momentum pool)</td><td>7.14% vs SPY's 11.53%; ETFs entered the top-10 in 0 of 55 months</td><td><span class="chip fail">FAIL</span></td></tr>
       <tr><td>Trend overlay on a momentum index fund</td><td>halved the drawdown, cost 3.4pp/yr vs a 2pp cap</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>"Smart money concepts" M15, mechanized (7,087 forex trades)</td><td>PF 0.951 before costs; inside a 20-seed random band</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>Cross-asset trend inside a prop-firm eval (outside spec)</td><td>Sharpe 0.82; static rules: 78% funded, +$19k EV — trailing+consistency rules: dead</td><td><span class="chip split">SPLIT</span></td></tr>
+      <tr><td>The same spec on FTMO's actual terms</td><td>overnight financing alone: Sharpe 0.78 → 0.11</td><td><span class="chip fail">FAIL</span></td></tr>
+      <tr><td>The same spec, swap-free firm class</td><td>76% funded, +$22k EV — unless the 40% consistency rule applies: 66–69% of payouts denied</td><td><span class="chip split">SPLIT</span></td></tr>
     </table>
   </div>
   <p class="tablenote">PF = profit factor. The pattern: nearly every DIRECTIONAL price-derived signal is ~PF 1.05–1.10 gross, and retail friction eats it whole. The market-neutral exception measured 2.23 gross and died anyway: hedged trades pay friction twice on a smaller move.</p>
@@ -822,6 +831,69 @@
     <code>spmo_overlay_experiment/</code>.</p>
   </div>
 
+  <div class="chart">
+    <p class="chart-title">GATES 32–35 · THE WRAPPER ARC</p>
+    <p class="chart-sub">an outside collaborator — a prop-firm trader — brought two strategies and a thesis: trade the firm's capital through a challenge account. all of it went through the gate</p>
+    <p style="font-size:0.97rem; margin-bottom:0.6rem;">The arc is the record in
+    miniature: <strong>his playbook died, his spec produced the record's second pass,
+    and the wrapper turned out to be priced like everything else.</strong></p>
+    <p class="chart-note">The playbook first. "Smart money concepts" on 15-minute
+    charts, mechanized with literature-default parameters and every rule frozen in
+    writing: 7,087 trades, five years, two currency pairs — profit factor 0.951
+    BEFORE costs, and statistically indistinguishable from random entries at matched
+    frequency, risk and exits. The zones are decoration. Then his trend spec — the
+    surprise. Faber-class cross-asset trend, vol-targeted, run through evaluation
+    rulesets on the real 2008–2026 path: Sharpe 0.82 at honest costs, 78% funded
+    probability with ~$19k expected value per attempt against STATIC-drawdown rules.
+    Against trailing-drawdown-plus-consistency rulesets it fails every cell — trend
+    profits are lumpy, and consistency rules exist to deny exactly that shape. The
+    firm's rule sheet, not the strategy, is the constraint.</p>
+    <p class="chart-note">Then the transfer test, and the cleanest attribution table
+    in the record. Moving the spec onto FTMO's actual platform: dropping the bond leg
+    (no bond CFDs) cost 0.05 of Sharpe; switching to single-name oil cost nothing;
+    modeling the overnight financing a months-holding CFD book actually pays took it
+    from 0.78 to 0.11. The venue's own swap charge is the entire death — the same
+    kill as merger arbitrage, one venue closer to home. Swap-free static-drawdown
+    firms exist and restore the passing regime on their published rules (76% funded,
+    +$22k EV) — unless one ambiguous consistency clause in the payout policy applies,
+    in which case two-thirds of payout cycles get denied. As of this writing the
+    build waits on that sentence, in writing, from the firm. A companion rules study
+    priced the wrapper itself: the published rule sheet is beatable by a coin flip
+    (1-in-3 passes at zero edge, all the value in the funded-stage payout option),
+    which is exactly why challenge passes are not receipts. The standing bar for any
+    prop-firm claim: funded PAYOUT history over months. Files:
+    <code>smc_experiment/</code> · <code>trendprop_experiment/</code> ·
+    <code>propfirm_experiment/</code>.</p>
+  </div>
+
+  <div class="chart">
+    <p class="chart-title">THE KILL-SIDE AUDIT · TURNING THE GAUNTLET ON OUR OWN TOMBSTONES</p>
+    <p class="chart-sub">2026-07-29, prompted by the operator's question: "could the graveyard be artifacting kills?" — the record's skepticism had only ever been spent against passes; nobody had audited a loser tail</p>
+    <p style="font-size:0.97rem; margin-bottom:0.6rem;">Criteria frozen before looking
+    (what would count as an overturned kill), then: top-10 losers of three closed
+    gates verified against independent price data, and every failed gate's cost
+    ladder collated. <strong>Published whichever way it landed.</strong></p>
+    <div class="tablewrap" style="margin-top:0.9rem;">
+      <table style="min-width:26rem;">
+        <tr><th>question</th><th>answer</th></tr>
+        <tr><td>Any kill overturned?</td><td>No. ORB 0/10 loser flags; mean reversion 1/10; trend-follow 2/10; corrections move PF by &lt;0.01 against 1.30 bars.</td></tr>
+        <tr><td>Any fabricated losses?</td><td>TWO — BHVN's "−91%" (Pfizer acquired Biohaven at $148.50; the ticker passed, gapless, to a ~$9 spinco) and CCXI's "−80%" (a hold jumped a 1,209-day delisting gap onto a relisted successor). Ticker splices fabricate losses exactly like they fabricate wins.</td></tr>
+        <tr><td>How cost-fragile are the kills?</td><td>Less than the auditor predicted: 10 of 18 failed gates fail even at ZERO cost. Exactly one kill is cleanly cost-conditional — pairs, which passes its bars at 0.05%/side/leg.</td></tr>
+      </table>
+    </div>
+    <p class="chart-note">The disclosure that matters, on the record: the kills share
+    infrastructure — one cost model (calibrated from this pipeline's measured live
+    slippage, always taker execution), one fill simulator, largely one data stack.
+    Kills that die of friction weaken TOGETHER if the cost model is wrong for your
+    execution; they are correlated verdicts, not 29 independent confirmations. Every
+    results file publishes its full cost ladder so the count you trust is the one
+    you recompute at your own costs. If your execution is materially better than
+    retail taker, the pairs gate is the tombstone to re-run first. New standing
+    rules from the audit: gap-scan and splice-screen every cached universe, and
+    eyeball the top-10 losers with the same ritual as the winners — both tails,
+    every gate. Full audit: <code>kill_audit/</code> in the repo.</p>
+  </div>
+
   <blockquote>A backtest is a witness with every incentive to lie to you.
   Interrogate it like one.</blockquote>
 
@@ -869,7 +941,7 @@
   <div class="tablewrap">
     <table>
       <tr><th>artifact</th><th>what it is</th></tr>
-      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 31 gates, every number, the three expensive lessons</td></tr>
+      <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#readme">The full graveyard writeup</a></td><td>all 35 gates, every number, the three expensive lessons</td></tr>
       <tr><td><a href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard#gates-17-20-the-passes-the-benchings-and-the-last-family">Gates 17–25: passes, benchings, and the resumed hunt</a></td><td>the first PASS (and its reader-forced 2008 extension), the benched survivors, the falsified predictions (mine included), the 33-year options autopsy, and the strongest gross edge on record dying of friction</td></tr>
       <tr><td>The artifact-hunting checklist</td><td>the free tier: every rule priced by the disaster that created it <span class="tablenote">(landing in the repo this week)</span></td></tr>
     </table>

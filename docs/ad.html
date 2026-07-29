@@ -20,12 +20,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="31 pre-registered backtests of retail trading strategies. 27 died. The tools that killed them — for people who build strategies in code.">
+<meta name="description" content="35 pre-registered backtests of retail trading strategies. 29 died. The tools that killed them — for people who build strategies in code.">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#131614">
 <title>Strategy Graveyard — the kit that kills bad backtests</title>
 <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="0.9em" font-size="90">🪦</text></svg>'>
-<meta property="og:title" content="Strategy Graveyard — 31 backtests, 27 kills">
+<meta property="og:title" content="Strategy Graveyard — 35 backtests, 29 kills">
 <meta property="og:description" content="The falsification kit that killed 22 of my own trading strategies. For people who build in code.">
 <meta property="og:url" content="https://strategygraveyard.com/ad.html">
 <meta property="og:type" content="website">
@@ -102,7 +102,7 @@
   .ledger-cap{font-family:var(--mono);font-size:0.72rem;color:var(--night-mut);
     margin:0 0 0.7rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
   .ledger-cap b{color:var(--night-ink);}
-  .grid26{display:grid;grid-template-columns:repeat(31,1fr);gap:4px;}
+  .grid26{display:grid;grid-template-columns:repeat(35,1fr);gap:4px;}
   @media (max-width:640px){.grid26{grid-template-columns:repeat(16,1fr);}}
   .cell{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;
     font-family:var(--mono);font-weight:700;font-size:clamp(.6rem,1.6vw,.95rem);
@@ -209,13 +209,13 @@
     <div class="wrap">
       <div class="filebar">
         <span><b>STRATEGY GRAVEYARD</b></span>
-        <span>case files 01–31</span>
-        <span>31 gates run</span>
+        <span>case files 01–35</span>
+        <span>35 gates run</span>
         <span>27 kills</span>
         <span>$0 lost live</span>
       </div>
 
-      <h1>31 strategies.<br>27 <em>autopsies</em>.<br>One honest pipeline.</h1>
+      <h1>35 strategies.<br>29 <em>autopsies</em>.<br>One honest pipeline.</h1>
 
       <p class="lede">You write backtests in code. So did I — then I pre-registered the
       pass/fail criteria <b>before</b> every run and refused to move the goalposts.
@@ -226,12 +226,12 @@
 
       <div class="cta-row">
         <a class="btn btn-primary" href="#kit">Get the kit →</a>
-        <a class="btn btn-ghost" href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">Read all 31 free first</a>
+        <a class="btn btn-ghost" href="https://github.com/cmatthwilkes-debug/trading-strategy-graveyard">Read all 35 free first</a>
         <span class="cta-note">$54 · instant download · no bot, no signals</span>
       </div>
 
       <!-- the ledger: the whole thesis in one image -->
-      <div class="ledger" role="img" aria-label="Gate ledger: 31 pre-registered backtests in order. Gates 1–16 all failed. Gate 17 passed. Gate 18 was certified then benched. Gate 19 was a split decision. Gates 20–25 failed. Gate 26, the Japan test, was a split verdict. Gates 27–31 all failed: the structural-payment families and two momentum designs. Total: 27 kills, 1 pass, 2 benched, 1 split, zero dollars lost live.">
+      <div class="ledger" role="img" aria-label="Gate ledger: 31 pre-registered backtests in order. Gates 1–16 all failed. Gate 17 passed. Gate 18 was certified then benched. Gate 19 was a split decision. Gates 20–25 failed. Gate 26, the Japan test, was a split verdict. Gates 27–31 all failed: the structural-payment families and two momentum designs. Gate 32 failed, 33 split-passed, 34 failed, 35 split — the prop-firm wrapper arc. Total: 29 kills, 1 pass, 2 benched, 3 splits, zero dollars lost live.">
         <div class="ledger-cap">
           <span>the ledger — <b>every family, measured against the gate it pre-registered</b></span>
           <span class="nb">× fail · ✓ pass</span>
@@ -260,10 +260,13 @@
           <div class="cell fail" style="--i:26">×</div><div class="cell fail" style="--i:27">×</div>
           <div class="cell fail" style="--i:28">×</div><div class="cell fail" style="--i:29">×</div>
           <div class="cell fail" style="--i:30">×</div>
+          <!-- 32–35: the wrapper arc -->
+          <div class="cell fail" style="--i:31">×</div><div class="cell split" style="--i:32">◐</div>
+          <div class="cell fail" style="--i:33">×</div><div class="cell split" style="--i:34">◐</div>
         </div>
-        <p class="tally"><b>31</b> gates · <b class="k">27</b> kills · <b class="g">1</b> pass ·
+        <p class="tally"><b>35</b> gates · <b class="k">29</b> kills · <b class="g">1</b> pass ·
         <b class="g">2</b> certified, then benched by their own tiebreaker ·
-        <b>1</b> split verdict · <b>$0</b> lost live</p>
+        <b>3</b> split verdicts · <b>$0</b> lost live</p>
       </div>
     </div>
   </header>
